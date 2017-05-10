@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html ng-app = "meanhotel">
+    <head>
+     <title>MEAN hotel</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet" />
+        <link href="css/custom.css" rel="stylesheet" />
+
+    </head>
+    <body>
+
+    <!-- Note: The navigation bar for the entire app is embedded via a directive here (navigation-directive.html) -->
+
+    <mh-navigation></mh-navigation>
+    <div class = "container">
+<!-- each route in app.js declares its own html page to go here...-->
+        <div ng-view></div>
+    </div>
+
+
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted text-center">
+                    <a href="http://fullstacktraining.com" target="_blank"><img src="images/logo1.png" height="26" alt="Full Stack Training"/></a>
+                </p>
+                <p class="text-muted text-center">
+                    <small>&copy; 2017 Full Stack Training Ltd</small>
+                </p>
+            </div>
+        </footer>
+
+    <!-- firebase scripts -->
+    <!-- this is all of it, just take app+auth <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script> -->
+
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-auth.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyChhbW3dF5BwgRwqmI6OhdWirZPUuJqfpA",
+            authDomain: "meanfire-9a689.firebaseapp.com",
+            databaseURL: "https://meanfire-9a689.firebaseio.com",
+            projectId: "meanfire-9a689",
+            storageBucket: "meanfire-9a689.appspot.com",
+            messagingSenderId: "649978470603"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+ <!--   <script>
+        // Initialize Firebase other dtabae
+ //       var config = {
+ //           apiKey: "AIzaSyChhbW3dF5BwgRwqmI6OhdWirZPUuJqfpA",
+ //           authDomain: "meanfire-e5aa3.firebaseapp.com",
+ //           databaseURL: "https://meanfire-e5aa3.firebaseio.com",
+ //           projectId: "meanfire-e5aa3",
+ //           storageBucket: "meanfire-e5aa3.appspot.com",
+ //           messagingSenderId: "649978470603"
+ //       };
+        firebase.initializeApp(config);
+    </script>
+    -->
+
+
+        <script src="jquery/jquery-3.2.1.min.js"></script>
+
+       <!-- <script src="angular/angular.min.js"></script>  angular is in node_modules instead-->
+
+        <!--<script src="node_modules/angular/angular.js"></script>  change node_modules to ../node_modules-->
+        <script src="../node_modules/angular/angular.js"></script>
+        <script src="../node_modules/angular-route/angular-route.js"></script>
+        <script src="../node_modules/angular-jwt/dist/angular-jwt.js"></script>
+        <script src="angular-app/app.js"></script>
+        <script src="angular-app/hotel-list/hotel-list-controller.js"></script>
+        <script src="angular-app/hotel-display/hotel-display-controller.js"></script>
+        <script src="angular-app/hotel-data-factory/hotel-data-factory.js"></script>
+        <script src="angular-app/hotel-rating/hotel-rating-directive.js"></script>
+        <script src="angular-app/register/register-controller.js"></script>
+        <script src="angular-app/navigation-directive/navigation-directive.js"></script>
+        <script src="angular-app/login/login-controller.js"></script>
+        <script src="angular-app/auth/auth-factory.js"></script>
+        <script src="angular-app/auth/auth-interceptor.js"></script>
+
+    </body>
+</html>
