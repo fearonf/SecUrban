@@ -2,7 +2,7 @@
  * Created by frances.fearon on 26/04/2017.
  */
 
-angular.module('meanhotel')
+angular.module('secur')
     .controller('HotelsController',HotelsController);
 
 //function HotelsController(hotelDataFactory,$route) {
@@ -26,7 +26,7 @@ angular.module('meanhotel')
 
 
     hotelDataFactory.hotelList().then(function(response) {
-        vm.hotels = response.data;
+        vm.sessions = response.data;
         console.log(response);
 
     });
@@ -46,8 +46,8 @@ angular.module('meanhotel')
 
 
         vm.addHotel = function() {
-       console.log("do they feel safe? ",vm.safe);
-       var postData = {
+      // console.log("do they feel safe? ",vm.safe);
+    /*   var postData = {
            name: vm.name,
            stars: vm.stars,
            services: vm.services,
@@ -57,6 +57,7 @@ angular.module('meanhotel')
            lat: vm.latitude
 
            };
+           */
 
 
      //  if(vm.addForm.$valid) {

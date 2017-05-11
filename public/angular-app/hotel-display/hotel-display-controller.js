@@ -1,7 +1,7 @@
 /**
  * Created by frances.fearon on 26/04/2017.
  */
-angular.module('meanhotel')
+angular.module('secur')
     .controller('HotelController',HotelController);
 
 function HotelController($route,$routeParams,hotelDataFactory, AuthFactory,jwtHelper,$window) {
@@ -13,8 +13,8 @@ function HotelController($route,$routeParams,hotelDataFactory, AuthFactory,jwtHe
     hotelDataFactory.hotelDisplay(id).then(function(response) {
 
         console.log(response);
-         vm.hotel = response.data;
-         vm.stars = _getStarRating(response.data.stars);
+         vm.session = response.data;
+        // vm.stars = _getStarRating(response.data.stars);
 
 
     });

@@ -1,7 +1,7 @@
 /**
  * Created by frances.fearon on 03/05/2017.
  */
-angular.module('meanhotel')
+angular.module('secur')
     .controller('LoginController', LoginController);
 
 function LoginController($http,$location,$window, AuthFactory, jwtHelper,$route) {

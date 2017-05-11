@@ -1,7 +1,7 @@
 /**
  * Created by frances.fearon on 26/04/2017.
  */
-angular.module('meanhotel', ['ngRoute','angular-jwt']).config(config).run(run);
+angular.module('secur', ['ngRoute','angular-jwt']).config(config).run(run);
 
 
 function config($routeProvider, $httpProvider) {

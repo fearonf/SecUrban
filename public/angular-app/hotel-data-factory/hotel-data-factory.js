@@ -1,7 +1,7 @@
 /**
  * Created by frances.fearon on 27/04/2017.
  */
-angular.module('meanhotel').factory('hotelDataFactory',hotelDataFactory);
+angular.module('secur').factory('hotelDataFactory',hotelDataFactory);
 
 function hotelDataFactory($http) {
     return {
@@ -15,11 +15,11 @@ function hotelDataFactory($http) {
 
 
     function hotelList() {
-        return $http.get('/api/hotels?count=20').then(complete).catch(failed);
+        return $http.get('/api/sessions').then(complete).catch(failed);
     }
 
     function hotelDisplay(id) {
-        return $http.get('/api/hotels/' + id).then(complete).catch(failed);
+        return $http.get('/api/sessions/' + id).then(complete).catch(failed);
 
     }
 

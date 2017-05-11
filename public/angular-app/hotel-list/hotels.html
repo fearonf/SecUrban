@@ -3,7 +3,7 @@
 
 
 <ul>
-    <li ng-repeat = "hotel in vm.hotels"><a ng-href="#!/hotel/{{hotel._id}}">{{hotel.name}}</a></li>
+    <li ng-repeat = "session in vm.sessions"><a ng-href="#!/hotel/{{session._id}}">{{session.name}}</a></li>
 
     <p> ********</p>
 
@@ -12,7 +12,7 @@
 
 </ul>
 
-<!-- following div  is only visible if the return from vm.isLoggedIn() is true -->
+<!-- following div  is only visible if the return from vm.isLoggedIn() is true
 <div ng-if="vm.isLoggedIn() && vm.loggedInUser == 'admin'">
 
 <form name="vm.addForm" ng-submit="vm.addHotel()">
@@ -72,3 +72,5 @@
     <button type="submit"class="btn">Add new hotel</button>
 </form>
 </div>
+
+-->

@@ -1,7 +1,7 @@
 /**
  * Created by frances.fearon on 03/05/2017.
  */
-angular.module('meanhotel').directive('mhNavigation',mhNavigation);
+angular.module('secur').directive('mhNavigation',mhNavigation);
 
 function mhNavigation() {
 

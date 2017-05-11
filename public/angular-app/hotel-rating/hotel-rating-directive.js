@@ -19,7 +19,7 @@
 //   }
 //}
 
-angular.module('meanhotel').component('hotelRating', {
+angular.module('secur').component('hotelRating', {
     bindings: {
         stars: '='
     },

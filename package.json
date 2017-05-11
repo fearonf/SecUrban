@@ -1,7 +1,7 @@
 {
-  "name": "mean-app",
+  "name": "secur-app",
   "version": "1.0.0",
-  "description": "MEAN stack application",
+  "description": "Secur application",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -9,17 +9,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fullstacktraining/mean-stack-app.git"
+    "url": "git+https://github.com/fearonf/Secur"
   },
   "keywords": [
-    "mean"
+    "secur"
   ],
-  "author": "Full Stack Training",
-  "license": "ISC",
+  "author": "Frances Fearon",
+  "license": "UNLICENSED",
+  "private:": "true",
   "bugs": {
-    "url": "https://github.com/fullstacktraining/mean-stack-app/issues"
+    "url": "https://github.com/fearonf/Secur/issues"
   },
-  "homepage": "https://github.com/fullstacktraining/mean-stack-app#readme",
+  "homepage": "https://github.com/fearonf/Secur/#readme",
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",

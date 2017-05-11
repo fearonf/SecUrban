@@ -2,7 +2,7 @@
  * Created by frances.fearon on 03/05/2017.
  */
 //SEE app.js where this is added to the very top as push('AuthInterceptor') for every restricted:true route
-angular.module('meanhotel')
+angular.module('secur')
     .factory('AuthInterceptor', AuthInterceptor);
 
 //This will intercept the http requests that we make
