@@ -1,0 +1,69 @@
+<h2>Name of the Assessement : {{vm.session.name}} </h2>
+
+<h3>Description of objects under consideration:  {{vm.session.objectDescription}}</h3>
+
+<p>Description of the information and versions used for the assessement: {{vm.session.informationDescription}}</p>
+
+<p><small>Timestamp :{{vm.session.timestamp}}</small></p>
+
+<p>Are there residences? {{vm.session.objectQuestions.answer1}} &nbsp&nbsp&nbsp&nbsp
+    Comments: {{vm.session.objectQuestions.comments1}}</p>
+<p ng-if="vm.session.objectQuestions.answer2">Are more than 10% of the residences single family detached homes? {{vm.session.objectQuestions.answer2}} &nbsp&nbsp&nbsp&nbsp
+    Comments: {{vm.session.objectQuestions.comments2}}</p>
+
+<br></br>
+
+
+
+
+<!-- following div  is only visible if the return from vm.isLoggedIn() is true -->
+<!--<div ng-if="vm.isLoggedIn()">    -->
+<h3>_______________________________form to prepopulate with database data... _____________________________</h3>
+
+
+<form name="vm.addForm" ng-submit="vm.updateSession()">
+    Assessement name: <input type = "text" name="name" required ng-minlength="2" ng-model="vm.session.name">
+
+
+
+    <p> Description of object under consideration: <input type="text" name="description" required ng-model="vm.session.objectDescription"></input>
+        <div ng-show="vm.addForm.description.$dirty && vm.addForm.description.$invalid && vm.isSubmitted">
+    <p>Please add a description</p>
+    </div>
+    </p>
+
+
+    <h3> Object:</h3>
+    <p>Are there residences?  <input type="text" name="objectQuestions.answer1"   ng-model="vm.session.objectQuestions.answer1" >
+
+        Comments :  <input type="text" name="objectQuestions.comments1"  ng-model="vm.session.objectQuestions.comments1" >
+    </p>
+    <p>
+        Are more than 10% of the residences single family detached homes?  <input type="text" name="objectQuestions.answer2"   ng-model="vm.session.objectQuestions.answer2" >
+
+        Comments :  <input type="text" name="objectQuestions.comments2"  ng-model="vm.session.objectQuestions.comments2" >
+
+    </p>
+
+    <h3> People:</h3>
+    <p>
+        Are tourists expected in the public space?  <input type="text" name="objectQuestions.answer27"   ng-model="vm.session.objectQuestions.answer27" >
+
+        Comments :  <input type="text" name="objectQuestions.comments27"  ng-model="vm.session.objectQuestions.comments27" >
+
+    </p>
+
+
+
+    <button type="submit"class="btn">Update assessement</button>
+
+
+</form>
+
+<h3>Delete Assessement</h3>
+
+<form name="vm.delForm" ng-submit="vm.deleteSession()">
+    <button type="submit"class="btn">Delete Session</button>
+</form>
+
+</div>

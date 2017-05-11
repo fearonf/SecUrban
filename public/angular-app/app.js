@@ -39,6 +39,27 @@ function config($routeProvider, $httpProvider) {
             }
 
         })
+
+        .when('/sessions',{
+            templateUrl: 'angular-app/session-list/sessions.html',
+            controller: SessionsController,
+            controllerAs: 'vm',
+            access: {
+                restricted: false
+            }
+
+        })
+
+        .when('/session/:id',  {
+
+            templateUrl: 'angular-app/session-display/session.html',
+            controller: SessionController,
+            controllerAs: 'vm',
+            access: {
+                restricted: false
+            }
+
+        })
         .when('/register' , {
 
         templateUrl: 'angular-app/register/register.html',

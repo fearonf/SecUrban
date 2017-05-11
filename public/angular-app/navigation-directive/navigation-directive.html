@@ -11,7 +11,7 @@
 
 
             </button>
-            <a class="navbar-brand" href="#/">MeanHotel</a>
+            <a class="navbar-brand" href="#/">Secur</a>
         </div>
 
         <!-- clicking on a hyperlink here calls the route attached... -->
@@ -21,6 +21,7 @@
             <ul class="nav navbar-nav">
                 <li ng-class="vm.isActiveTab('')" class="active"><a href="#/">Home</a></li>
                 <li ng-class="vm.isActiveTab('hotels')"><a href="#!/hotels">Hotels</a></li>
+                <li ng-class="vm.isActiveTab('sessions')"><a href="#!/sessions">Sessions</a></li>
                 <li ng-class="vm.isActiveTab('register')" ng-if="!vm.isLoggedIn()"> <a href="#!/register">Register</a></li>
                 <li ng-class="vm.isActiveTab('profile')" > <a href="#!/profile">Profile</a></li>
                 <!--<li ng-class="vm.isActiveTab('profile')" ng-if="vm.isLoggedIn()"> <a href="#!/profile">Profile</a></li>  -->

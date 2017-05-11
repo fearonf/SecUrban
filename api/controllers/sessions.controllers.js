@@ -260,39 +260,39 @@ module.exports.sessionsUpdateOne = function(req,res) {
                 doc.informationDescription = req.body.informationDescription;
                 doc.timeStamp = req.body.timeStamp;
                 doc.objectQuestions = {
-                    answer1: req.body.answer1,
-                    comments1: req.body.comments1,
-                    answer2: req.body.answer2,
-                    comments2: req.body.comments2
+                    answer1: req.body.objectQuestions.answer1,
+                    comments1: req.body.objectQuestions.comments1,
+                    answer2: req.body.objectQuestions.answer2,
+                    comments2: req.body.objectQuestions.comments2
                 };
                 doc.peopleQuestions = {
-                    answer27: req.body.answer27,
-                    comments27: req.body.comments27,
-                    answer28: req.body.answer28,
-                    comments28: req.body.comments28
+                    answer27: req.body.objectQuestions.answer27,
+                    comments27: req.body.objectQuestions.comments27,
+                    answer28: req.body.objectQuestions.answer28,
+                    comments28: req.body.objectQuestions.comments28
                 };
                 doc.locationQuestions = {
-                    answer32: req.body.answer32,
-                    comments32: req.body.comments32,
-                    answer33: req.body.answer33,
-                    comments33: req.body.comments33
+                    answer32: req.body.objectQuestions.answer32,
+                    comments32: req.body.objectQuestions.comments32,
+                    answer33: req.body.objectQuestions.answer33,
+                    comments33: req.body.objectQuestions.comments33
                 };
 
                 doc.surroundingsQuestions = {
-                    answer39: req.body.answer39,
-                    comments39: req.body.comments39,
-                    answer40: req.body.answer40,
-                    comments40: req.body.comments40
+                    answer39: req.body.objectQuestions.answer39,
+                    comments39: req.body.objectQuestions.comments39,
+                    answer40: req.body.objectQuestions.answer40,
+                    comments40: req.body.objectQuestions.comments40
                 };
                 doc.measuresQuestions = {
-                    answer51: req.body.answer51,
-                    comments51: req.body.comments51,
-                    answer52: req.body.answer52,
-                    comments52: req.body.comments52,
-                    answer69: req.body.answer69,
-                    comments69: req.body.comments69,
-                    answer71: req.body.answer71,
-                    comments71: req.body.comments71
+                    answer51: req.body.objectQuestions.answer51,
+                    comments51: req.body.objectQuestions.comments51,
+                    answer52: req.body.objectQuestions.answer52,
+                    comments52: req.body.objectQuestions.comments52,
+                    answer69: req.body.objectQuestions.answer69,
+                    comments69: req.body.objectQuestions.comments69,
+                    answer71: req.body.objectQuestions.answer71,
+                    comments71: req.body.objectQuestions.comments71
                 } ;
 
 

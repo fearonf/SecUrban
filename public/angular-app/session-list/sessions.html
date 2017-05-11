@@ -1,0 +1,76 @@
+<h1>{{vm.title}} </h1>
+<h2> Hi {{vm.loggedInUser}} !!</h2>
+
+
+<ul>
+    <li ng-repeat = "session in vm.sessions"><a ng-href="#!/session/{{session._id}}">{{session.name}}</a></li>
+
+    <p> ********</p>
+
+    <!-- Only show the particular hotel if the hotel.name is 'Iona'    Can be used to show only for a particular company name????? -->
+    <li ng-repeat = "session in vm.sessions" ng-show="session.name == 'Mark Bowe' "><a ng-href="#!/session/{{session._id}}">{{session.name}}</a></li>
+
+</ul>
+
+<!-- following div  is only visible if the return from vm.isLoggedIn() is true
+<div ng-if="vm.isLoggedIn() && vm.loggedInUser == 'admin'">
+
+<form name="vm.addForm" ng-submit="vm.addHotel()">
+    Hotel name: <input type = "text" name="name" required ng-minlength="2" ng-model="vm.name" >
+
+    <div ng-show="vm.addForm.name.$dirty && vm.addForm.name.$invalid && vm.isSubmitted">
+        <p>Name should be more than 2 characters long</p>
+    </div>
+
+    Star Rating: <input type="number" name="stars" required ng-pattern="/^[1-5]$/" ng-model="vm.stars">
+    <div ng-show="vm.addForm.stars.$dirty && vm.addForm.stars.$invalid && vm.isSubmitted">
+        <p>Stars must be between 1-5.</p>
+    </div>
+
+    Services: <textarea name="services" required ng-model="vm.services"></textarea>
+    <div ng-show="vm.addForm.services.$dirty && vm.addForm.services.$invalid && vm.isSubmitted">
+        <p>Please add services</p>
+    </div>
+
+    Description: <textarea name="description" required ng-model="vm.description"></textarea>
+    <div ng-show="vm.addForm.desciption.$dirty && vm.addForm.description.$invalid && vm.isSubmitted">
+        <p>Please add a description</p>
+    </div>
+
+    Currency: <input type="text" name="currency" required ng-model="vm.currency">
+    <div ng-show="vm.addForm.currency.$dirty && vm.addForm.currency.$invalid && vm.isSubmitted">
+        <p>Please add currency</p>
+    </div>
+
+    Coordinates:
+    longitude: <input type="number" name="longitude" required ng-model="vm.longitude" >
+    <div ng-show="vm.addForm.longitude.$dirty && vm.addForm.longitude.$invalid && vm.isSubmitted">
+        <p>Please add longitude</p>
+    </div>
+    latitude:  <input type="number" name="latitude" required ng-model="vm.latitude" >
+    <div ng-show="vm.addForm.latitude.$dirty && vm.addForm.latitude.$invalid && vm.isSubmitted">
+        <p>Please add latitude</p>
+    </div>
+
+    <p>
+
+     <h3> This is just checking how a checkbox is handled in angular and what values are passed back for YES/NO </h3>
+
+    Do you feel safe in this hotel?:
+    <label>Yes, I do:
+        <input type="checkbox" ng-model="vm.safe" ng-true-value="'Yes'">
+    </label>
+    <label>Not Really !:
+        <input type="checkbox" ng-model="vm.safe"
+               ng-true-value="'No'">
+    </label><br/>
+    Did you answer yes or no: <tt> = {{vm.safe}}</tt><br/>
+
+    </p>
+
+
+    <button type="submit"class="btn">Add new hotel</button>
+</form>
+</div>
+
+-->
