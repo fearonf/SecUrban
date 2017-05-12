@@ -14,7 +14,8 @@ function RegisterController($http) {
     vm.register = function() {
         var user = {
             username: vm.username,
-            password: vm.password
+            password: vm.password,
+            company: vm.company
         };
 
     // if username or password not entered, set error message
@@ -24,27 +25,51 @@ function RegisterController($http) {
             if (!(vm.password == vm.passwordRepeat)) {
                 vm.error = 'Please make sure the passwords match.';
             } else {
+                if (!vm.company) {
+                    vm.error = 'Please enter company';
+                } else {
 
 
-                // code added for firebase............CREATE A NEW USER USING FIREBASE   any email/password will do
-                var email = vm.username;
-                var password = vm.password;
-                firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-                    // Handle Errors here.
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    // ...
-                    console.log(errorMessage);
-                });
-                console.log("user created?");
+                    // code added for firebase............CREATE A NEW USER USING FIREBASE   any email/password will do
+                    var email = vm.username;
+                    var password = vm.password;
+                   // firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+                    firebase.auth().createUserWithEmailAndPassword(email, password).then(function(){
+                        console.log("user created in firebase");
+                        //Create a new user in the secur database too, for user profile
 
-               // $http.post('/api/users/register',user).then(function(result) {
-               //     console.log(result);
-               //     vm.message = 'Successful registration, please login.';
-               //     vm.error = '';
-               // }).catch(function(error) {
-               //     console.log(error);
-               // });
+                         $http.post('/api/users/register',user).then(function(result) {
+                             console.log("User profile added to secur database too")
+                             console.log(result);
+                             vm.message = 'Successful registration, please login.';
+                             vm.error = '';
+                         }).catch(function(error) {
+                             console.log(error);
+                         })
+
+
+
+                    }) .catch(function (error) {
+                        // Handle Errors here.
+                        var errorCode = error.code;
+                        var errorMessage = error.message;
+                        // ...
+                        console.log(errorMessage);
+                    });
+
+
+
+
+                    //Create a new user in the secur database too, for user profile
+
+                    // $http.post('/api/users/register',user).then(function(result) {
+                    //     console.log(result);
+                    //     vm.message = 'Successful registration, please login.';
+                    //     vm.error = '';
+                    // }).catch(function(error) {
+                    //     console.log(error);
+                    // });
+                }
             }
         }
 

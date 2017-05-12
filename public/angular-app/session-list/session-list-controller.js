@@ -16,11 +16,14 @@ function SessionsController(sessionDataFactory,$route,$window, jwtHelper,AuthFac
 
 
     //***************just seeing that i can get the token stuff here: Yes
-
-    // var token = $window.sessionStorage.token;
-    //  var decodedToken = jwtHelper.decodeToken(token);
-    //  vm.loggedInUser = decodedToken.email;
-    // console.log(decodedToken);
+    if($window.sessionStorage.token) {
+         var token = $window.sessionStorage.token;
+          var decodedToken = jwtHelper.decodeToken(token);
+          vm.loggedInUser = decodedToken.email;
+         console.log(decodedToken);
+    } else {
+        console.log("no token decoded, not logged in ");
+    }
 
     ///**************************************************************
 

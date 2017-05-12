@@ -1,7 +1,8 @@
 //require the mongoose modelling tool and the database connection string
 
 var mongoose = require('mongoose');
-var dburl = 'mongodb://localhost:27017/meanhotel';
+//var dburl = 'mongodb://localhost:27017/meanhotel';
+var dburl = 'mongodb://localhost:27017/secur';
 
 
 //connect to database using mongoose connect method and pass connection string

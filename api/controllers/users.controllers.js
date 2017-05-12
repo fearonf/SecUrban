@@ -7,7 +7,7 @@ var bcrypt = require('bcrypt-nodejs');
 var jwt = require('jsonwebtoken');
 
 
-//*************FIREBASE AUTHENTICATION ***************
+//*************FIREBASE AUTHENTICATION  used for auth function only NOT FOR LOGIN***************
 var admin = require("firebase-admin");
 
 //var serviceAccount = require("path/to/serviceAccountKey.json");
@@ -29,7 +29,8 @@ module.exports.register = function(req,res) {
 
     //if name is there in the body, take it , otherwise name=null
     var name = req.body.name || null;
-    var password = req.body.password;
+    //var password = req.body.password;
+    var company = req.body.company ;
 
     User
         .create({
@@ -37,7 +38,8 @@ module.exports.register = function(req,res) {
             name: name,
             // encrypt the password using bcrypt-nodejs
             // this method hashes the password in a synchronous way
-            password: bcrypt.hashSync(password,bcrypt.genSaltSync(10))
+            //password: bcrypt.hashSync(password,bcrypt.genSaltSync(10))
+            company: company
 
     },function(err,user) {
         if (err) {

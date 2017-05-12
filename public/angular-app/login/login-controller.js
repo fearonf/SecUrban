@@ -17,7 +17,7 @@ function LoginController($http,$location,$window, AuthFactory, jwtHelper,$route)
 
 
 
- /*  vm.isLoggedIn = function() {
+  /* vm.isLoggedIn = function() {
        firebase.auth().onAuthStateChanged(function(user) {
            if (user) {
                // User is signed in

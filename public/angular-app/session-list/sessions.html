@@ -1,14 +1,14 @@
 <h1>{{vm.title}} </h1>
-<h2> Hi {{vm.loggedInUser}} !!</h2>
+<h2> Select session to view: {{vm.loggedInUser}} </h2>
 
 
 <ul>
     <li ng-repeat = "session in vm.sessions"><a ng-href="#!/session/{{session._id}}">{{session.name}}</a></li>
 
-    <p> ********</p>
+    
 
-    <!-- Only show the particular hotel if the hotel.name is 'Iona'    Can be used to show only for a particular company name????? -->
-    <li ng-repeat = "session in vm.sessions" ng-show="session.name == 'Mark Bowe' "><a ng-href="#!/session/{{session._id}}">{{session.name}}</a></li>
+    <!-- Only show the particular hotel if the session.name is 'Mark'    Can be used to show only for a particular company name????? -->
+    <li ng-repeat = "session in vm.sessions" ng-show="session.name == 'Mark' "><a ng-href="#!/session/{{session._id}}">{{session.name}}</a></li>
 
 </ul>
 

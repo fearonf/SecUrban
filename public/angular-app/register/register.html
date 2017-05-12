@@ -13,8 +13,13 @@
 <!-- when submitted, this form calls vm.register() function in register-controller.js -->
     <form ng-hide="vm.message" name="register"ng-submit="vm.register()">
         <div class="form-group">
+            <label for="name"> Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Name" ng-model="vm.name" autocapitalize="none">
+        </div>
+
+        <div class="form-group">
             <label for="username">Username</label>
-            <input type="username" class="form-control" id="username" placeholder="Username" ng-model="vm.username"autocapitalize="none">
+            <input type="text" class="form-control" id="username" placeholder="Username" ng-model="vm.username"autocapitalize="none">
         </div>
 
         <div class="form-group">
@@ -22,9 +27,16 @@
             <input type="password" class="form-control" id="password" placeholder="Password" ng-model="vm.password" autocapitalize="none">
         </div>
 
+
+
         <div class="form-group">
             <label for="password-repeat">Repeat Password</label>
             <input type="password" class="form-control" id="password-repeat" placeholder="Password" ng-model="vm.passwordRepeat" autocapitalize="none">
+        </div>
+
+        <div class="form-group">
+            <label for="company">Company</label>
+            <input type="text" class="form-control" id="company" placeholder="Company" ng-model="vm.company"autocapitalize="none">
         </div>
 
         <button type="submit" class="btn btn-success">Register</button>

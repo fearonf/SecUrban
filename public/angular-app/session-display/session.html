@@ -11,6 +11,9 @@
 <p ng-if="vm.session.objectQuestions.answer2">Are more than 10% of the residences single family detached homes? {{vm.session.objectQuestions.answer2}} &nbsp&nbsp&nbsp&nbsp
     Comments: {{vm.session.objectQuestions.comments2}}</p>
 
+
+
+
 <br></br>
 
 
@@ -59,9 +62,57 @@
         Comments :  <input type="text" name="peopleQuestions.comments27"  ng-model="vm.session.peopleQuestions.comments27" >
 
     </p>
+    <p>
+        28. Is the expected number of disabled women higher than average?  <select name="peopleQuestions.answer28"   ng-model="vm.session.peopleQuestions.answer28" ng-options="x for x in vm.choices"/>
+
+        Comments :  <input type="text" name="peopleQuestions.comments28"  ng-model="vm.session.peopleQuestions.comments28" >
+
+    </p>
+
+    <h3> Location:</h3>
+    <p>
+        32. Is the area located in a suburban area or close to an access route to the city/town?  <select name="locationQuestions.answer32"   ng-model="vm.session.locationQuestions.answer32" ng-options="x for x in vm.choices"/>
+
+        Comments :  <input type="text" name="locationQuestions.comments32"  ng-model="vm.session.locationQuestions.comments32" >
+
+    </p>
+    <p>
+        33. Is there a large amount of (expected) passing traffic?  <select name="locationQuestions.answer33"   ng-model="vm.session.locationQuestions.answer33" ng-options="x for x in vm.choices"/>
+
+        Comments :  <input type="text" name="locationQuestions.comments33"  ng-model="vm.session.locationQuestions.comments33" >
+
+    </p>
+    <h3> Surroundings:</h3>
+    <p>
+        39. Is there an increased level of burglary within 4km of the object?  <select name="surroundingsQuestions.answer39"   ng-model="vm.session.surroundingsQuestions.answer39" ng-options="x for x in vm.choices"/>
+
+        Comments :  <input type="text" name="surroundingsQuestions.comments39"  ng-model="vm.session.surroundingsQuestions.comments39" >
+
+    </p>
+    <p>
+        40. Is there an increased level of ram-raiding within 5km?  <select name="surroundingsQuestions.answer40"   ng-model="vm.session.surroundingsQuestions.answer40" ng-options="x for x in vm.choices"/>
+
+        Comments :  <input type="text" name="surroundingsQuestions.comments40"  ng-model="vm.session.surroundingsQuestions.comments40" >
+
+    </p>
+
 
 
     <h3> Measures:</h3>
+    <h5>Is there an adequate level (regarding quality and time coverage) of surveillance (either natural or by dedicated observers)?</h5>
+
+    <p>
+        51. On residences?  <select name="measuresQuestions.answer51"   ng-model="vm.session.measuresQuestions.answer51" ng-options="x for x in vm.choices"/>
+
+        Comments :  <input type="text" name="measuresQuestions.comments51"  ng-model="vm.session.measuresQuestions.comments51" >
+
+    </p>
+    <p>
+        52. On shops?  <select name="measuresQuestions.answer52"   ng-model="vm.session.measuresQuestions.answer52" ng-options="x for x in vm.choices"/>
+
+        Comments :  <input type="text" name="measuresQuestions.comments52"  ng-model="vm.session.measuresQuestions.comments52" >
+
+    </p>
     <p>
         69. What is your protection against assault?  <select name="measuresQuestions.answer69"   ng-model="vm.session.measuresQuestions.answer69" ng-options="x for x in vm.assault"/>
 
