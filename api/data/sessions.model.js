@@ -3,17 +3,18 @@
  */
 var mongoose = require('mongoose');
 
-/*var questionSchema = new mongoose.Schema( {
-    questionNumber: {
-    type: Number,
-        min : 0,
-        max : 100,
-        required: true
-    },
+var questionSchema = new mongoose.Schema( {
+  /*  questionNumber: {
+  //  type: Number,
+  //      min : 0,
+  //      max : 100,
+  //      required: true
+  //  },
+  */
     answer: String,
     comments: String
 });
-*/
+
 
 
 
@@ -30,12 +31,15 @@ var sessionSchema = new mongoose.Schema({
         type: Date,
         "default": Date.now
     },
+
+
     objectQuestions: {
         answer1: String,
         comments1: String,
         answer2: String,
         comments2:String
     },
+
     peopleQuestions: {
         answer27: String,
         comments27: String,

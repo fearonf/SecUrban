@@ -9,12 +9,25 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
     var vm = this;
     var id = $routeParams.id;
     vm.isSubmitted = false;
+    vm.choices = ["Yes", "No", "Not Sure"];
+    vm.assault = ["No target hardening, Directing traffic flows, Removing means, Controlling disinhibitors or Screening/access control measures taken",
+    "Either Directing traffic flows, Target removal or Removing means","More than one type of measure adequately"];
 
 //this is called when a particular session is selected from the list of Sessions returned (from sessions.html)
     sessionDataFactory.sessionDisplay(id).then(function(response) {
 
         console.log(response);
         vm.session = response.data;
+        console.log(vm.session.objectQuestions);
+        console.log("people questions...");
+        console.log(vm.session.peopleQuestions);
+        var questionArray = [String];
+        questionArray[0] = vm.session.objectQuestions.answer1;
+        console.log("questionArray[0] " + questionArray[0]);
+
+
+        console.log("after");
+
 
     });
 
@@ -91,33 +104,33 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
                 comments2: vm.session.objectQuestions.comments2
             },
             peopleQuestions: {
-                answer27: vm.session.answer27,
-                comments27: vm.session.comments27,
-                answer28: vm.session.answer28,
-                comments28: vm.session.comments28
+                answer27: vm.session.peopleQuestions.answer27,
+                comments27: vm.session.peopleQuestions.comments27,
+                answer28: vm.session.peopleQuestions.answer28,
+                comments28: vm.session.peopleQuestions.comments28
             },
             locationQuestions: {
-                answer32: vm.session.answer32,
-                comments32: vm.session.comments32,
-                answer33: vm.session.answer33,
-                comments33: vm.session.comments33
+                answer32: vm.session.locationQuestions.answer32,
+                comments32: vm.session.locationQuestions.comments32,
+                answer33: vm.session.locationQuestions.answer33,
+                comments33: vm.session.locationQuestions.comments33
             },
 
             surroundingsQuestions: {
-                answer39: vm.session.answer39,
-                comments39: vm.session.comments39,
-                answer40: vm.session.answer40,
-                comments40: vm.session.comments40
+                answer39: vm.session.surroundingsQuestions.answer39,
+                comments39: vm.session.surroundingsQuestions.comments39,
+                answer40: vm.session.surroundingsQuestions.answer40,
+                comments40: vm.session.surroundingsQuestions.comments40
             },
             measuresQuestions: {
-                answer51: vm.session.answer51,
-                comments51: vm.session.comments51,
-                answer52: vm.session.answer52,
-                comments52: vm.session.comments52,
-                answer69: vm.session.answer69,
-                comments69: vm.session.comments69,
-                answer71: vm.session.answer71,
-                comments71: vm.session.comments71
+                answer51: vm.session.measuresQuestions.answer51,
+                comments51: vm.session.measuresQuestions.comments51,
+                answer52: vm.session.measuresQuestions.answer52,
+                comments52: vm.session.measuresQuestions.comments52,
+                answer69: vm.session.measuresQuestions.answer69,
+                comments69: vm.session.measuresQuestions.comments69,
+                answer71: vm.session.measuresQuestions.answer71,
+                comments71: vm.session.measuresQuestions.comments71
             }
 
         };

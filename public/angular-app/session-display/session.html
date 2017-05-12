@@ -32,14 +32,21 @@
     </div>
     </p>
 
-
+<p>
     <h3> Object:</h3>
-    <p>Are there residences?  <input type="text" name="objectQuestions.answer1"   ng-model="vm.session.objectQuestions.answer1" >
 
-        Comments :  <input type="text" name="objectQuestions.comments1"  ng-model="vm.session.objectQuestions.comments1" >
+
+    <p>1. Are there residences?  <select name="objectQuestions.answer1"   ng-model="vm.session.objectQuestions.answer1" ng-options="x for x in vm.choices" />
+
+       Comments :  <input type="text" name="objectQuestions.comments1"  ng-model="vm.session.objectQuestions.comments1" >
+
+
+        Did you answer yes or no: <tt> = {{vm.session.objectQuestions.answer1}}</tt><br/>
+
     </p>
+
     <p>
-        Are more than 10% of the residences single family detached homes?  <input type="text" name="objectQuestions.answer2"   ng-model="vm.session.objectQuestions.answer2" >
+        2. Are more than 10% of the residences single family detached homes?  <select name="objectQuestions.answer2"   ng-model="vm.session.objectQuestions.answer2" ng-options="x for x in vm.choices"  />
 
         Comments :  <input type="text" name="objectQuestions.comments2"  ng-model="vm.session.objectQuestions.comments2" >
 
@@ -47,12 +54,26 @@
 
     <h3> People:</h3>
     <p>
-        Are tourists expected in the public space?  <input type="text" name="objectQuestions.answer27"   ng-model="vm.session.objectQuestions.answer27" >
+        27. Are tourists expected in the public space?  <select name="peopleQuestions.answer27"   ng-model="vm.session.peopleQuestions.answer27" ng-options="x for x in vm.choices"/>
 
-        Comments :  <input type="text" name="objectQuestions.comments27"  ng-model="vm.session.objectQuestions.comments27" >
+        Comments :  <input type="text" name="peopleQuestions.comments27"  ng-model="vm.session.peopleQuestions.comments27" >
 
     </p>
 
+
+    <h3> Measures:</h3>
+    <p>
+        69. What is your protection against assault?  <select name="measuresQuestions.answer69"   ng-model="vm.session.measuresQuestions.answer69" ng-options="x for x in vm.assault"/>
+
+        Comments :  <input type="text" name="measuresQuestions.comments69"  ng-model="vm.session.measuresQuestions.comments69" >
+
+    </p>
+    <p>
+        71. What is your protectin against Vandalism?  <select name="measuresQuestions.answer71"   ng-model="vm.session.measuresQuestions.answer71" ng-options="x for x in vm.assault"/>
+
+        Comments :  <input type="text" name="measuresQuestions.comments71"  ng-model="vm.session.measuresQuestions.comments71" >
+
+    </p>
 
 
     <button type="submit"class="btn">Update assessement</button>
