@@ -12,6 +12,11 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
     vm.choices = ["Yes", "No", "Not Sure"];
     vm.assault = ["No target hardening, Directing traffic flows, Removing means, Controlling disinhibitors or Screening/access control measures taken",
     "Either Directing traffic flows, Target removal or Removing means","More than one type of measure adequately"];
+    vm.showObjectQuestions = false;
+    vm.showPeopleQuestions = false;
+    vm.showLocationQuestions = false;
+    vm.showSurroundingsQuestions = false;
+    vm.showMeasuresQuestions = false;
 
 //this is called when a particular session is selected from the list of Sessions returned (from sessions.html)
     sessionDataFactory.sessionDisplay(id).then(function(response) {
@@ -31,8 +36,55 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
 
     });
 
+    vm.objectButton = function() {
+    console.log ("objbuttonpressed");
+    vm.showObjectQuestions = true;
+    vm.showPeopleQuestions = false;
+    vm.showLocationQuestions = false;
+    vm.showSurroundingsQuestions = false;
+        vm.showMeasuresQuestions = false;
+
+}
+
+    vm.peopleButton = function() {
+
+        vm.showObjectQuestions = false;
+        vm.showPeopleQuestions = true;
+        vm.showLocationQuestions = false;
+        vm.showSurroundingsQuestions = false;
+        vm.showMeasuresQuestions = false;
 
 
+    }
+
+    vm.locationButton = function() {
+
+        vm.showLocationQuestions = true;
+        vm.showObjectQuestions = false;
+        vm.showPeopleQuestions = false;
+        vm.showSurroundingsQuestions = false;
+        vm.showMeasuresQuestions = false;
+
+    }
+
+    vm.surroundingsButton = function() {
+
+        vm.showObjectQuestions = false;
+        vm.showPeopleQuestions = false;
+        vm.showLocationQuestions = false;
+        vm.showSurroundingsQuestions = true;
+        vm.showMeasuresQuestions = false;
+
+    }
+    vm.measuresButton = function() {
+
+        vm.showObjectQuestions = false;
+        vm.showPeopleQuestions = false;
+        vm.showLocationQuestions = false;
+        vm.showSurroundingsQuestions = false;
+        vm.showMeasuresQuestions = true;
+
+    }
 
     // added to check user is logged in before adding a review
     // code is the same as in  the login-controller.js controller

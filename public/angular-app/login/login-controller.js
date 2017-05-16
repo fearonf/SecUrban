@@ -35,6 +35,9 @@ function LoginController($http,$location,$window, AuthFactory, jwtHelper,$route)
     */
 
     vm.login = function() {
+
+        console.log ("in login function");
+        console.log(vm.username);
         //if username and password exist..create user object to send to backend
         if (vm.username && vm.password) {
             var user = {

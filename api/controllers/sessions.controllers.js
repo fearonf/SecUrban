@@ -20,7 +20,7 @@ module.exports.sessionsGetAll = function (req, res) {
 
 
     var offset = 0;
-    var count = 5;
+    var count = 10;
     var maxCount = 20;
 
     // check if query string is present...

@@ -24,7 +24,7 @@ router                       // example with no parameter (all hotels)
 router
     .route('/sessions')        //this is really 'router.route' and 'router.get'
     .get(ctrlSessions.sessionsGetAll) //controller name + method name from controller file
-    // .get(ctrlSessions.authenticate,ctrlSessions.sessionsGetAll)
+  //   .get(ctrlUsers.authenticate,ctrlSessions.sessionsGetAll)
     .post(ctrlSessions.sessionsAddOne);  // if method is post, use this
 
 //sessionId is NAMED here as the parameter entered, and this name is PICKED UP  in sessions.controllers.js

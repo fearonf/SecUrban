@@ -1,0 +1,141 @@
+<h2>Name of the Assessement : {{vm.session.name}} </h2>
+
+<h3>Description of objects under consideration:  {{vm.session.objectDescription}}</h3>
+
+<p>Description of the information and versions used for the assessement: {{vm.session.informationDescription}}</p>
+
+<p><small>Timestamp :{{vm.session.timestamp}}</small></p>
+
+<p>Are there residences? {{vm.session.objectQuestions.answer1}} &nbsp&nbsp&nbsp&nbsp
+    Comments: {{vm.session.objectQuestions.comments1}}</p>
+<p ng-if="vm.session.objectQuestions.answer2">Are more than 10% of the residences single family detached homes? {{vm.session.objectQuestions.answer2}} &nbsp&nbsp&nbsp&nbsp
+    Comments: {{vm.session.objectQuestions.comments2}}</p>
+
+
+
+
+<br></br>
+
+
+
+
+<!-- following div  is only visible if the return from vm.isLoggedIn() is true -->
+<!--<div ng-if="vm.isLoggedIn()">    -->
+<h3>_______________________________form to prepopulate with database data... _____________________________</h3>
+
+
+<form name="vm.addForm" ng-submit="vm.updateSession()">
+    Assessement name: <input type = "text" name="name" required ng-minlength="2" ng-model="vm.session.name">
+
+
+
+    <p> Description of object under consideration: <input type="text" name="description" required ng-model="vm.session.objectDescription"></input>
+        <div ng-show="vm.addForm.description.$dirty && vm.addForm.description.$invalid && vm.isSubmitted">
+    <p>Please add a description</p>
+    </div>
+    </p>
+
+    <p>
+    <h3> Object:</h3>
+
+
+    <p>1. Are there residences?  <select name="objectQuestions.answer1"   ng-model="vm.session.objectQuestions.answer1" ng-options="x for x in vm.choices" />
+
+        Comments :  <input type="text" name="objectQuestions.comments1"  ng-model="vm.session.objectQuestions.comments1" >
+
+
+        Did you answer yes or no: <tt> = {{vm.session.objectQuestions.answer1}}</tt><br/>
+
+    </p>
+
+    <p>
+        2. Are more than 10% of the residences single family detached homes?  <select name="objectQuestions.answer2"   ng-model="vm.session.objectQuestions.answer2" ng-options="x for x in vm.choices"  />
+
+        Comments :  <input type="text" name="objectQuestions.comments2"  ng-model="vm.session.objectQuestions.comments2" >
+
+    </p>
+
+    <h3> People:</h3>
+    <p>
+        27. Are tourists expected in the public space?  <select name="peopleQuestions.answer27"   ng-model="vm.session.peopleQuestions.answer27" ng-options="x for x in vm.choices"/>
+
+        Comments :  <input type="text" name="peopleQuestions.comments27"  ng-model="vm.session.peopleQuestions.comments27" >
+
+    </p>
+    <p>
+        28. Is the expected number of disabled women higher than average?  <select name="peopleQuestions.answer28"   ng-model="vm.session.peopleQuestions.answer28" ng-options="x for x in vm.choices"/>
+
+        Comments :  <input type="text" name="peopleQuestions.comments28"  ng-model="vm.session.peopleQuestions.comments28" >
+
+    </p>
+
+    <h3> Location:</h3>
+    <p>
+        32. Is the area located in a suburban area or close to an access route to the city/town?  <select name="locationQuestions.answer32"   ng-model="vm.session.locationQuestions.answer32" ng-options="x for x in vm.choices"/>
+
+        Comments :  <input type="text" name="locationQuestions.comments32"  ng-model="vm.session.locationQuestions.comments32" >
+
+    </p>
+    <p>
+        33. Is there a large amount of (expected) passing traffic?  <select name="locationQuestions.answer33"   ng-model="vm.session.locationQuestions.answer33" ng-options="x for x in vm.choices"/>
+
+        Comments :  <input type="text" name="locationQuestions.comments33"  ng-model="vm.session.locationQuestions.comments33" >
+
+    </p>
+    <h3> Surroundings:</h3>
+    <p>
+        39. Is there an increased level of burglary within 4km of the object?  <select name="surroundingsQuestions.answer39"   ng-model="vm.session.surroundingsQuestions.answer39" ng-options="x for x in vm.choices"/>
+
+        Comments :  <input type="text" name="surroundingsQuestions.comments39"  ng-model="vm.session.surroundingsQuestions.comments39" >
+
+    </p>
+    <p>
+        40. Is there an increased level of ram-raiding within 5km?  <select name="surroundingsQuestions.answer40"   ng-model="vm.session.surroundingsQuestions.answer40" ng-options="x for x in vm.choices"/>
+
+        Comments :  <input type="text" name="surroundingsQuestions.comments40"  ng-model="vm.session.surroundingsQuestions.comments40" >
+
+    </p>
+
+
+
+    <h3> Measures:</h3>
+    <h5>Is there an adequate level (regarding quality and time coverage) of surveillance (either natural or by dedicated observers)?</h5>
+
+    <p>
+        51. On residences?  <select name="measuresQuestions.answer51"   ng-model="vm.session.measuresQuestions.answer51" ng-options="x for x in vm.choices"/>
+
+        Comments :  <input type="text" name="measuresQuestions.comments51"  ng-model="vm.session.measuresQuestions.comments51" >
+
+    </p>
+    <p>
+        52. On shops?  <select name="measuresQuestions.answer52"   ng-model="vm.session.measuresQuestions.answer52" ng-options="x for x in vm.choices"/>
+
+        Comments :  <input type="text" name="measuresQuestions.comments52"  ng-model="vm.session.measuresQuestions.comments52" >
+
+    </p>
+    <p>
+        69. What is your protection against assault?  <select name="measuresQuestions.answer69"   ng-model="vm.session.measuresQuestions.answer69" ng-options="x for x in vm.assault"/>
+
+        Comments :  <input type="text" name="measuresQuestions.comments69"  ng-model="vm.session.measuresQuestions.comments69" >
+
+    </p>
+    <p>
+        71. What is your protection against Vandalism?  <select name="measuresQuestions.answer71"   ng-model="vm.session.measuresQuestions.answer71" ng-options="x for x in vm.assault"/>
+
+        Comments :  <input type="text" name="measuresQuestions.comments71"  ng-model="vm.session.measuresQuestions.comments71" >
+
+    </p>
+
+
+    <button type="submit"class="btn">Update assessement</button>
+
+
+</form>
+
+<h3>Delete Assessement</h3>
+
+<form name="vm.delForm" ng-submit="vm.deleteSession()">
+    <button type="submit"class="btn">Delete Session</button>
+</form>
+
+</div>
