@@ -28,6 +28,7 @@ var sessionSchema = new mongoose.Schema({
     objectDescription: String,
     informationDescription: String,
     timestamp: {
+        //type: String
         type: Date,
         "default": Date.now
     },

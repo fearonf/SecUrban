@@ -17,6 +17,7 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
     vm.showLocationQuestions = false;
     vm.showSurroundingsQuestions = false;
     vm.showMeasuresQuestions = false;
+    vm.today = false;
 
 //this is called when a particular session is selected from the list of Sessions returned (from sessions.html)
     sessionDataFactory.sessionDisplay(id).then(function(response) {
@@ -35,7 +36,7 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
 
 
     });
-
+//
     vm.objectButton = function() {
     console.log ("objbuttonpressed");
     vm.showObjectQuestions = true;
@@ -48,6 +49,7 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
 
     vm.peopleButton = function() {
 
+        console.log ("pplbuttonpressed");
         vm.showObjectQuestions = false;
         vm.showPeopleQuestions = true;
         vm.showLocationQuestions = false;
@@ -141,13 +143,20 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
 
     vm.updateSession = function() {
 
+        console.log(vm.session.timestamp);
+        console.log(vm.timestamp);
+        if(vm.today) {
+            vm.session.timestamp = Date.now;
+        }
+
         var postData = {
+
             name: vm.session.name,
 
 
             objectDescription : vm.session.objectDescription,
             informationDescription : vm.session.informationDescription,
-            timeStamp: vm.session.timeStamp,
+            timestamp: vm.session.timestamp,
             objectQuestions: {
                 answer1: vm.session.objectQuestions.answer1,
 

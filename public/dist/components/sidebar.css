@@ -632,3 +632,6 @@ html.ios {
          Site Overrides
 *******************************/
 
+.ui.sidebar {
+  top: 3.8em;
+}

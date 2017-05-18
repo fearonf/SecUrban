@@ -167,7 +167,7 @@ module.exports.sessionsAddOne = function (req,res) {
             name: req.body.name,
             objectDescription : req.body.objectDescription,
             informationDescription : req.body.informationDescription,
-            timeStamp: req.body.timeStamp,
+            timestamp: req.body.timestamp,
 
             objectQuestions: {
                 answer1: req.body.answer1,
@@ -259,7 +259,7 @@ module.exports.sessionsUpdateOne = function(req,res) {
                 doc.name = req.body.name;
                 doc.objectDescription = req.body.objectDescription;
                 doc.informationDescription = req.body.informationDescription;
-                doc.timeStamp = req.body.timeStamp;
+                doc.timestamp = req.body.timestamp;
                 doc.objectQuestions = {
                     answer1: req.body.objectQuestions.answer1,
                     comments1: req.body.objectQuestions.comments1,

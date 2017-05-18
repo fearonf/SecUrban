@@ -1,11 +1,13 @@
 <!-- Note ** the controller for this html page is declared here.....login-controller.js ***  -->
 
-<nav ng-controller="LoginController as vm" class="navbar navbar-default navbar-fixed-top" ng-init="vm.init()">
+<!--<nav ng-controller="LoginController as vm" class="navbar navbar-default navbar-fixed-top" ng-init="vm.init()"> -->
+
+    <nav ng-controller="LoginController as vm" class="ui top fixed menu" ng-init="vm.init()">
 
     <div class="ui fixed inverted menu">
         <div class="ui container">
             <a href="#" class="header item">
-                <img class="logo" src="../../images/logo2.png">
+                <img class="ui mini spaced image" src="../../images/logo2.png">
                 Secur
             </a>
 
@@ -40,22 +42,21 @@
         </div>
         <div class="right menu">
 
-            <form ng-if="!vm.isLoggedIn()" ng-submit="vm.login()" role="login">
-            <div class="ui input error" ng-class="{'has-error':vm.error}" >
+            <form ng-if="!vm.isLoggedIn()" ng-submit="vm.login()" >
+            <div class="ui input" ng-class="{'has-error':vm.error}" >
                 <input type="text" placeholder="Username..." ng-model="vm.username">
             </div>
-            <div class="ui input error"  >
+            <div class="ui input"  >
                 <input type="password" placeholder="Password..." ng-model = "vm.password">
             </div>
-            <button class="ui button"  type = "submit"></button>
+            <button class=" primary ui button"  type = "submit">Login</button>
 
             </form>
 
-            <ul ng-if = "vm.isLoggedIn()">
 
-                <li> <button class="ui button" ng-if = "vm.isLoggedIn()" ng-click="vm.logout()">Logout</button> </li>
+                 <button class=" primary small ui button"  ng-if = "vm.isLoggedIn()" ng-click="vm.logout()">Logout</button>
 
-            </ul>
+
 
 
 
