@@ -1,43 +1,169 @@
+<div class="ui segment" id="assessementForm">
+
+    <form class="ui form  segment  " name="vm.addForm" ng-submit="vm.updateSession()">
+        <h2 class="ui dividing header">Assessement Details: </h2>
 
 
-<div class = "ui container">
+        <div class="field">
+            <label>Name of the Assessement: </label>
+            <div class="field">
+                <div class="eight wide field">
+                    <input type = "text" name="name" required ng-minlength="2" ng-model="vm.session.name" />
+                </div>
 
-<h1>User Profile here </h1>
-<h3> Just testing a different menu here </h3>
+            </div>
+        </div>
+
+        <div class="field">
+            <label>Description of objects under consideration:  </label>
+            <div class="field">
+                <div class="eight wide field">
+                    <input type="text" name="description" required  />
+                </div>
+
+            </div>
+        </div>
+
+        <div class="field">
+            <label>Description of the information and versions used for the assessement:  </label>
+            <div class="field">
+                <div class="eight wide field">
+                    <input type="text" name="informationDescription" required  >
+                </div>
+
+            </div>
+        </div>
+        <h2 class="ui dividing header">Part II: </h2>
 
 
-<div class="ui left visible sidebar inverted vertical menu">
+        <div class="field">
+            <label>Do you like cats?: </label>
+            <div class="field">
+                <div class="eight wide field">
+                    <input type = "text" name="name" required ng-minlength="2"  />
+                </div>
 
+            </div>
+        </div>
 
-   <!--  <a class=" active item">
-        1
-    </a> -->
-    <div class="active item">
-        <div class="fluid ui primary  button" ng-click="vm.objectButton()">Objects</div>
+        <div class="field">
+            <label>Description of objects under consideration:  </label>
+            <div class="field">
+                <div class="eight wide field">
+                    <input type="text" name="description" required />
+                </div>
+
+            </div>
+        </div>
+
+        <div class="field">
+            <label>Description of the information and versions used for the assessement:  </label>
+            <div class="field">
+                <div class="eight wide field">
+                    <input type="text" name="informationDescription" >
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+<div class="ui indicating progress" data-value="1" data-total="100" id="example4">
+    <div class="bar">
+        <div class="progress"></div>
     </div>
-    <div class="item">
-        <div class="fluid ui primary button"  ng-click="vm.peopleButton()">People</div>
-    </div>
-    <div class="item">
-        <div class="fluid ui primary button"  ng-click="vm.locationButton()">Location</div>
-    </div>
-    <div class="item">
-        <div class="fluid ui primary button"  ng-click="vm.surroundigsButton()">Surroundings</div>
-    </div>
-    <div class="item">
-        <div class="fluid ui primary button"  ng-click="vm.measuresButton()">Measures</div>
-    </div>
-
+    <div class="label">Survey Questions Complete</div>
+</div>
 
 </div>
 
-    <!-- Site content !-->
-    <h1>Page content</h1>
 
-
+<button onclick="startAgain()">Set progesss percent to zero</button>
+<button onclick="increment1()">End section one</button>
+<button onclick="increment2()">End section 2</button>
+<div class = "ui segment">
+<button class = "ui large green button" onclick="increment3()">How many have I done?</button>
+<button class = "ui large yellow button" onclick="endOfSurvey()">Finish...</button>
 </div>
 
-</div>
+
+
+
+<script>
+    var startAgain = function() {
+        $('#example4')
+            .progress('reset')
+        ;
+    }
+</script>
+
+
+<script>
+    var increment1 = function() {
+        $('#example4')
+            .progress('increment',5)
+        ;
+    }
+</script>
+
+
+<script>
+    var increment2 = function() {
+        $('#example4')
+            .progress('increment',12)
+        ;
+    }
+</script>
+<script>
+    var increment3= function() {
+
+
+
+            // Get the div you want to look in.
+            var div = document.getElementById("assessementForm");
+
+            // Get all the input fields inside your div
+            var inputs = div.getElementsByTagName('input');
+
+            // Get the number of the found inputs.
+            var totalInputs = inputs.length;
+
+            // Loop through them and check which of them has a value.
+            var inputsWithValue = 0;
+            for (var i = 0; i < totalInputs; i++)
+                if (inputs[i].value !== '')
+                    inputsWithValue += 1;
+
+            // Calculate the percentage.
+            var filledPercentage = (inputsWithValue / totalInputs) * 100;
+
+        $('#example4')
+             .progress('set percent',filledPercentage);
+
+
+    }
+</script>
+
+<script>
+    var endOfSurvey= function() {
+        $('#example4')
+            .progress('complete');
+        ;
+    }
+</script>
+
+
+<script>
+
+$('#example4')
+.progress({
+    label: 'ratio',
+    text: {
+        ratio: '{value} of {total}'
+    }
+});
+
+
+</script>
 
 
 

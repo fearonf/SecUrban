@@ -4,50 +4,61 @@
     </div>
     <div class="eight wide column">
 
-<h1>Register</h1>
+
 <!-- Show this div (message) only if vm.message exists -->
 
 
-    <div ng-if="vm.message" class="ui success message">
-        <i class="close icon"></i>
-            <div class="header">
-                Your user registration was successful.
-            </div>
-                <p>You may now log-in with the username you have chosen</p>
-            </div>
 
-<!-- Show this div (error) only if vm.error exists -->
-    <div ng-if="vm.error" class="ui warning message">
-        <i class="close icon"></i>
-     <div class="header">
-        {{vm.error}}
-      </div>
+        <!-- Show this div (error) only if vm.error exists -->
 
-    </div>
+
+
 
 <!-- when submitted, this form calls vm.register() function in register-controller.js -->
 
 
 
-<form class="ui form warning" ng-hide="vm.message" name="register" ng-submit="vm.register()">
+
+ <form class="ui form segment" name="vm.registerForm" ng-submit="vm.register()"  >
+     <h1>Register</h1>
+
+     <div ng-show="vm.error" class="ui negative message">
+
+         <div class="header">
+              {{vm.error}}
+         </div>
+
+     </div>
+
+
+
+            <div ng-show="vm.message" class="ui success message">
+                <i class="close icon"></i>
+                <div class="header">Your user registration was successful.</div>
+                <p>You may now log-in with the username you have chosen</p>
+
+
+            </div>
+
+
     <h4 class="ui dividing header">Please enter your details: </h4>
     <div class="required field ">
         <label>Email address</label>
 
-            <div class=" field">
-                <input type="email" name="username" placeholder="Email address" ng-model="vm.username" autocapitalize="none" required>
+            <div class="field">
+                <input type="text" name="username" placeholder="Email address" ng-model="vm.username" >
             </div>
 
         </div>
 
-    <div class=" required field">
+    <div class="required field">
         <label>Password</label>
         <div class="two fields">
             <div class="field">
-                <input type="password" name="password" placeholder="Password" ng-model="vm.password" autocapitalize="none" minlength="6"required>
+                <input type="password" name="password" id="password" placeholder="Password" ng-model="vm.password" >
             </div>
             <div class="field">
-                <input type="password" name="repeatPassword" placeholder="Repeat Password" ng-model="vm.passwordRepeat" autocapitalize="none" minlength="6"  required>
+                <input type="password" name="repeatPassword" placeholder="Repeat Password" ng-model="vm.passwordRepeat" >
             </div>
         </div>
     </div>
@@ -63,7 +74,7 @@
 
         <div class="required four wide field">
             <label>Company</label>
-            <select class="ui fluid dropdown" ng-model="vm.company" >
+            <select class="ui fluid dropdown" ng-model="vm.company" name="company">
                 <option value="">Company</option>
                 <option value="Belvedere">Belvedere</option>
                 <option value="Dublin City">Dublin County Council</option>
@@ -72,41 +83,85 @@
         </div>
 
 
-    <button type="submit" class="ui button">Register</button>
+
+    <button  class="ui button ">Register</button>
+
+
 </form>
 </div>
 </div>
 
 
 
-<!--<form ng-hide="vm.message" name="register"ng-submit="vm.register()">
-    <div class="form-group">
-        <label for="name"> Name</label>
-        <input type="text" class="form-control" id="name" placeholder="Name" ng-model="vm.name" autocapitalize="none">
-    </div>
+<script>
 
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" placeholder="Username" ng-model="vm.username"autocapitalize="none">
-    </div>
-
-    <div class="form-group">
-        <label for="password"> Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Password" ng-model="vm.password" autocapitalize="none">
-    </div>
+    $('.ui.form').form({
+        on: 'blur',
+        inline: 'true',
 
 
+      //  onSuccess: function () {
+       //     alert("Valid form, will post");
+            //      $('.button').toggleClass('disabled');
+            //      $('submit');                            //I'd like to submit the form here, but I don't know how to call
+            // vm.register() in the controller from here....
+      //  },
 
-    <div class="form-group">
-        <label for="password-repeat">Repeat Password</label>
-        <input type="password" class="form-control" id="password-repeat" placeholder="Password" ng-model="vm.passwordRepeat" autocapitalize="none">
-    </div>
+        fields: {
 
-    <div class="form-group">
-        <label for="company">Company</label>
-        <input type="text" class="form-control" id="company" placeholder="Company" ng-model="vm.company"autocapitalize="none">
-    </div>
 
-    <button type="submit" class="btn btn-success">Register</button>
-</form>
--->
+            username: {
+
+                rules: [{
+                    type: 'empty',
+                    prompt: 'Please enter your email'
+                }, {
+                    type: 'email',
+                    prompt: 'Please enter a valid email'
+                }]
+            },
+            password: {
+
+                rules: [{
+                    type: 'empty',
+                    prompt: 'Please enter a password'
+                }, {
+                    type: 'length[6]',
+                    prompt: 'Password needs to be atleast 6 characters long'
+                }]
+            },
+            repeatPassword: {
+
+                rules: [{
+
+                    type: 'match[password]',
+                    prompt: 'Passwords don\'t match'
+                }]
+            },
+            company: {
+
+                rules: [{
+                    type: 'empty',
+                    prompt: 'Please select a company'
+                }]
+            }
+        }
+    })
+
+
+</script>
+
+
+<script>
+    //This close does not work if the message contains an "ng-if="vm.message"" statement
+    $('.message .close')
+        .on('click', function() {
+            $(this)
+                .closest('.message')
+                .transition('fade')
+            ;
+        })
+    ;
+</script>
+
+

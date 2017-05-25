@@ -1,0 +1,165 @@
+<div class ="ui grid">
+    <div class="four wide column">
+    </div>
+    <div class="eight wide column">
+
+        <h1>Register</h1>
+        <!-- Show this div (message) only if vm.message exists -->
+
+
+
+        <!-- Show this div (error) only if vm.error exists -->
+
+
+
+        <div class="ui padded segment">
+            <!-- when submitted, this form calls vm.register() function in register-controller.js -->
+
+
+
+
+            <form class="ui form segment" name="register" ng-submit="vm.register()"  >
+
+                <div ng-if="vm.error" class="ui  message">
+
+                    <div class="header">
+                        {{vm.error}}
+                    </div>
+
+                </div>
+
+
+
+                <div ng-if="vm.message" class="ui success message">
+                    <i class="close icon"></i>
+                    <div class="header">Your user registration was successful.</div>
+                    <p>You may now log-in with the username you have chosen</p>
+
+
+                </div>
+
+
+                <h4 class="ui dividing header">Please enter your details: </h4>
+                <div class="required field ">
+                    <label>Email address</label>
+
+                    <div class="field">
+                        <input type="text" name="username" placeholder="Email address" ng-model="vm.username">
+                    </div>
+
+                </div>
+
+                <div class="required field">
+                    <label>Password</label>
+                    <div class="two fields">
+                        <div class="field">
+                            <input type="password" name="password" id="password" placeholder="Password" ng-model="vm.password" >
+                        </div>
+                        <div class="field">
+                            <input type="password" name="repeatPassword" placeholder="Repeat Password" ng-model="vm.passwordRepeat" >
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Full Name</label>
+                    <div class="field">
+                        <div class="sixteen wide field">
+                            <input type="text" name="name" placeholder="Name"ng-model="vm.name" autocapitalize="none">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="required four wide field">
+                    <label>Company</label>
+                    <select class="ui fluid dropdown" ng-model="vm.company" name="company">
+                        <option value="">Company</option>
+                        <option value="Belvedere">Belvedere</option>
+                        <option value="Dublin City">Dublin County Council</option>
+
+                    </select>
+                </div>
+
+
+
+                <button  class="ui button " onclick="Register()">Register</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function Register() {
+        $('.ui.form').form({
+            on: 'blur',
+            inline: 'true',
+            onSuccess: function() {
+                alert("Valid form, will post");
+                //       $('submit');                            //I'd like to submit the form here, but I don't know how to call
+                // vm.register() in the controller from here....
+
+            },
+
+            fields: {
+
+
+
+                username: {
+
+                    rules: [{
+                        type: 'empty',
+                        prompt: 'Please enter your email'
+                    }, {
+                        type: 'email',
+                        prompt: 'Please enter a valid email'
+                    }]
+                },
+                password: {
+
+                    rules: [{
+                        type: 'empty',
+                        prompt: 'Please enter a password'
+                    }, {
+                        type: 'length[6]',
+                        prompt: 'Password needs to be atleast 6 characters long'
+                    }]
+                },
+                repeatPassword: {
+
+                    rules: [{
+
+                        type: 'match[password]',
+                        prompt: 'Passwords don\'t match'
+                    } ]
+                },
+                company: {
+
+                    rules: [{
+                        type: 'empty',
+                        prompt: 'Please select a company'
+                    }]
+                }
+            }
+        })
+    }
+
+
+
+</script>
+
+
+<script>
+    //This close does not work if the message contains an "ng-if="vm.message"" statement
+    $('.message .close')
+        .on('click', function() {
+            $(this)
+                .closest('.message')
+                .transition('fade')
+            ;
+        })
+    ;
+</script>
+
+

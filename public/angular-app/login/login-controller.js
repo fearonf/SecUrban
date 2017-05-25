@@ -17,6 +17,10 @@ function LoginController($http,$location,$window, AuthFactory, jwtHelper,$route)
 
 
 
+
+
+
+
   /* vm.isLoggedIn = function() {
        firebase.auth().onAuthStateChanged(function(user) {
            if (user) {
@@ -38,6 +42,7 @@ function LoginController($http,$location,$window, AuthFactory, jwtHelper,$route)
 
         console.log ("in login function");
         console.log(vm.username);
+
         //if username and password exist..create user object to send to backend
         if (vm.username && vm.password) {
             var user = {
@@ -86,7 +91,7 @@ function LoginController($http,$location,$window, AuthFactory, jwtHelper,$route)
                 var errorMessage = error.message;
                 // ...
                 console.log(errorMessage);
-                vm.error = 'Incorrect username or password';
+                vm.error = errorMessage;
                // $location.path( "/" );
                $route.reload();
 

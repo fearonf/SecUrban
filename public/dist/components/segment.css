@@ -796,3 +796,9 @@
          Site Overrides
 *******************************/
 
+.ui.segment {
+  margin-top: 5rem;
+}
+.ui.segment:first-child {
+  margin-top: 5rem;
+}
