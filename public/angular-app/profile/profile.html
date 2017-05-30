@@ -1,169 +1,64 @@
-<div class="ui segment" id="assessementForm">
-
-    <form class="ui form  segment  " name="vm.addForm" ng-submit="vm.updateSession()">
-        <h2 class="ui dividing header">Assessement Details: </h2>
 
 
-        <div class="field">
-            <label>Name of the Assessement: </label>
-            <div class="field">
-                <div class="eight wide field">
-                    <input type = "text" name="name" required ng-minlength="2" ng-model="vm.session.name" />
-                </div>
 
-            </div>
+
+
+
+<form class="ui form" name="vm.delForm"  id="deleteForm">
+
+<div class="ui small modal" id="deleteOrNot">
+    <i class="close icon"></i>
+
+    <div class="ui header">Delete the Assessement?</div>
+    <ng-form class = "ui form" name="vm.modalForm" ng-submit="vm.Register()" id="modalForm"> </ng-form>
+
+   <!-- some indicator here to pass back to indicate 'delete this session'
+    </form> -->
+
+
+    <div class="actions">
+        <div class="ui black deny button">
+            No
         </div>
 
-        <div class="field">
-            <label>Description of objects under consideration:  </label>
-            <div class="field">
-                <div class="eight wide field">
-                    <input type="text" name="description" required  />
-                </div>
-
-            </div>
+        <div class="ui positive right labeled submit icon button">
+            Yes
+            <i class="checkmark icon"></i>
         </div>
-
-        <div class="field">
-            <label>Description of the information and versions used for the assessement:  </label>
-            <div class="field">
-                <div class="eight wide field">
-                    <input type="text" name="informationDescription" required  >
-                </div>
-
-            </div>
-        </div>
-        <h2 class="ui dividing header">Part II: </h2>
-
-
-        <div class="field">
-            <label>Do you like cats?: </label>
-            <div class="field">
-                <div class="eight wide field">
-                    <input type = "text" name="name" required ng-minlength="2"  />
-                </div>
-
-            </div>
-        </div>
-
-        <div class="field">
-            <label>Description of objects under consideration:  </label>
-            <div class="field">
-                <div class="eight wide field">
-                    <input type="text" name="description" required />
-                </div>
-
-            </div>
-        </div>
-
-        <div class="field">
-            <label>Description of the information and versions used for the assessement:  </label>
-            <div class="field">
-                <div class="eight wide field">
-                    <input type="text" name="informationDescription" >
-                </div>
-
-            </div>
-        </div>
-    </form>
-
-<div class="ui indicating progress" data-value="1" data-total="100" id="example4">
-    <div class="bar">
-        <div class="progress"></div>
     </div>
-    <div class="label">Survey Questions Complete</div>
-</div>
 
 </div>
 
+    <!-- having a button here is sending(submit)  the deleteForm back straight away, calling vm....   AND opending the modal -->
+    <button class="ui button"  onclick="deleteform()">Delete Assessement</button>
 
-<button onclick="startAgain()">Set progesss percent to zero</button>
-<button onclick="increment1()">End section one</button>
-<button onclick="increment2()">End section 2</button>
-<div class = "ui segment">
-<button class = "ui large green button" onclick="increment3()">How many have I done?</button>
-<button class = "ui large yellow button" onclick="endOfSurvey()">Finish...</button>
-</div>
+</form>
 
 
 
 
 <script>
-    var startAgain = function() {
-        $('#example4')
-            .progress('reset')
+    var deleteform = function() {
+        $('#deleteOrNot')
+            .modal({
+                closable: false,
+                context: "",
+                onDeny: function () {
+                    return true;
+                },
+                onApprove: function () {
+                    window.alert('delete the form');
+                    //need a way here to submit the modal form with the 'yes to delete' indicator
+                    // and set ng-submit = vm-deleteSession;
+                    // as it is, it does nothing and doesn't pass control back to the controller vm.deleteSession
+                   $('#modalForm').submit();
+                  //  $('#deleteForm').submit();
+
+                    return true;
+
+                }
+            })
+            .modal('show')
         ;
     }
 </script>
-
-
-<script>
-    var increment1 = function() {
-        $('#example4')
-            .progress('increment',5)
-        ;
-    }
-</script>
-
-
-<script>
-    var increment2 = function() {
-        $('#example4')
-            .progress('increment',12)
-        ;
-    }
-</script>
-<script>
-    var increment3= function() {
-
-
-
-            // Get the div you want to look in.
-            var div = document.getElementById("assessementForm");
-
-            // Get all the input fields inside your div
-            var inputs = div.getElementsByTagName('input');
-
-            // Get the number of the found inputs.
-            var totalInputs = inputs.length;
-
-            // Loop through them and check which of them has a value.
-            var inputsWithValue = 0;
-            for (var i = 0; i < totalInputs; i++)
-                if (inputs[i].value !== '')
-                    inputsWithValue += 1;
-
-            // Calculate the percentage.
-            var filledPercentage = (inputsWithValue / totalInputs) * 100;
-
-        $('#example4')
-             .progress('set percent',filledPercentage);
-
-
-    }
-</script>
-
-<script>
-    var endOfSurvey= function() {
-        $('#example4')
-            .progress('complete');
-        ;
-    }
-</script>
-
-
-<script>
-
-$('#example4')
-.progress({
-    label: 'ratio',
-    text: {
-        ratio: '{value} of {total}'
-    }
-});
-
-
-</script>
-
-
-

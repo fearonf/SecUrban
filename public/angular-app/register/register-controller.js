@@ -12,6 +12,7 @@ function RegisterController($http,$route) {
     // create a user object and pass it to the http end point
 
     vm.register = function() {
+        console.log("in register controller");
        vm.error = '';
        vm.message='';
       //  console.log (vm.registerForm.$valid);
@@ -37,7 +38,7 @@ function RegisterController($http,$route) {
                     // code added for firebase............CREATE A NEW USER USING FIREBASE   any email/password will do
                     var email = vm.username;
                     var password = vm.password;
-
+                    vm.error = "just before firebase call";
                    // firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
                     firebase.auth().createUserWithEmailAndPassword(email, password).then(function(){
                         console.log("user created in firebase");

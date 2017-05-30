@@ -9,8 +9,8 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
     var vm = this;
     var id = $routeParams.id;
     vm.isSubmitted = false;
-    vm.choices = ["Yes", "No", "Not Sure"];
-    vm.assault = ["No target hardening, Directing traffic flows, Removing means, Controlling disinhibitors or Screening/access control measures taken",
+    vm.choices = ["","Yes", "No", "Not Sure"];
+    vm.assault = ["","No target hardening, Directing traffic flows, Removing means, Controlling disinhibitors or Screening/access control measures taken",
     "Either Directing traffic flows, Target removal or Removing means","More than one type of measure adequately"];
     vm.showObjectQuestions = false;
     vm.showPeopleQuestions = false;
@@ -221,12 +221,14 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
 
     vm.deleteSession = function() {
 
+        console.log("about to delete the session");
+        console.log(id);
 
         sessionDataFactory.deleteSession(id).then(function(response) {
             console.log(response);
             if (response.status === 204)
             {
-                //  $route.reload();  don't reload, sessionid is no longer valid...
+                //  $route.reload();  don't reload, sessionid is no longer valid...load session list route instead
             }
         })
             .catch(function(error) {

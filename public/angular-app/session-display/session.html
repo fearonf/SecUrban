@@ -34,15 +34,28 @@
         <div class="twelve wide column">
 
 
-    <form class="ui form  segment  " name="vm.addForm" ng-submit="vm.updateSession()">
+    <form class="ui form  segment  " name="vm.addForm" ng-submit="vm.updateSession()" id="assessementForm">
         <h2 class="ui dividing header">Assessement Details: </h2>
+        <div class="ui right internal  rail">
+            <div class="ui sticky" >
 
+                <div class="ui segment">
+                    <div class="ui indicating progress" data-value="0" data-total="76" id="progressBar" >
+                        <div class="bar">
+                            <div class="progress"></div>
+                        </div>
+                        <div class="label">Questions Complete</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+            <div id="formPartOne">   <!-- Text fields in this part of the form are counted in progress percentage -->
             <div class="field">
                 <label>Name of the Assessement: </label>
                 <div class="field">
                     <div class="eight wide field">
-                        <input type = "text" name="name" required ng-minlength="2" ng-model="vm.session.name"/>
+                        <input type = "text" name="name"  ng-minlength="2" ng-model="vm.session.name" oninput="checkProgress()"/>
                     </div>
 
                 </div>
@@ -52,7 +65,7 @@
             <label>Description of objects under consideration:  </label>
             <div class="field">
                 <div class="eight wide field">
-                    <input type="text" name="description" required ng-model="vm.session.objectDescription"/>
+                    <input type="text" name="description"  ng-model="vm.session.objectDescription"oninput="checkProgress()" />
                 </div>
 
             </div>
@@ -62,11 +75,13 @@
             <label>Description of the information and versions used for the assessement:  </label>
             <div class="field">
                 <div class="eight wide field">
-                    <input type="text" name="informationDescription" required ng-model="vm.session.informationDescription">
+                    <input type="text" name="informationDescription"  ng-model="vm.session.informationDescription" oninput="checkProgress()">
                 </div>
 
             </div>
         </div>
+            </div> <!-- this ends the part of the form where we count progress if text fields are filled -->
+        <div class="ui hidden divider"></div>
         <div class="two fields">
         <div class="five wide field">
             <label>Timestamp: {{vm.session.timestamp | date :'medium'}} </label>
@@ -85,6 +100,7 @@
 
         </div>
 
+        <div class="ui section divider"></div>
 
     <div ng-show="vm.showObjectQuestions">
         <h3> Objects:</h3>
@@ -95,7 +111,7 @@
             <div class="two fields">
 
                 <div class="four wide field">
-                    <select name="objectQuestions.answer1"   ng-model="vm.session.objectQuestions.answer1" ng-options="x for x in vm.choices" />
+                    <select name="objectQuestions.answer1"   ng-model="vm.session.objectQuestions.answer1" ng-options="x for x in vm.choices" onclick="checkProgress()"/>
                 </div>
 
                 <div class="twelve wide field">
@@ -110,7 +126,7 @@
             <div class="two fields">
 
                 <div class="four wide field">
-                    <select name="objectQuestions.answer2"   ng-model="vm.session.objectQuestions.answer2" ng-options="x for x in vm.choices"  />
+                    <select name="objectQuestions.answer2"   ng-model="vm.session.objectQuestions.answer2" ng-options="x for x in vm.choices" onclick="checkProgress()"  />
                 </div>
 
                 <div class="twelve wide field">
@@ -129,7 +145,7 @@
                 <div class="two fields">
 
                     <div class="four wide field">
-                        <select name="peopleQuestions.answer27"   ng-model="vm.session.peopleQuestions.answer27" ng-options="x for x in vm.choices"/>
+                        <select name="peopleQuestions.answer27"   ng-model="vm.session.peopleQuestions.answer27" ng-options="x for x in vm.choices" onclick="checkProgress()"/>
                     </div>
 
                     <div class="twelve wide field">
@@ -144,7 +160,7 @@
                 <div class="two fields">
 
                     <div class="four wide field">
-                        <select name="peopleQuestions.answer28"   ng-model="vm.session.peopleQuestions.answer28" ng-options="x for x in vm.choices"/>
+                        <select name="peopleQuestions.answer28"   ng-model="vm.session.peopleQuestions.answer28" ng-options="x for x in vm.choices" onclick="checkProgress()" />
                     </div>
 
                     <div class="twelve wide field">
@@ -164,7 +180,7 @@
                     <div class="two fields">
 
                         <div class="four wide field">
-                            <select name="locationQuestions.answer32"   ng-model="vm.session.locationQuestions.answer32" ng-options="x for x in vm.choices"/>
+                            <select name="locationQuestions.answer32"   ng-model="vm.session.locationQuestions.answer32" ng-options="x for x in vm.choices" onclick="checkProgress()" />
 
                         </div>
 
@@ -180,7 +196,7 @@
                     <div class="two fields">
 
                         <div class="four wide field">
-                            <select name="locationQuestions.answer33"   ng-model="vm.session.locationQuestions.answer33" ng-options="x for x in vm.choices"/>
+                            <select name="locationQuestions.answer33"   ng-model="vm.session.locationQuestions.answer33" ng-options="x for x in vm.choices" onclick="checkProgress()"/>
 
                         </div>
 
@@ -200,7 +216,7 @@
                 <div class="two fields">
 
                     <div class="four wide field">
-                        <select name="surroundingsQuestions.answer39"   ng-model="vm.session.surroundingsQuestions.answer39" ng-options="x for x in vm.choices"/>
+                        <select name="surroundingsQuestions.answer39"   ng-model="vm.session.surroundingsQuestions.answer39" ng-options="x for x in vm.choices" onclick="checkProgress()"/>
 
                     </div>
 
@@ -216,7 +232,7 @@
                 <div class="two fields">
 
                     <div class="four wide field">
-                        <select name="surroundingsQuestions.answer40"   ng-model="vm.session.surroundingsQuestions.answer40" ng-options="x for x in vm.choices"/>
+                        <select name="surroundingsQuestions.answer40"   ng-model="vm.session.surroundingsQuestions.answer40" ng-options="x for x in vm.choices" onclick="checkProgress()" />
 
                     </div>
 
@@ -238,7 +254,7 @@
                 <div class="two fields">
 
                     <div class="four wide field">
-                        <select name="measuresQuestions.answer51"   ng-model="vm.session.measuresQuestions.answer51" ng-options="x for x in vm.choices"/>
+                        <select name="measuresQuestions.answer51"   ng-model="vm.session.measuresQuestions.answer51" ng-options="x for x in vm.choices" onclick="checkProgress()"/>
 
                     </div>
 
@@ -254,7 +270,7 @@
                 <div class="two fields">
 
                     <div class="four wide field">
-                        <select name="measuresQuestions.answer52"   ng-model="vm.session.measuresQuestions.answer52" ng-options="x for x in vm.choices"/>
+                        <select name="measuresQuestions.answer52"   ng-model="vm.session.measuresQuestions.answer52" ng-options="x for x in vm.choices" onclick="checkProgress()"/>
 
                     </div>
 
@@ -268,7 +284,7 @@
                 <div class="two fields">
 
                     <div class="eight wide field">
-                        <select name="measuresQuestions.answer69"   ng-model="vm.session.measuresQuestions.answer69" ng-options="x for x in vm.assault"/>
+                        <select name="measuresQuestions.answer69"   ng-model="vm.session.measuresQuestions.answer69" ng-options="x for x in vm.assault" onclick="checkProgress()"/>
 
                     </div>
 
@@ -284,7 +300,7 @@
                 <div class="two fields">
 
                     <div class="eight wide field">
-                        <select name="measuresQuestions.answer71"   ng-model="vm.session.measuresQuestions.answer71" ng-options="x for x in vm.assault"/>
+                        <select name="measuresQuestions.answer71"   ng-model="vm.session.measuresQuestions.answer71" ng-options="x for x in vm.assault" onclick="checkProgress()"/>
 
                     </div>
 
@@ -296,33 +312,188 @@
 
         </div>
 
+        <div class="ui hidden divider"></div>
 
 
-
-<button type="submit"class="ui bottom attached button">Update assessement</button>
-
+<button type="submit"class="ui positive  button">Update Assessement</button>
 
 </form>
+
+
+
+
+
 
 <h3>Delete Assessement</h3>
 
-<form name="vm.delForm" ng-submit="vm.deleteSession()">
-    <button type="submit"class="ui button">Delete Assessement</button>
-</form>
 
+
+
+            <form class="ui form" name="vm.delForm"  id="deleteForm">
+
+                <div class="ui small modal" id="deleteOrNot">
+                    <i class="close icon"></i>
+
+                    <div class="ui header">Delete the Assessement?</div>
+                    <ng-form class = "ui form" name="vm.modalForm" ng-submit="vm.deleteSession()" id="modalForm"> </ng-form>
+
+
+                    <div class="actions">
+                        <div class="ui black deny button">
+                            No
+                        </div>
+
+                        <div class="ui positive right labeled submit icon button">
+                            Yes
+                            <i class="checkmark icon"></i>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- open the modal to ask for confirmation of delete -->
+                <button class="ui button"  onclick="deleteform()">Delete Assessement</button>
+
+            </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+</div>
 </div>
 
 
-</div>
-</div>
 
 
 
+<script>
+    var checkProgress= function() {
 
 
 
+        // Get the div you want to look in.
+        var divPartOne = document.getElementById("formPartOne");
+        var divMain = document.getElementById("assessementForm");
+
+        // Get all the input fields inside your div
+        var inputs = divPartOne.getElementsByTagName('input');
+        var selects = divMain.getElementsByTagName('select');
+
+        // Get the number of the found inputs.
+        var totalInputs = inputs.length + selects.length;
+
+        // Loop through them and check which of them has a value.
+        var inputsWithValue = 0;
+        for (var i = 0; i < inputs.length; i++)
+            if (inputs[i].value !== '')
+                inputsWithValue += 1;
+        for (var i = 0; i < selects.length; i++) {
 
 
+            if (selects[i].value !== '?' && selects[i].value !== '' && selects[i].value !=='string:')
+                inputsWithValue += 1;
+        }
+
+        // Calculate the percentage.
+        var filledPercentage = (inputsWithValue / totalInputs) * 100;
+
+
+        $('#progressBar')
+            .progress('set percent',filledPercentage);
+        // .progress('set progress',inputsWithValue);
+
+
+    }
+</script>
+
+<script>
+
+    $('#progressBar')
+        .progress({
+            // label: 'ratio',
+            label: 'percent',
+            text: {
+                //  ratio: '{value} of {total}'
+                percent: '{percent}%'
+            }
+        });
+
+
+</script>
+
+<script>
+    $('.ui.sticky')
+        .sticky({
+            context: '#assessementForm'
+        })
+    ;
+</script>
+
+<script>
+    $('#assessementForm')
+        .form ({
+            on: blur,
+            inline: 'true',
+            fields: {
+                name: 'empty',
+                description: 'empty',
+                informationDescription: 'empty'
+
+            }
+        })
+</script>
+
+<script>
+    $(document).ready(checkProgress);
+</script>
+
+
+
+<script>
+    var deleteform = function() {
+        $('#deleteOrNot')
+            .modal({
+                closable: false,  //u must choose yes or no
+                context: "",
+                onDeny: function () {
+                    return true;
+                },
+                onApprove: function () {
+                    window.alert('delete the form');
+
+                    $('#modalForm').submit();
+
+                    return true;
+
+                }
+            })
+            .modal('show')
+        ;
+    }
+</script>
 
 
 

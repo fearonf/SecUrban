@@ -2,5 +2,5 @@
          Site Overrides
 *******************************/
 .ui.sidebar {
-top: 3.8em;
+top: 4.4rem;
 }

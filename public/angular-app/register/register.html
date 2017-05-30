@@ -5,21 +5,11 @@
     <div class="eight wide column">
 
 
-<!-- Show this div (message) only if vm.message exists -->
 
+<!-- ng-submit  here submits automatically when button is clicked, before validation is done ....
+...but have to have the 'vm.register()' here, or it won't call 'vm.register()' on successful form.... -->
+ <form class="ui form segment" name="vm.registerForm" ng-submit="vm.register()" id = "register" >
 
-
-        <!-- Show this div (error) only if vm.error exists -->
-
-
-
-
-<!-- when submitted, this form calls vm.register() function in register-controller.js -->
-
-
-
-
- <form class="ui form segment" name="vm.registerForm" ng-submit="vm.register()"  >
      <h1>Register</h1>
 
      <div ng-show="vm.error" class="ui negative message">
@@ -83,71 +73,76 @@
         </div>
 
 
+     <button  class="ui   button " onclick = "actualRegister()"  >Register</button>
 
-    <button  class="ui button ">Register</button>
+
 
 
 </form>
+
+
 </div>
 </div>
 
 
 
 <script>
-
-    $('.ui.form').form({
-        on: 'blur',
-        inline: 'true',
-
-
-      //  onSuccess: function () {
-       //     alert("Valid form, will post");
-            //      $('.button').toggleClass('disabled');
-            //      $('submit');                            //I'd like to submit the form here, but I don't know how to call
-            // vm.register() in the controller from here....
-      //  },
-
-        fields: {
+    var actualRegister = function() {
+        alert("Button clicked");
+        $('#register').form({
+            on: 'blur',
+            inline: 'true',
 
 
-            username: {
+            onSuccess: function () {
+                //submit the form here
+                alert("Valid form, will post");
 
-                rules: [{
-                    type: 'empty',
-                    prompt: 'Please enter your email'
-                }, {
-                    type: 'email',
-                    prompt: 'Please enter a valid email'
-                }]
+                $('#register').submit();     //want it to submit here (only after form is all validated)
             },
-            password: {
 
-                rules: [{
-                    type: 'empty',
-                    prompt: 'Please enter a password'
-                }, {
-                    type: 'length[6]',
-                    prompt: 'Password needs to be atleast 6 characters long'
-                }]
-            },
-            repeatPassword: {
 
-                rules: [{
+            fields: {
 
-                    type: 'match[password]',
-                    prompt: 'Passwords don\'t match'
-                }]
-            },
-            company: {
 
-                rules: [{
-                    type: 'empty',
-                    prompt: 'Please select a company'
-                }]
+                username: {
+
+                    rules: [{
+                        type: 'empty',
+                        prompt: 'Please enter your email'
+                    }, {
+                        type: 'email',
+                        prompt: 'Please enter a valid email'
+                    }]
+                },
+                password: {
+
+                    rules: [{
+                        type: 'empty',
+                        prompt: 'Please enter a password'
+                    }, {
+                        type: 'length[6]',
+                        prompt: 'Password needs to be atleast 6 characters long'
+                    }]
+                },
+                repeatPassword: {
+
+                    rules: [{
+
+                        type: 'match[password]',
+                        prompt: 'Passwords don\'t match'
+                    }]
+                },
+                company: {
+
+                    rules: [{
+                        type: 'empty',
+                        prompt: 'Please select a company'
+                    }]
+                }
             }
-        }
-    })
-
+        })
+    }
 
 </script>
 
@@ -163,5 +158,7 @@
         })
     ;
 </script>
+
+
 
 
