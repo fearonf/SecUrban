@@ -170,39 +170,39 @@ module.exports.sessionsAddOne = function (req,res) {
             timestamp: req.body.timestamp,
 
             objectQuestions: {
-                answer1: req.body.answer1,
-                comments1: req.body.comments1,
-                answer2: req.body.answer2,
-                comments2: req.body.comments2
+                answer1: req.body.objectQuestions.answer1,
+                comments1: req.body.objectQuestions.comments1,
+                answer2: req.body.objectQuestions.answer2,
+                comments2: req.body.objectQuestions.comments2
             },
             peopleQuestions: {
-                answer27: req.body.answer27,
-                comments27: req.body.comments27,
-                answer28: req.body.answer28,
-                comments28: req.body.comments28
+                answer27: req.body.peopleQuestions.answer27,
+                comments27: req.body.peopleQuestions.comments27,
+                answer28: req.body.peopleQuestions.answer28,
+                comments28: req.body.peopleQuestions.comments28
             },
             locationQuestions: {
-                answer32: req.body.answer32,
-                comments32: req.body.comments32,
-                answer33: req.body.answer33,
-                comments33: req.body.comments33
+                answer32: req.body.locationQuestions.answer32,
+                comments32: req.body.locationQuestions.comments32,
+                answer33: req.body.locationQuestions.answer33,
+                comments33: req.body.locationQuestions.comments33
             },
 
             surroundingsQuestions: {
-                answer39: req.body.answer39,
-                comments39: req.body.comments39,
-                answer40: req.body.answer40,
-                comments40: req.body.comments40
+                answer39: req.body.surroundingsQuestions.answer39,
+                comments39: req.body.surroundingsQuestions.comments39,
+                answer40: req.body.surroundingsQuestions.answer40,
+                comments40: req.body.surroundingsQuestions.comments40
             },
             measuresQuestions: {
-                answer51: req.body.answer51,
-                comments51: req.body.comments51,
-                answer52: req.body.answer52,
-                comments52: req.body.comments52,
-                answer69: req.body.answer69,
-                comments69: req.body.comments69,
-                answer71: req.body.answer71,
-                comments71: req.body.comments71
+                answer51: req.body.measuresQuestions.answer51,
+                comments51: req.body.measuresQuestions.comments51,
+                answer52: req.body.measuresQuestions.answer52,
+                comments52: req.body.measuresQuestions.comments52,
+                answer69: req.body.measuresQuestions.answer69,
+                comments69: req.body.measuresQuestions.comments69,
+                answer71: req.body.measuresQuestions.answer71,
+                comments71: req.body.measuresQuestions.comments71
             }
 
         }, function(err, session) {

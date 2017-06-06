@@ -1,64 +1,56 @@
 
 
+<h1>Testfield value: </h1>{{vm.testfield}}
+
+
+
+<button ng-if="!vm.testfield"  class="  small black ui button"   id="profileButton">Profile</button>
+
+<div  ng-if="vm.testfield"   id="profileField">Div only here if user is logged in </div>
+
+<script>checkSuccessfulLogin();</script>
 
 
 
 
-<form class="ui form" name="vm.delForm"  id="deleteForm">
-
-<div class="ui small modal" id="deleteOrNot">
-    <i class="close icon"></i>
-
-    <div class="ui header">Delete the Assessement?</div>
-    <ng-form class = "ui form" name="vm.modalForm" ng-submit="vm.Register()" id="modalForm"> </ng-form>
-
-   <!-- some indicator here to pass back to indicate 'delete this session'
-    </form> -->
 
 
-    <div class="actions">
-        <div class="ui black deny button">
-            No
-        </div>
 
-        <div class="ui positive right labeled submit icon button">
-            Yes
-            <i class="checkmark icon"></i>
-        </div>
-    </div>
 
-</div>
-
-    <!-- having a button here is sending(submit)  the deleteForm back straight away, calling vm....   AND opending the modal -->
-    <button class="ui button"  onclick="deleteform()">Delete Assessement</button>
-
-</form>
 
 
 
 
 <script>
-    var deleteform = function() {
-        $('#deleteOrNot')
-            .modal({
-                closable: false,
-                context: "",
-                onDeny: function () {
-                    return true;
-                },
-                onApprove: function () {
-                    window.alert('delete the form');
-                    //need a way here to submit the modal form with the 'yes to delete' indicator
-                    // and set ng-submit = vm-deleteSession;
-                    // as it is, it does nothing and doesn't pass control back to the controller vm.deleteSession
-                   $('#modalForm').submit();
-                  //  $('#deleteForm').submit();
+    var checkSuccessfulLogin= function() {
 
-                    return true;
 
-                }
-            })
-            .modal('show')
-        ;
+
+        // Get the div you want to look in.
+        var logoutBtn = document.getElementById("profileField");
+        alert("in checkSuccessfulLogin");
+        if (logoutBtn == null)
+    {
+        alert("in profile screen, the div is not there ")
+    } else {
+
+            alert("in profile screen the div is present ");
+        }
+
     }
 </script>
+
+<script>
+  //  $(document).ready(checkSuccessfulLogin);
+</script>
+
+
+
+<script type="text/ng-template" id="/tpl.html">
+    Content of the template.
+
+</script>
+
+<a ng-init="currentTpl='/tpl.html'" id="tpl-link">Load inlined template</a>
+<div id="tpl-content" ng-include src="currentTpl"></div>
+

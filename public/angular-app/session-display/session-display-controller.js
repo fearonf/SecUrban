@@ -5,11 +5,12 @@
 angular.module('secur')
     .controller('SessionController',SessionController);
 
-function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,jwtHelper,$window) {
+function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,jwtHelper,$window, $location) {
     var vm = this;
-    var id = $routeParams.id;
+    console.log('start of session controller');
+    var id = ($routeParams.id || null);
     vm.isSubmitted = false;
-    vm.choices = ["","Yes", "No", "Not Sure"];
+    vm.choices = ["","Yes", "No"];
     vm.assault = ["","No target hardening, Directing traffic flows, Removing means, Controlling disinhibitors or Screening/access control measures taken",
     "Either Directing traffic flows, Target removal or Removing means","More than one type of measure adequately"];
     vm.showObjectQuestions = false;
@@ -20,22 +21,31 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
     vm.today = false;
 
 //this is called when a particular session is selected from the list of Sessions returned (from sessions.html)
-    sessionDataFactory.sessionDisplay(id).then(function(response) {
+    if(id) {
+        sessionDataFactory.sessionDisplay(id).then(function (response) {
 
-        console.log(response);
-        vm.session = response.data;
-        console.log(vm.session.objectQuestions);
-        console.log("people questions...");
-        console.log(vm.session.peopleQuestions);
-        var questionArray = [String];
-        questionArray[0] = vm.session.objectQuestions.answer1;
-        console.log("questionArray[0] " + questionArray[0]);
+            console.log(response);
+            vm.session = response.data;
 
-
-        console.log("after");
+            //keep this its for loading the returned answers into an array for the algotithm
+        //    var questionArray = [String];
+        //    questionArray[0] = vm.session.objectQuestions.answer1;
+        //    console.log("questionArray[0] " + questionArray[0]);
 
 
-    });
+        })
+    } else {
+        vm.session = {};
+        vm.session.objectQuestions  = {};
+        vm.session.peopleQuestions = {};
+        vm.session.locationQuestions = {};
+        vm.session.surroundingsQuestions = {};
+        vm.session.measuresQuestions = {};
+        vm.timestamp = Date.now();
+        vm.session.timestamp = vm.timestamp;
+    };
+
+
 //
     vm.objectButton = function() {
     console.log ("objbuttonpressed");
@@ -146,8 +156,29 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
         console.log(vm.session.timestamp);
         console.log(vm.timestamp);
         if(vm.today) {
-            vm.session.timestamp = Date.now;
+            vm.session.timestamp = Date.now();
         }
+        if (!vm.session.objectQuestions)
+        {
+            vm.session.objectQuestions = {};
+        };
+        if (!vm.session.peopleQuestions)
+        {
+            vm.session.peopleQuestions = {};
+        };
+        if (!vm.session.locationQuestions)
+        {
+            vm.session.locationQuestions = {};
+        };
+        if (!vm.session.surroundingsQuestions)
+        {
+            vm.session.surroundingsQuestions = {};
+        };
+        if (!vm.session.measuresQuestions)
+        {
+            vm.session.measuresQuestions = {};
+        };
+
 
         var postData = {
 
@@ -157,6 +188,7 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
             objectDescription : vm.session.objectDescription,
             informationDescription : vm.session.informationDescription,
             timestamp: vm.session.timestamp,
+
             objectQuestions: {
                 answer1: vm.session.objectQuestions.answer1,
 
@@ -197,13 +229,17 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
         };
 
 
-        if(vm.addForm.$valid) {
+       // if(vm.addForm.$valid) {
+            if(id) {
 
             sessionDataFactory.putSession(id,postData).then(function(response) {
                 console.log(response);
                 if (response.status === 204)
                 {
-                    $route.reload();
+
+
+                 //   $window.location.href = '#!/session/'+vm.session._id;
+                      $route.reload();
                 }
             })
                 .catch(function(error) {
@@ -213,8 +249,26 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
         }
         else {
 
-            vm.isSubmitted = true;
-            console.log("invalid data");
+                sessionDataFactory.postNewSession(postData).then(function(response) {
+                    console.log(response);
+                    console.log(response.data._id);
+                    if (response.status === 201)
+                    {
+
+                       // this works, but the back arrow gets confused...
+                   //     $window.location.href = '#!/session/'+response.data._id;
+                   //     $route.reload();
+
+                    // trying this to see if 'back' button will work by REPLACING the path in the history
+                        $location.path( '/session/'+response.data._id).replace();
+                    }
+                })
+                    .catch(function(error) {
+                        console.log(error);
+                    });
+
+           // vm.isSubmitted = true;
+           // console.log("invalid data");
         }
 
     };
@@ -228,7 +282,11 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
             console.log(response);
             if (response.status === 204)
             {
-                //  $route.reload();  don't reload, sessionid is no longer valid...load session list route instead
+                //this works, but the back arrow gets confused .... trying replace() instead...seems better.
+              //  $window.location.href = '#!/sessions';
+
+              //   $route.reload();  // sessionid is no longer valid...load sessions list route instead
+                $location.path( '/sessions').replace();
             }
         })
             .catch(function(error) {

@@ -7,6 +7,7 @@ angular.module('secur')
 function LoginController($http,$location,$window, AuthFactory, jwtHelper,$route) {
     var vm = this;
 
+
     vm.isLoggedIn = function() {
         if (AuthFactory.isLoggedIn) {
             return true;
@@ -14,11 +15,6 @@ function LoginController($http,$location,$window, AuthFactory, jwtHelper,$route)
             return false;
         }
     };
-
-
-
-
-
 
 
   /* vm.isLoggedIn = function() {
@@ -39,7 +35,8 @@ function LoginController($http,$location,$window, AuthFactory, jwtHelper,$route)
     */
 
     vm.login = function() {
-
+        vm.error = '';
+        vm.message = '';
         console.log ("in login function");
         console.log(vm.username);
 
@@ -73,6 +70,7 @@ function LoginController($http,$location,$window, AuthFactory, jwtHelper,$route)
                 var decodedToken = jwtHelper.decodeToken(token);
                 vm.loggedInUser = decodedToken.email;
                 vm.error = '';
+                vm.message = "Welcome " + vm.loggedInUser+" ....";
                 console.log(decodedToken);
                 console.log(vm.loggedInUser);
 

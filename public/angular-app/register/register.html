@@ -8,7 +8,7 @@
 
 <!-- ng-submit  here submits automatically when button is clicked, before validation is done ....
 ...but have to have the 'vm.register()' here, or it won't call 'vm.register()' on successful form.... -->
- <form class="ui form segment" name="vm.registerForm" ng-submit="vm.register()" id = "register" >
+ <form class="ui form segment" name="register" novalidate ng-submit="register.$valid && register.$dirty && vm.register()" id = "register" >
 
      <h1>Register</h1>
 
@@ -36,7 +36,7 @@
         <label>Email address</label>
 
             <div class="field">
-                <input type="text" name="username" placeholder="Email address" ng-model="vm.username" >
+                <input type="email" name="username" placeholder="Email address" ng-model="vm.username" required>
             </div>
 
         </div>
@@ -45,10 +45,10 @@
         <label>Password</label>
         <div class="two fields">
             <div class="field">
-                <input type="password" name="password" id="password" placeholder="Password" ng-model="vm.password" >
+                <input type="password" name="password" id="password" placeholder="Password" ng-model="vm.password"  required>
             </div>
             <div class="field">
-                <input type="password" name="repeatPassword" placeholder="Repeat Password" ng-model="vm.passwordRepeat" >
+                <input type="password" name="repeatPassword" placeholder="Repeat Password" ng-model="vm.passwordRepeat" required >
             </div>
         </div>
     </div>
@@ -64,7 +64,7 @@
 
         <div class="required four wide field">
             <label>Company</label>
-            <select class="ui fluid dropdown" ng-model="vm.company" name="company">
+            <select class="ui fluid dropdown" ng-model="vm.company" name="company" required >
                 <option value="">Company</option>
                 <option value="Belvedere">Belvedere</option>
                 <option value="Dublin City">Dublin County Council</option>
@@ -73,9 +73,9 @@
         </div>
 
 
-     <button  class="ui   button " onclick = "actualRegister()"  >Register</button>
 
-
+    <!-- <button  class="ui   button " onclick="actualRegister()"  >Register</button> -->
+     <button  class="ui   button "   >Register</button>
 
 
 </form>
@@ -86,19 +86,25 @@
 
 
 
+
+
+
+
+
 <script>
-    var actualRegister = function() {
-        alert("Button clicked");
+   /* var actualRegister = function() {
+        window.console.log("register button clicked");  */
+
         $('#register').form({
+
             on: 'blur',
             inline: 'true',
 
 
             onSuccess: function () {
-                //submit the form here
-                alert("Valid form, will post");
+                //submit the form here NO its submitted on click when formis $valid and $dirty
 
-                $('#register').submit();     //want it to submit here (only after form is all validated)
+
             },
 
 
@@ -142,9 +148,10 @@
                 }
             }
         })
-    }
+ //   }
 
 </script>
+
 
 
 <script>

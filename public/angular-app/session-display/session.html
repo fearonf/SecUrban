@@ -29,17 +29,21 @@
 </div>
  <div class="pusher">
     <!-- Site content !-->
+
     <div class ="ui grid">
 
         <div class="twelve wide column">
 
 
-    <form class="ui form  segment  " name="vm.addForm" ng-submit="vm.updateSession()" id="assessementForm">
+
+
+    <form class="ui form  segment  " name="vm.addForm" novalidate ng-submit="vm.addForm.$valid && vm.addForm.$dirty && vm.updateSession()" id="assessementForm" >
         <h2 class="ui dividing header">Assessement Details: </h2>
         <div class="ui right internal  rail">
             <div class="ui sticky" >
 
                 <div class="ui segment">
+
                     <div class="ui indicating progress" data-value="0" data-total="76" id="progressBar" >
                         <div class="bar">
                             <div class="progress"></div>
@@ -55,7 +59,7 @@
                 <label>Name of the Assessement: </label>
                 <div class="field">
                     <div class="eight wide field">
-                        <input type = "text" name="name"  ng-minlength="2" ng-model="vm.session.name" oninput="checkProgress()"/>
+                        <input type = "text" name="name"  ng-minlength="2" ng-model="vm.session.name" oninput="checkProgress()" required/>
                     </div>
 
                 </div>
@@ -65,7 +69,7 @@
             <label>Description of objects under consideration:  </label>
             <div class="field">
                 <div class="eight wide field">
-                    <input type="text" name="description"  ng-model="vm.session.objectDescription"oninput="checkProgress()" />
+                    <input type="text" name="description"  ng-model="vm.session.objectDescription"oninput="checkProgress()" required/>
                 </div>
 
             </div>
@@ -75,7 +79,7 @@
             <label>Description of the information and versions used for the assessement:  </label>
             <div class="field">
                 <div class="eight wide field">
-                    <input type="text" name="informationDescription"  ng-model="vm.session.informationDescription" oninput="checkProgress()">
+                    <input type="text" name="informationDescription"  ng-model="vm.session.informationDescription" oninput="checkProgress()" required>
                 </div>
 
             </div>
@@ -283,12 +287,12 @@
                 <label>What is your protection against assault?  </label>
                 <div class="two fields">
 
-                    <div class="eight wide field">
+                    <div class="four wide field">
                         <select name="measuresQuestions.answer69"   ng-model="vm.session.measuresQuestions.answer69" ng-options="x for x in vm.assault" onclick="checkProgress()"/>
 
                     </div>
 
-                    <div class="eight wide field">
+                    <div class="twelve wide field">
                         <input type="text" name="measuresQuestions.comments69"  ng-model="vm.session.measuresQuestions.comments69" >
                     </div>
                 </div>
@@ -299,12 +303,12 @@
                 <label> What is your protection against Vandalism? </label>
                 <div class="two fields">
 
-                    <div class="eight wide field">
+                    <div class="four wide field">
                         <select name="measuresQuestions.answer71"   ng-model="vm.session.measuresQuestions.answer71" ng-options="x for x in vm.assault" onclick="checkProgress()"/>
 
                     </div>
 
-                    <div class="eight wide field">
+                    <div class="twelve wide field">
                         <input type="text" name="measuresQuestions.comments71"  ng-model="vm.session.measuresQuestions.comments71" >
                     </div>
                 </div>

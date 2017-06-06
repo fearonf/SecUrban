@@ -60,6 +60,16 @@ function config($routeProvider, $httpProvider) {
             }
 
         })
+        .when('/session',  {
+
+            templateUrl: 'angular-app/session-display/session.html',
+            controller: SessionController,
+            controllerAs: 'vm',
+            access: {
+                restricted: false
+            }
+
+        })
         .when('/register' , {
 
         templateUrl: 'angular-app/register/register.html',
@@ -84,13 +94,6 @@ function config($routeProvider, $httpProvider) {
     });
 
 
-   //     .when('/',  {
-//
-    //    templateUrl: 'angular-app/hotel-add/hotel.html',
-    //    controller: HotelAddController,
-    //    controllerAs: 'vm'
-
-   // });
 
 
 }

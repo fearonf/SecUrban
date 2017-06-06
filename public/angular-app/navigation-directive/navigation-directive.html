@@ -4,6 +4,7 @@
 
     <nav ng-controller="LoginController as vm" class="ui top fixed menu" ng-init="vm.init()">
 
+
     <div class="ui fixed inverted menu">
         <div class="ui container">
             <a href="#" class="header item">
@@ -25,7 +26,7 @@
                 Assessements <i class="dropdown icon" ></i>
                 <div class="menu">
                     <a class="item" ng-class = "vm.isActiveTab('sessions')"href="#!/sessions">All Assessements</a>
-                    <a class="item" href="#">New Assessement</a>
+                    <a class="item" href="#!/session">New Assessement</a>
                     <div class="divider"></div>
                     <div class="header">Header Item</div>
                     <div class="item">
@@ -42,32 +43,27 @@
         </div>
         <div class="right menu">
 
-        <!--    <form ng-if="!vm.isLoggedIn()" ng-submit="vm.login()" >
-            <div class="ui input" ng-class="{'has-error':vm.error}" >
-                <input type="text" placeholder="Username..." ng-model="vm.username">
-            </div>
-            <div class="ui input"  >
-                <input type="password" placeholder="Password..." ng-model = "vm.password">
-            </div>
-            <button class=" primary ui button"  type = "submit">OLD LOGIN BUTTON</button>
 
-            </form>
-            -->
 
-            <button ng-if="!vm.isLoggedIn()" class="small black ui button" id ="Login" onclick="Login()">Login</button>
+            <button ng-if="!vm.isLoggedIn()" class="small black ui button " id ="Login" onclick="Login()">Login</button>
 
-                 <button ng-if="vm.isLoggedIn()"  class="  small black ui button"  ng-if = "vm.isLoggedIn()" ng-click="vm.logout()">Logout</button>
+                 <button ng-if="vm.isLoggedIn()"  class="  small black ui button"  ng-if = "vm.isLoggedIn()" ng-click="vm.logout()" id="logoutButton">Logout</button>
 
         </div>
     </div>
 
 
+
 <div class="ui modal">
     <i class="close icon"></i>
+    <!-- this div is connected with the scripts at the end re is user logged in , close the modal -->
+ <!--  <div  ng-if="vm.isLoggedIn()"   id="loggedInDiv">Div only here if user is logged in</div> -->
+
     <div class="header">
         Login Form
     </div>
     <div class = content">
+
         <div class="ui middle aligned center aligned grid">
             <div class="column">
                 <h2 class="ui teal image header">
@@ -76,21 +72,21 @@
                         Log-in to your account
                     </div>
                 </h2>
-                <form class="ui form" ng-submit="vm.login()" >
+                <form class="ui form" name="loginForm" id="loginForm" novalidate ng-submit="loginForm.$valid && loginForm.$dirty && vm.login()" >
                     <div class="ui stacked segment">
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="user icon"></i>
-                                <input type="text" name="email" placeholder="E-mail address"ng-model="vm.username" >
+                                <input type="email" name="email" placeholder="E-mail address"ng-model="vm.username" required id="email">
                             </div>
                         </div>
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="lock icon"></i>
-                                <input type="password" name="password" placeholder="Password" ng-model="vm.password">
+                                <input type="password" name="password" placeholder="Password" ng-model="vm.password" required ng-minlength="6">
                             </div>
                         </div>
-                        <button class="ui   fluid large teal  button"    >Login using button</button>
+                        <button class="ui   fluid large teal  button"    >Login</button>
 
                     </div>
 
@@ -98,56 +94,56 @@
 
                 </form>
 
-                <div class="ui message">
-                    New to us? <a href="#!/register">Sign Up</a>
+
+                <div ng-show="vm.error && loginForm.$dirty " class="ui negative message" >
+                    <i class="close icon"></i>
+                    <div class="header" id="errorMessage">
+                        {{vm.error}}
+                    </div>
+
                 </div>
-                <div ng-if="vm.error" class="ui warning message">
+                <div ng-show="vm.message" class="ui positive message">
                     <i class="close icon"></i>
                     <div class="header">
-                        {{vm.error}}
+                        {{vm.message}}
                     </div>
 
                 </div>
             </div>
         </div>
     </div>
-    <div class="actions">
 
-      <!--  <div class="ui input" ng-class="{'has-error':vm.error}" >
-            <input type="text" placeholder="Username..." ng-model="vm.username">
-        </div>
-        <div class="ui input"  >
-            <input type="password" placeholder="Password..." ng-model = "vm.password">
-        </div>  -->
-        <div class="ui positive right labeled icon button" ng-click="vm.login()" >
-            Login using 'positive, modal'
-
-        </div>
-    </div>
 </div>
+
+
 </nav>
 
 
 
 <script>
     function Login() {
+     //   alert("in login function");
+     //   $('.ui.form')
+     //       .form('reset');  // This (or the clear either) just clears form fields, doesn't reset $dirty or $valid or 'vm.'..values
+      //  $('.ui.negative.message').empty();   shows up empty from now on ...even when error exists...
+
+      //  $('#errorMessage').text("");    //doesn't show up at all when use hide()..(even when set later)
+
+
         $('.ui.modal')
             .modal({
-                onApprove: function () {   //this is only called when use the 'ui positive' or 'ui ok' option in the button
-                    alert("Form wil be posted");
-                    return false;
 
-                }
+
             }).modal('show');
+
+
     }
-
-
-
 
 
 </script>
 <script>
-    function CloseM() {
+    var CloseM = function() {
+        alert("going to close the modal now");
         $('.ui.modal')
             .modal('hide');
 
@@ -163,18 +159,6 @@
         .form({
             on:blur,
             inline: 'true',
-                onSuccess: function()
-                {
-                    alert("valid form");
-
-
-
-                },
-                onSubmit: function()
-                {
-                    alert("submitted form");
-                },
-
             fields: {
 
                 email: {
@@ -205,6 +189,50 @@
 
 
 </script>
+
+<script>
+    //This close does not work if the message contains an "ng-if="vm.message"" statement
+    $('.message .close')
+        .on('click', function() {
+            $(this)
+                .closest('.message')
+                .transition('fade')
+            ;
+        })
+    ;
+</script>
+
+
+
+<!-- code below is trying to find out if the user has logged in...close the modal -->
+<!--<script>
+    var checkSuccessfulLogin= function() {
+
+        // Get the div you want to look in.
+        var logoutBtn = document.getElementById("loggedInDiv");
+        alert("in checkSuccessfulLogin");
+        if (logoutBtn == null)
+        {
+            alert("the user is not logged in ")
+        } else {
+
+            alert("user is already logged in ");
+
+
+                alert("going to close the modal now");
+                $('.ui.modal')
+                    .modal('hide');
+
+        }
+
+    }
+</script>
+
+<script>
+ //   $(document).ready(checkSuccessfulLogin);
+
+</script>   -->
+
 
 
 
