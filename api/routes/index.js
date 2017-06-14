@@ -15,11 +15,11 @@ var ctrlSessions = require('../controllers/sessions.controllers.js');
 // call the real function...
 //----------------------------------------------------------------------------------
 
-router                       // example with no parameter (all hotels)
+/*router                       // example with no parameter (all hotels)
     .route('/hotels')        //this is really 'router.route' and 'router.get'
     .get(ctrlHotels.hotelsGetAll) //controller name + method name from controller file
    // .get(ctrlUsers.authenticate,ctrlHotels.hotelsGetAll)
-    .post(ctrlHotels.hotelsAddOne);  // if method is post, use this
+    .post(ctrlHotels.hotelsAddOne);  // if method is post, use this */
 
 router
     .route('/sessions')        //this is really 'router.route' and 'router.get'
@@ -38,7 +38,7 @@ router
 
 
 
-//hotelId is NAMED here as the parameter entered, and this name is PICKED UP  in hotel.controllers.js
+/*hotelId is NAMED here as the parameter entered, and this name is PICKED UP  in hotel.controllers.js
 router
     .route('/hotels/:hotelId')        // add parameter name :hotelId i.e. 'localhost:3000/api/hotels/12345'
     .get(ctrlHotels.hotelsGetOne)
@@ -46,9 +46,7 @@ router
     .delete(ctrlHotels.hotelsDeleteOne);
 
 
-
-
-//Review routes
+/*Review routes
 
 router
     .route('/hotels/:hotelId/reviews')
@@ -60,7 +58,8 @@ router
     .route('/hotels/:hotelId/reviews/:reviewId')
     .get(ctrlReviews.reviewsGetOne)
     .put(ctrlReviews.reviewsUpdateOne)
-    .delete(ctrlReviews.reviewsDeleteOne);
+    .delete(ctrlReviews.reviewsDeleteOne); */
+
 
 //Authentication routes
 

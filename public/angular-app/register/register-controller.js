@@ -43,24 +43,26 @@ function RegisterController($http,$route) {
                     firebase.auth().createUserWithEmailAndPassword(email, password).then(function(){
                         console.log("user created in firebase");
 
+
                         //Create a new user in the secur database too, for user profile
 
                          $http.post('/api/users/register',user).then(function(result) {
                              console.log("User profile added to secur database too")
                              console.log(result);
-                             vm.message = 'Successful registration, please login.';
+
 
                          }).catch(function(error) {
                              console.log(error);
 
                          })
 
-                    }) .catch(function (error) {
+                    }) .catch(function(error) {
                         // Handle Errors here.
                         var errorCode = error.code;
                         var errorMessage = error.message;
 
                         // ...
+
 
                         vm.error = errorMessage;
                         vm.message='';

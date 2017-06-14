@@ -13690,6 +13690,12 @@ a.ui.basic.label:hover {
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.label.session {
+  background-color: #00b5ad!important;
+  border-color: #00b5ad!important;
+  color: #fff!important;
+}
 /*!
  * # Semantic UI 2.2.10 - List
  * http://github.com/semantic-org/semantic-ui/

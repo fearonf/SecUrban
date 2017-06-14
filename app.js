@@ -41,7 +41,7 @@ app.use('/node_modules',express.static(__dirname + '/node_modules'));
 //---------------------------------------------------------------------------------------
 //body parser use is put here because it is to be run BEFORE any of the routing calls
 //body parser is about collecting data from a form and passing it in to app (post)
-// in hotels.controllers.js, the data is picked up from  req.body
+// in sessions.controllers.js, the data is picked up from  req.body
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());

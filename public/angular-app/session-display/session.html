@@ -27,56 +27,85 @@
 
 
 </div>
+ <div class="ui  fixed container " style="width: 272px !important; height: 26.531px !important; position: fixed !important; top: 120px !important; left: 50px !important;   ">
+
+<div class = "ui segment">
+
+    <div class="ui indicating progress" data-value="0" data-total="76" id="progressBar" >
+        <div class="bar">
+            <div class="progress"></div>
+        </div>
+        <div class="label">Questions Complete</div>
+
+    </div>
+
+
+
+</div>
+     <!-- this button works in that it submits the form if valid, however, it doesn't show up any semantic errors for fields 1 - 3 as not on the form itself
+
+     <button type="submit"class="ui positive  button " ng-click="vm.addForm.$valid && vm.addForm.$dirty && vm.updateSession()" >Update Assessement</button>  -->
+
+
+ </div>
+
+
  <div class="pusher">
     <!-- Site content !-->
 
     <div class ="ui grid">
 
-        <div class="twelve wide column">
+        <div class="fourteen wide column">
 
 
 
 
     <form class="ui form  segment  " name="vm.addForm" novalidate ng-submit="vm.addForm.$valid && vm.addForm.$dirty && vm.updateSession()" id="assessementForm" >
-        <h2 class="ui dividing header">Assessement Details: </h2>
-        <div class="ui right internal  rail">
-            <div class="ui sticky" >
+        <h1 class="ui dividing header">Assessement Details: </h1>
+        <div class="ui right internal  rail" >
+            <div class="ui sticky"  >
 
                 <div class="ui segment">
 
-                    <div class="ui indicating progress" data-value="0" data-total="76" id="progressBar" >
+                    <button type="submit"class="ui positive fluid button">Update Assessement</button>
+                  <!-- <div class="ui indicating progress" data-value="0" data-total="76" id="progressBar" >
                         <div class="bar">
                             <div class="progress"></div>
                         </div>
                         <div class="label">Questions Complete</div>
-                    </div>
-                </div>
+
+                    </div> -->
+               </div>
             </div>
         </div>
 
             <div id="formPartOne">   <!-- Text fields in this part of the form are counted in progress percentage -->
             <div class="field">
-                <label>Name of the Assessement: </label>
+        <!-- 'session' in the class for form fields is related to the colour of the label only - this is set in src/site/elements/label.overrides -->
+                <div class = "ui  pointing below session label">A. <div class="detail">Name of the Assessement</div> </div>
                 <div class="field">
                     <div class="eight wide field">
                         <input type = "text" name="name"  ng-minlength="2" ng-model="vm.session.name" oninput="checkProgress()" required/>
                     </div>
 
                 </div>
+
             </div>
 
         <div class="field">
-            <label>Description of objects under consideration:  </label>
+
+            <div class = "ui  pointing below session label">B. <div class="detail">Description of objects under consideration:</div> </div>
             <div class="field">
                 <div class="eight wide field">
-                    <input type="text" name="description"  ng-model="vm.session.objectDescription"oninput="checkProgress()" required/>
+                    <input type="text" name="description"  ng-model="vm.session.objectDescription" oninput="checkProgress()" required/>
                 </div>
 
             </div>
         </div>
 
         <div class="field">
-            <label>Description of the information and versions used for the assessement:  </label>
+
+            <div class = "ui  pointing below session label">C. <div class="detail">Description of the information and versions used for the assessement:</div> </div>
             <div class="field">
                 <div class="eight wide field">
                     <input type="text" name="informationDescription"  ng-model="vm.session.informationDescription" oninput="checkProgress()" required>
@@ -107,212 +136,1232 @@
         <div class="ui section divider"></div>
 
     <div ng-show="vm.showObjectQuestions">
-        <h3> Objects:</h3>
+        <h2 class = "ui header"> Questions about assessed area:</h2>
+        <h3 class = "ui header">Objects: </h3>
 
 
         <div class="field">
-            <label>Are there residences?</label>
+            <label class = "ui label session">1. <div class="detail">Are there residences?</div> </label>
             <div class="two fields">
 
                 <div class="four wide field">
-                    <select name="objectQuestions.answer1"   ng-model="vm.session.objectQuestions.answer1" ng-options="x for x in vm.choices" onclick="checkProgress()"/>
+                    <select name="objectQuestions.answer1"   ng-model="vm.session.objectQuestions.answer1" ng-options="x for x in vm.choices" onclick="checkProgress()"> </select>
                 </div>
 
                 <div class="twelve wide field">
-                    <input type="text" name="objectQuestions.comments1"  ng-model="vm.session.objectQuestions.comments1" >
+                    <input type="text" name="objectQuestions.comments1"  ng-model="vm.session.objectQuestions.comments1" placeholder="Comments" >
                 </div>
             </div>
         </div>
 
 
-        <div class="field">
-            <label> Are more than 10% of the residences single family detached homes?</label>
+        <div class="field" ng-if="vm.session.objectQuestions.answer1=='Yes'">
+            <label class = "ui   label session"> 2.  <div class="detail"> Are more than 10% of the residences single family detached homes?</div></label>
             <div class="two fields">
 
                 <div class="four wide field">
-                    <select name="objectQuestions.answer2"   ng-model="vm.session.objectQuestions.answer2" ng-options="x for x in vm.choices" onclick="checkProgress()"  />
+                    <select name="objectQuestions.answer2"   ng-model="vm.session.objectQuestions.answer2" ng-options="x for x in vm.choices" onclick="checkProgress()" >  </select>
                 </div>
 
                 <div class="twelve wide field">
-                    <input type="text" name="objectQuestions.comments2"  ng-model="vm.session.objectQuestions.comments2" >
+                    <input type="text" name="objectQuestions.comments2"  ng-model="vm.session.objectQuestions.comments2"  placeholder="Comments" >
+                </div>
+            </div>
+        </div>
+        <div class="field" ng-if="vm.session.objectQuestions.answer1=='Yes'">
+            <label class = "ui label session">3. <div class="detail">Is there a concentration of residential dwellings?</div> </label>
+            <div class="two fields">
+
+                <div class="four wide field">
+                    <select name="objectQuestions.answer3"   ng-model="vm.session.objectQuestions.answer3" ng-options="x for x in vm.choices" onclick="checkProgress()"  > </select>
+                </div>
+
+                <div class="twelve wide field">
+                    <input type="text" name="objectQuestions.comments3"  ng-model="vm.session.objectQuestions.comments3"   placeholder="Comments" >
+                </div>
+            </div>
+        </div>
+        <div class="field" ng-if="vm.session.objectQuestions.answer1=='Yes'">
+            <label class = "ui label session">4. <div class="detail">In the residential area, will cars be parked mainly along the public street?</div> </label>
+            <div class="two fields">
+
+                <div class="four wide field">
+                    <select name="objectQuestions.answer4"   ng-model="vm.session.objectQuestions.answer4" ng-options="x for x in vm.choices" onclick="checkProgress()" ></select>
+                </div>
+
+                <div class="twelve wide field">
+                    <input type="text" name="objectQuestions.comments4"  ng-model="vm.session.objectQuestions.comments4"   placeholder="Comments" >
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <label class = "ui label session">5. <div class="detail">Are there shops (retail and commercial services?</div> </label>
+            <div class="two fields">
+
+                <div class="four wide field">
+                    <select name="objectQuestions.answer5"   ng-model="vm.session.objectQuestions.answer5" ng-options="x for x in vm.choices" onclick="checkProgress()"  ></select>
+                </div>
+
+                <div class="twelve wide field">
+                    <input type="text" name="objectQuestions.comments5"  ng-model="vm.session.objectQuestions.comments5"   placeholder="Comments" >
+                </div>
+            </div>
+        </div>
+        <div class="field" ng-if="vm.session.objectQuestions.answer5=='Yes'">
+            <label class = "ui label session">6. <div class="detail">Are there parking spaces present that used primarily for these shops?</div> </label>
+            <div class="two fields">
+
+                <div class="four wide field">
+                    <select name="objectQuestions.answer6"   ng-model="vm.session.objectQuestions.answer6" ng-options="x for x in vm.choices" onclick="checkProgress()"  ></select>
+                </div>
+
+                <div class="twelve wide field">
+                    <input type="text" name="objectQuestions.comments6"  ng-model="vm.session.objectQuestions.comments6"  placeholder="Comments"  >
+                </div>
+            </div>
+        </div>
+        <div class="field" ng-if="vm.session.objectQuestions.answer5=='Yes'">
+            <label class = "ui label session">7. <div class="detail">Are there shops of one or more of the following types?</div> </label>
+            <ul>
+                <li>Electronic shops</li>
+                <li>Fashion shops</li>
+                <li>Sports clothing shops</li>
+                <li>Jewellery shops</li>
+                <li>Tobacco shops</li>
+            </ul>
+            <div class="two fields">
+
+                <div class="four wide field">
+                    <select name="objectQuestions.answer7"   ng-model="vm.session.objectQuestions.answer7" ng-options="x for x in vm.choices" onclick="checkProgress()" ></select>
+                </div>
+
+                <div class="twelve wide field">
+                    <input type="text" name="objectQuestions.comments7"  ng-model="vm.session.objectQuestions.comments7"   placeholder="Comments" >
+                </div>
+            </div>
+        </div>
+        <div class="field" ng-if="vm.session.objectQuestions.answer5=='Yes'" >
+            <label class = "ui teal label session">8. <div class="detail">Are there shops that have three or more of the following characteristics:</div> </label>
+                <ul>
+                    <li>Open late</li>
+                    <li>No surveillance from the outside-in and vice versa</li>
+                    <li>With access from the public street</li>
+                    <li>Selling non-food goods or services</li>
+                    <li>Close to a main (car) access road to the city/town</li>
+                </ul>
+            <div class="two fields">
+
+                <div class="four wide field">
+                    <select name="objectQuestions.answer8"   ng-model="vm.session.objectQuestions.answer8" ng-options="x for x in vm.choices" onclick="checkProgress()" ></select>
+                </div>
+
+                <div class="twelve wide field">
+                    <input type="text" name="objectQuestions.comments8"  ng-model="vm.session.objectQuestions.comments8"  placeholder="Comments"  >
+                </div>
+            </div>
+        </div>
+        <div class="field" ng-if="vm.session.objectQuestions.answer5=='Yes'">
+            <label class = "ui label session">9. <div class="detail">Are there large shops ( > 50 clerks/sales persons ) ?</div> </label>
+
+            <div class="two fields">
+
+                <div class="four wide field">
+                    <select name="objectQuestions.answer9"   ng-model="vm.session.objectQuestions.answer9" ng-options="x for x in vm.choices" onclick="checkProgress()"  ></select>
+                </div>
+
+                <div class="twelve wide field">
+                    <input type="text" name="objectQuestions.comments9"  ng-model="vm.session.objectQuestions.comments9"   placeholder="Comments" >
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <label class = "ui label session ">10. <div class="detail">Are there ATMs in the area ?</div> </label>
+
+            <div class="two fields">
+
+                <div class="four wide field">
+                    <select name="objectQuestions.answer10"   ng-model="vm.session.objectQuestions.answer10" ng-options="x for x in vm.choices" onclick="checkProgress()" ></select>
+                </div>
+
+                <div class="twelve wide field">
+                    <input type="text" name="objectQuestions.comments10"  ng-model="vm.session.objectQuestions.comments10"   placeholder="Comments" >
+                </div>
+            </div>
+        </div>
+        <div class="field" ng-if="vm.session.objectQuestions.answer10=='Yes'" >
+            <label class = "ui label session">11. <div class="detail">Are these ATMs accessible by car ?</div> </label>
+
+            <div class="two fields">
+
+                <div class="four wide field">
+                    <select name="objectQuestions.answer11"   ng-model="vm.session.objectQuestions.answer11" ng-options="x for x in vm.choices" onclick="checkProgress()"  ></select>
+                </div>
+
+                <div class="twelve wide field">
+                    <input type="text" name="objectQuestions.comments11"  ng-model="vm.session.objectQuestions.comments11"   placeholder="Comments" >
+                </div>
+            </div>
+        </div>
+        <div class="field">
+
+            <label class = "ui label session">12. <div class="detail">Are there large parkings ( > 200 cars) that are accessibe for people other than those parking their car?</div> </label>
+
+             <div class="two fields">
+
+                <div class="four wide field">
+                 <select name="objectQuestions.answer12"   ng-model="vm.session.objectQuestions.answer12" ng-options="x for x in vm.choices" onclick="checkProgress()" ></select>
+                   </div>
+
+                  <div class="twelve wide field">
+                     <input type="text" name="objectQuestions.comments12"  ng-model="vm.session.objectQuestions.comments12"   placeholder="Comments" >
+                  </div>
+             </div>
+         </div>
+        <div class="field">
+
+            <label class = "ui label session">13. <div class="detail">Are there many dispensaries of alcohol and/or recreationsl drugs? </div> </label>
+            <div class="two fields">
+
+                <div class="four wide field">
+                    <select name="objectQuestions.answer13"   ng-model="vm.session.objectQuestions.answer13" ng-options="x for x in vm.choices" onclick="checkProgress()" ></select>
+                </div>
+
+                <div class="twelve wide field">
+                    <input type="text" name="objectQuestions.comments13"  ng-model="vm.session.objectQuestions.comments13"   placeholder="Comments" >
+                </div>
+            </div>
+        </div>
+        <div class="field">
+
+            <label class = "ui label session">14. <div class="detail">Is there a concentration of bars and alcohol serving establishments?</div> </label>
+
+            <div class="two fields">
+
+                <div class="four wide field">
+                    <select name="objectQuestions.answer14"   ng-model="vm.session.objectQuestions.answer14" ng-options="x for x in vm.choices" onclick="checkProgress()" ></select>
+                </div>
+
+                <div class="twelve wide field">
+                    <input type="text" name="objectQuestions.comments14"  ng-model="vm.session.objectQuestions.comments14" placeholder="Comments" >
+                </div>
+            </div>
+        </div>
+        <div class="field">
+
+            <label class = "ui label session">15. <div class="detail">Do you expect crowds? (waiting lines, crowds of spectators, gatherings, etc.)</div> </label>
+
+            <div class="two fields">
+
+                <div class="four wide field">
+                    <select name="objectQuestions.answer15"   ng-model="vm.session.objectQuestions.answer15" ng-options="x for x in vm.choices" onclick="checkProgress()"  ></select>
+                </div>
+
+                <div class="twelve wide field">
+                    <input type="text" name="objectQuestions.comments15"  ng-model="vm.session.objectQuestions.comments15"   placeholder="Comments" >
+                </div>
+            </div>
+        </div>
+        <div class="field">
+
+            <label class = "ui label session ">16. <div class="detail">Do you expect busy places? (markets, tourist attractions, station, shopping street)</div> </label>
+
+            <div class="two fields">
+
+                <div class="four wide field">
+                    <select name="objectQuestions.answer16"   ng-model="vm.session.objectQuestions.answer16" ng-options="x for x in vm.choices" onclick="checkProgress()" ></select>
+                </div>
+
+                <div class="twelve wide field">
+                    <input type="text" name="objectQuestions.comments16"  ng-model="vm.session.objectQuestions.comments16"   placeholder="Comments" >
+                </div>
+            </div>
+        </div>
+        <div class="field">
+
+            <label class = "ui label session ">17. <div class="detail">Are there sometimes or frequently activities that arouse excitement? Like entertainment activities
+                (sports, disco, markets, festivals, concerts, etc.)</div> </label>
+
+            <div class="two fields">
+
+                <div class="four wide field">
+                    <select name="objectQuestions.answer17"   ng-model="vm.session.objectQuestions.answer17" ng-options="x for x in vm.sometimes" onclick="checkProgress()"  ></select>
+                </div>
+
+                <div class="twelve wide field">
+                    <input type="text" name="objectQuestions.comments17"  ng-model="vm.session.objectQuestions.comments17"  placeholder="Comments"  >
+                </div>
+            </div>
+        </div>
+        <div class="field">
+
+            <label class = "ui label session">18. <div class="detail">Are there sometimes or frequently competitive situations, &nbsp&nbspe.g. sporting games and limited service (at bars) ?</div> </label>
+
+            <div class="two fields">
+
+                <div class="four wide field">
+                    <select name="objectQuestions.answer18"   ng-model="vm.session.objectQuestions.answer18" ng-options="x for x in vm.sometimes" onclick="checkProgress()"  ></select>
+                </div>
+
+                <div class="twelve wide field">
+                    <input type="text" name="objectQuestions.comments18"  ng-model="vm.session.objectQuestions.comments18"   placeholder="Comments" >
+                </div>
+            </div>
+        </div>
+        <div class="field">
+
+            <label class = "ui label session">19. <div class="detail">Are there many targets for vandalism ? (such as easily accessible and easily damaged public street furniture) </div> </label>
+
+            <div class="two fields">
+
+                <div class="four wide field">
+                    <select name="objectQuestions.answer19"   ng-model="vm.session.objectQuestions.answer19" ng-options="x for x in vm.choices" onclick="checkProgress()"  ></select>
+                </div>
+
+                <div class="twelve wide field">
+                    <input type="text" name="objectQuestions.comments19"  ng-model="vm.session.objectQuestions.comments19"   placeholder="Comments" >
+                </div>
+            </div>
+        </div>
+        <div class="field">
+
+            <label class = "ui label session ">20. <div class="detail">Are there many vulnerable objects for graffiti? (blank, smooth, light surfaces, visible and reachable)</div> </label>
+
+            <div class="two fields">
+
+                <div class="four wide field">
+                    <select name="objectQuestions.answer20"   ng-model="vm.session.objectQuestions.answer20" ng-options="x for x in vm.choices" onclick="checkProgress()"  ></select>
+                </div>
+
+                <div class="twelve wide field">
+                    <input type="text" name="objectQuestions.comments20"  ng-model="vm.session.objectQuestions.comments20"   placeholder="Comments" >
+                </div>
+            </div>
+        </div>
+        <div class="field">
+
+            <label class = "ui label session">21. <div class="detail">Is there an: </div> </label>
+            <ul>
+                <li>Airport</li>
+                <li>Parliament or</li>
+                <li>Nulclear power plant ?</li>
+            </ul>
+
+
+            <div class="two fields">
+
+                <div class="four wide field">
+                    <select name="objectQuestions.answer21"   ng-model="vm.session.objectQuestions.answer21" ng-options="x for x in vm.choices" onclick="checkProgress()"  ></select>
+                </div>
+
+                <div class="twelve wide field">
+                    <input type="text" name="objectQuestions.comments21"  ng-model="vm.session.objectQuestions.comments21"   placeholder="Comments" >
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <label class = "ui  label session">22. <div class="detail">Is there a:</div> </label>
+            <ul>
+                <li>Central Intelligence Office</li>
+                <li>Consulate</li>
+                <li>Embassy</li>
+                <li>Government building</li>
+                <li>Bank</li>
+                <li>Financial institution (not a bank)</li>
+                <li>Oil company</li>
+                <li>Police station</li>
+                <li>Court (International)</li>
+                <li>Gas station</li>
+                <li>Military building (barracks)</li>
+                <li>Oil pipeline</li>
+                <li>Palace</li>
+                <li>Stock exchange</li>
+                <li>Court (National)</li>
+                <li>City Hall</li>
+                <li>Mosque or</li>
+                <li>Temple ?</li>
+            </ul>
+            <div class="two fields">
+
+                <div class="four wide field">
+                    <select name="objectQuestions.answer22"   ng-model="vm.session.objectQuestions.answer22" ng-options="x for x in vm.choices" onclick="checkProgress()"  ></select> 
+                </div>
+
+                <div class="twelve wide field">
+                    <input type="text" name="objectQuestions.comments22"  ng-model="vm.session.objectQuestions.comments22"   placeholder="Comments" >
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <label class = "ui label session">23. <div class="detail">Is there a:</div> </label>
+            <ul>
+                <li>Prominent commercial building (like a multinational headquarters)</li>
+                <li>Ferry docking station</li>
+                <li>Library</li>
+                <li>Stadium</li>
+                <li>University</li>
+                <li>Casino</li>
+                <li>Cathedral</li>
+                <li>Museum (military) or</li>
+                <li>Hotel ? </li>
+
+            </ul>
+            <div class="two fields">
+
+                <div class="four wide field">
+                    <select name="objectQuestions.answer23"   ng-model="vm.session.objectQuestions.answer23" ng-options="x for x in vm.choices" onclick="checkProgress()"  ></select>
+                </div>
+
+                <div class="twelve wide field">
+                    <input type="text" name="objectQuestions.comments23"  ng-model="vm.session.objectQuestions.comments23"   placeholder="Comments" >
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <label class = "ui label session ">24. <div class="detail">Is there a:</div> </label>
+            <ul>
+                <li>Church</li>
+                <li>Cinema</li>
+                <li>Factory</li>
+                <li>Radio station</li>
+                <li>Synagogue</li>
+                <li>Theatre</li>
+                <li>Car company</li>
+                <li>Discotheque</li>
+                <li>Hospital </li>
+                <li>Mall</li>
+                <li>Restaurant or</li>
+                <li>Dam ? </li>
+
+            </ul>
+            <div class="two fields">
+
+                <div class="four wide field">
+                    <select name="objectQuestions.answer24"   ng-model="vm.session.objectQuestions.answer24" ng-options="x for x in vm.choices" onclick="checkProgress()"  ></select>
+                </div>
+
+                <div class="twelve wide field">
+                    <input type="text" name="objectQuestions.comments24"  ng-model="vm.session.objectQuestions.comments24"   placeholder="Comments" >
+                </div>
+            </div>
+        </div>
+        <div class="field">
+
+            <label class = "ui label session">25. <div class="detail"> Is there an object with symbolic value? </div> </label>
+
+            <div class="two fields">
+
+                <div class="four wide field">
+                    <select name="objectQuestions.answer25"   ng-model="vm.session.objectQuestions.answer25" ng-options="x for x in vm.choices" onclick="checkProgress()" ></select>
+                </div>
+
+                <div class="twelve wide field">
+                    <input type="text" name="objectQuestions.comments25"  ng-model="vm.session.objectQuestions.comments25"   placeholder="Comments" >
+                </div>
+            </div>
+        </div>
+        <div class="field">
+
+            <label class = "ui label session">26. <div class="detail"> Are there ideological / prominence values associated with the location? </div> </label>
+
+            <div class="two fields">
+
+                <div class="four wide field">
+                    <select name="objectQuestions.answer26"   ng-model="vm.session.objectQuestions.answer26" ng-options="x for x in vm.choices" onclick="checkProgress()" ></select>
+                </div>
+
+                <div class="twelve wide field">
+                    <input type="text" name="objectQuestions.comments26"  ng-model="vm.session.objectQuestions.comments26"   placeholder="Comments" >
                 </div>
             </div>
         </div>
     </div>
 
         <div ng-show="vm.showPeopleQuestions">
-            <h3> People:</h3>
+            <h3 class = "ui header"> People:</h3>
 
 
             <div class="field">
-                <label>Are tourists expected in the public space?</label>
+                <label class = "ui label session">27. <div class="detail"> Are tourists expected in the public space? </div> </label>
                 <div class="two fields">
 
                     <div class="four wide field">
-                        <select name="peopleQuestions.answer27"   ng-model="vm.session.peopleQuestions.answer27" ng-options="x for x in vm.choices" onclick="checkProgress()"/>
+                        <select name="peopleQuestions.answer27"   ng-model="vm.session.peopleQuestions.answer27" ng-options="x for x in vm.choices" onclick="checkProgress()"></select>
                     </div>
 
                     <div class="twelve wide field">
-                        <input type="text" name="peopleQuestions.comments27"  ng-model="vm.session.peopleQuestions.comments27" >
+                        <input type="text" name="peopleQuestions.comments27"  ng-model="vm.session.peopleQuestions.comments27"   placeholder="Comments" >
                     </div>
                 </div>
             </div>
 
 
             <div class="field">
-                <label>Is the expected number of disabled women higher than average? </label>
+                <label class = "ui label session">28. <div class="detail"> Is the expected number of disabled women higher than average? </div> </label>
                 <div class="two fields">
 
                     <div class="four wide field">
-                        <select name="peopleQuestions.answer28"   ng-model="vm.session.peopleQuestions.answer28" ng-options="x for x in vm.choices" onclick="checkProgress()" />
+                        <select name="peopleQuestions.answer28"   ng-model="vm.session.peopleQuestions.answer28" ng-options="x for x in vm.choices" onclick="checkProgress()" ></select>
                     </div>
 
                     <div class="twelve wide field">
-                        <input type="text" name="peopleQuestions.comments28"  ng-model="vm.session.peopleQuestions.comments28" >
+                        <input type="text" name="peopleQuestions.comments28"  ng-model="vm.session.peopleQuestions.comments28"  placeholder="Comments"  >
                     </div>
                 </div>
             </div>
+            <div class="field">
+                <label class = "ui label session">29. <div class="detail"> Is the expected ethnic heterogenity of the inhabitants higher than average? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="peopleQuestions.answer29"   ng-model="vm.session.peopleQuestions.answer29" ng-options="x for x in vm.choices" onclick="checkProgress()" ></select>
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="peopleQuestions.comments29"  ng-model="vm.session.peopleQuestions.comments29"  placeholder="Comments"  >
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label class = "ui label session">30. <div class="detail"> Is the expected number of residents with alcohol or drug addiction higher than average? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="peopleQuestions.answer30"   ng-model="vm.session.peopleQuestions.answer30" ng-options="x for x in vm.choices" onclick="checkProgress()" ></select>
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="peopleQuestions.comments30"  ng-model="vm.session.peopleQuestions.comments30"  placeholder="Comments"  >
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label class = "ui label session">31. <div class="detail"> Is the expected number of unemployed inhabitants higher than average? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="peopleQuestions.answer31"   ng-model="vm.session.peopleQuestions.answer31" ng-options="x for x in vm.choices" onclick="checkProgress()" ></select>
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="peopleQuestions.comments31"  ng-model="vm.session.peopleQuestions.comments31"  placeholder="Comments"  >
+                    </div>
+                </div>
+            </div>
+
+
+
         </div>
 
 
             <div ng-show="vm.showLocationQuestions">
-                <h3> Location:</h3>
+                <h3 class = "ui header"> Location:</h3>
 
 
-                <div class="field">
-                    <label>Is the area located in a suburban area or close to an access route to the city/town?  </label>
+                <div class="field" ng-if="vm.session.objectQuestions.answer10=='Yes'" >
+                    <label class = "ui label session">32. <div class="detail">Is the area located in a suburban area or close to an access route to the city/town ? </div> </label>
                     <div class="two fields">
 
                         <div class="four wide field">
-                            <select name="locationQuestions.answer32"   ng-model="vm.session.locationQuestions.answer32" ng-options="x for x in vm.choices" onclick="checkProgress()" />
+                            <select name="locationQuestions.answer32"   ng-model="vm.session.locationQuestions.answer32" ng-options="x for x in vm.choices" onclick="checkProgress()" ></select>
 
                         </div>
 
                         <div class="twelve wide field">
-                            <input type="text" name="locationQuestions.comments32"  ng-model="vm.session.locationQuestions.comments32" >
+                            <input type="text" name="locationQuestions.comments32"  ng-model="vm.session.locationQuestions.comments32"   placeholder="Comments" >
                         </div>
                     </div>
                 </div>
 
 
                 <div class="field">
-                    <label>Is there a large amount of (expected) passing traffic? </label>
+                    <label class = "ui label session">33. <div class="detail">Is there a large amount of (expected) passing traffic ? </div> </label>
                     <div class="two fields">
 
                         <div class="four wide field">
-                            <select name="locationQuestions.answer33"   ng-model="vm.session.locationQuestions.answer33" ng-options="x for x in vm.choices" onclick="checkProgress()"/>
+                            <select name="locationQuestions.answer33"   ng-model="vm.session.locationQuestions.answer33" ng-options="x for x in vm.choices" onclick="checkProgress()"></select>
 
                         </div>
 
                         <div class="twelve wide field">
-                            <input type="text" name="locationQuestions.comments33"  ng-model="vm.session.locationQuestions.comments33" >
+                            <input type="text" name="locationQuestions.comments33"  ng-model="vm.session.locationQuestions.comments33"   placeholder="Comments" >
                         </div>
                     </div>
                 </div>
+                <div class="field">
+                    <label class = "ui label session">34. <div class="detail">Are there multiple possible exits from the area ? </div> </label>
+                    <div class="two fields">
+
+                        <div class="four wide field">
+                            <select name="locationQuestions.answer34"   ng-model="vm.session.locationQuestions.answer34" ng-options="x for x in vm.choices" onclick="checkProgress()"></select>
+
+                        </div>
+
+                        <div class="twelve wide field">
+                            <input type="text" name="locationQuestions.comments34"  ng-model="vm.session.locationQuestions.comments34"   placeholder="Comments" >
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class = "ui label session">35. <div class="detail">Are there locations that are (often) deserted and out of sight ? </div> </label>
+                    <div class="two fields">
+
+                        <div class="four wide field">
+                            <select name="locationQuestions.answer35"   ng-model="vm.session.locationQuestions.answer35" ng-options="x for x in vm.choices" onclick="checkProgress()"></select>
+
+                        </div>
+
+                        <div class="twelve wide field">
+                            <input type="text" name="locationQuestions.comments35"  ng-model="vm.session.locationQuestions.comments35"   placeholder="Comments" >
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class = "ui label session">36. <div class="detail">Are there locations that are particularly suited to commit robbery ? i.e. locations with the following
+                        characteristics: </div> </label>
+                    <ul>
+                        <li>Busy, but not too busy</li>
+                        <li>With little surveillance (e.g. with dark corners/hidden areas)</li>
+                        <li>Multiple and easy exits</li>
+
+                    </ul>
+                    <div class="two fields">
+
+                        <div class="four wide field">
+                            <select name="locationQuestions.answer36"   ng-model="vm.session.locationQuestions.answer36" ng-options="x for x in vm.choices" onclick="checkProgress()"></select>
+
+                        </div>
+
+                        <div class="twelve wide field">
+                            <input type="text" name="locationQuestions.comments36"  ng-model="vm.session.locationQuestions.comments36"   placeholder="Comments" >
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class = "ui label session">37. <div class="detail">Are there locations likely to attract loitering youth ? </div> </label>
+                    <div class="two fields">
+
+                        <div class="four wide field">
+                            <select name="locationQuestions.answer37"   ng-model="vm.session.locationQuestions.answer37" ng-options="x for x in vm.choices" onclick="checkProgress()"></select>
+
+                        </div>
+
+                        <div class="twelve wide field">
+                            <input type="text" name="locationQuestions.comments37"  ng-model="vm.session.locationQuestions.comments37"   placeholder="Comments" >
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class = "ui label session">38. <div class="detail">Is there an increased chance of demonstrations ? </div> </label>
+                    <div class="two fields">
+
+                        <div class="four wide field">
+                            <select name="locationQuestions.answer38"   ng-model="vm.session.locationQuestions.answer38" ng-options="x for x in vm.choices" onclick="checkProgress()"></select>
+
+                        </div>
+
+                        <div class="twelve wide field">
+                            <input type="text" name="locationQuestions.comments38"  ng-model="vm.session.locationQuestions.comments38"   placeholder="Comments" >
+                        </div>
+                    </div>
+                </div>
+
+
+
             </div>
 
         <div ng-show="vm.showSurroundingsQuestions">
-            <h3> Surroundings:</h3>
+            <h3 class = "ui header"> Questions about surroundings of assessed area:</h3>
 
 
-            <div class="field">
-                <label>Is there an increased level of burglary within 4km of the object?   </label>
+            <div class="field" ng-if="vm.session.objectQuestions.answer1=='Yes'" >
+                <label class = "ui label session">39. <div class="detail">Is there an increased level of burglary within 4 kilometres of the object ? </div> </label>
                 <div class="two fields">
 
                     <div class="four wide field">
-                        <select name="surroundingsQuestions.answer39"   ng-model="vm.session.surroundingsQuestions.answer39" ng-options="x for x in vm.choices" onclick="checkProgress()"/>
+                        <select name="surroundingsQuestions.answer39"   ng-model="vm.session.surroundingsQuestions.answer39" ng-options="x for x in vm.choices" onclick="checkProgress()"></select>
 
                     </div>
 
                     <div class="twelve wide field">
-                        <input type="text" name="surroundingsQuestions.comments39"  ng-model="vm.session.surroundingsQuestions.comments39" >
+                        <input type="text" name="surroundingsQuestions.comments39"  ng-model="vm.session.surroundingsQuestions.comments39"   placeholder="Comments" >
                     </div>
                 </div>
             </div>
 
 
-            <div class="field">
-                <label>Is there an increased level of ram-raiding within 5km?</label>
+            <div class="field" ng-if="vm.session.objectQuestions.answer10=='Yes'">
+
+                <label class = "ui label session">40. <div class="detail">Is there an increased level of ram-raiding within 5km ? </div> </label>
                 <div class="two fields">
 
                     <div class="four wide field">
-                        <select name="surroundingsQuestions.answer40"   ng-model="vm.session.surroundingsQuestions.answer40" ng-options="x for x in vm.choices" onclick="checkProgress()" />
+                        <select name="surroundingsQuestions.answer40"   ng-model="vm.session.surroundingsQuestions.answer40" ng-options="x for x in vm.choices" onclick="checkProgress()" ></select>
 
                     </div>
 
                     <div class="twelve wide field">
-                        <input type="text" name="surroundingsQuestions.comments40"  ng-model="vm.session.surroundingsQuestions.comments40" >
+                        <input type="text" name="surroundingsQuestions.comments40"  ng-model="vm.session.surroundingsQuestions.comments40"   placeholder="Comments" >
                     </div>
                 </div>
             </div>
+
+            <div class="field">
+
+                <label class = "ui label session">41. <div class="detail">Is there an increased level of pickpocketing within 5km ? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="surroundingsQuestions.answer41"   ng-model="vm.session.surroundingsQuestions.answer41" ng-options="x for x in vm.choices" onclick="checkProgress()" ></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="surroundingsQuestions.comments41"  ng-model="vm.session.surroundingsQuestions.comments41"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+
+                <label class = "ui label session">42. <div class="detail">Is there an increased level of robbery within 4km ? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="surroundingsQuestions.answer42"   ng-model="vm.session.surroundingsQuestions.answer42" ng-options="x for x in vm.choices" onclick="checkProgress()" ></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="surroundingsQuestions.comments42"  ng-model="vm.session.surroundingsQuestions.comments42"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+
+                <label class = "ui label session">43. <div class="detail">Is there an increased level of vehicle theft within 5km ? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="surroundingsQuestions.answer43"   ng-model="vm.session.surroundingsQuestions.answer43" ng-options="x for x in vm.choices" onclick="checkProgress()" ></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="surroundingsQuestions.comments43"  ng-model="vm.session.surroundingsQuestions.comments43"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+
+                <label class = "ui label session">44. <div class="detail">Is there an increased level of physical assault within 2km ? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="surroundingsQuestions.answer44"   ng-model="vm.session.surroundingsQuestions.answer44" ng-options="x for x in vm.choices" onclick="checkProgress()" ></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="surroundingsQuestions.comments44"  ng-model="vm.session.surroundingsQuestions.comments44"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+
+                <label class = "ui label session">45. <div class="detail">Is there an increased level of sexual assault within 2km ? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="surroundingsQuestions.answer45"   ng-model="vm.session.surroundingsQuestions.answer45" ng-options="x for x in vm.choices" onclick="checkProgress()" ></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="surroundingsQuestions.comments45"  ng-model="vm.session.surroundingsQuestions.comments45"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+
+                <label class = "ui label session">46. <div class="detail">Is there an increased level of vandalism within 2km of the object? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="surroundingsQuestions.answer46"   ng-model="vm.session.surroundingsQuestions.answer46" ng-options="x for x in vm.choices" onclick="checkProgress()" ></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="surroundingsQuestions.comments46"  ng-model="vm.session.surroundingsQuestions.comments46"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+
+                <label class = "ui label session">47. <div class="detail">Is there an increased level of crime (all crime types together) within 2km of the object? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="surroundingsQuestions.answer47"   ng-model="vm.session.surroundingsQuestions.answer47" ng-options="x for x in vm.choices" onclick="checkProgress()" ></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="surroundingsQuestions.comments47"  ng-model="vm.session.surroundingsQuestions.comments47"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+
+                <label class = "ui label session">48. <div class="detail">Is there an increased level of graffiti offences within 2km of the object? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="surroundingsQuestions.answer48"   ng-model="vm.session.surroundingsQuestions.answer48" ng-options="x for x in vm.choices" onclick="checkProgress()" ></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="surroundingsQuestions.comments48"  ng-model="vm.session.surroundingsQuestions.comments48"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+            <div class="field" ng-if="vm.session.objectQuestions.answer5=='Yes'" >
+
+                <label class = "ui label session">49. <div class="detail">Is there an increased level of raiding (robbery of commercial venues) within 4km ? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="surroundingsQuestions.answer49"   ng-model="vm.session.surroundingsQuestions.answer49" ng-options="x for x in vm.choices" onclick="checkProgress()" ></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="surroundingsQuestions.comments49"  ng-model="vm.session.surroundingsQuestions.comments49"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+
+                <label class = "ui label session">50. <div class="detail">Are there safety threats to the objects that could be misused by fanatics? (natural or technical threats) </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="surroundingsQuestions.answer50"   ng-model="vm.session.surroundingsQuestions.answer50" ng-options="x for x in vm.choices" onclick="checkProgress()" ></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="surroundingsQuestions.comments50"  ng-model="vm.session.surroundingsQuestions.comments50"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+
+
+
+
         </div>
 
 
 
         <div ng-show="vm.showMeasuresQuestions">
-            <h3> Measures:</h3>
 
-            <h5>Is there an adequate level (regarding quality and time coverage) of surveillance (either natural or by dedicated observers)? </h5>
-            <div class="field">
-                <label>On residences?   </label>
+            <h3 class = "ui header"> Questions about measures taken in assessed area:</h3>
+
+            <div class = " ui raised segment" >  <!-- group questions 51 to 56  -->
+            <h4>Is there an adequate level (regarding quality and time coverage) of surveillance (either natural or by dedicated observers)? </h4>
+
+
+            <div class="field" ng-if="vm.session.objectQuestions.answer1=='Yes'">
+                <label class = "ui label session">51. <div class="detail">On residences? </div> </label>
                 <div class="two fields">
 
                     <div class="four wide field">
-                        <select name="measuresQuestions.answer51"   ng-model="vm.session.measuresQuestions.answer51" ng-options="x for x in vm.choices" onclick="checkProgress()"/>
+                        <select name="measuresQuestions.answer51"   ng-model="vm.session.measuresQuestions.answer51" ng-options="x for x in vm.choices" onclick="checkProgress()"></select>
 
                     </div>
 
                     <div class="twelve wide field">
-                        <input type="text" name="measuresQuestions.comments51"  ng-model="vm.session.measuresQuestions.comments51" >
+                        <input type="text" name="measuresQuestions.comments51"  ng-model="vm.session.measuresQuestions.comments51"  placeholder="Comments"  >
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="field" ng-if="vm.session.objectQuestions.answer5=='Yes'">
+                <label class = "ui label session">52. <div class="detail">On shops? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="measuresQuestions.answer52"   ng-model="vm.session.measuresQuestions.answer52" ng-options="x for x in vm.choices" onclick="checkProgress()"></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="measuresQuestions.comments52"  ng-model="vm.session.measuresQuestions.comments52"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+
+            <div class="field" ng-if="vm.session.objectQuestions.answer1=='Yes'">
+                <label class = "ui label session">53. <div class="detail">On residential parking spaces? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="measuresQuestions.answer53"   ng-model="vm.session.measuresQuestions.answer53" ng-options="x for x in vm.choices" onclick="checkProgress()"></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="measuresQuestions.comments53"  ng-model="vm.session.measuresQuestions.comments53"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label class = "ui label session">54. <div class="detail">On commercial parking ? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="measuresQuestions.answer54"   ng-model="vm.session.measuresQuestions.answer54" ng-options="x for x in vm.choices" onclick="checkProgress()"></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="measuresQuestions.comments54"  ng-model="vm.session.measuresQuestions.comments54"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+            <div class="field" ng-if="vm.session.objectQuestions.answer12=='Yes'">
+                <label class = "ui label session">55. <div class="detail">On large parkings ? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="measuresQuestions.answer55"   ng-model="vm.session.measuresQuestions.answer55" ng-options="x for x in vm.choices" onclick="checkProgress()"></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="measuresQuestions.comments55"  ng-model="vm.session.measuresQuestions.comments55"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label class = "ui label session">56. <div class="detail">On people in street (public space) ? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="measuresQuestions.answer56"   ng-model="vm.session.measuresQuestions.answer56" ng-options="x for x in vm.choices" onclick="checkProgress()"></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="measuresQuestions.comments56"  ng-model="vm.session.measuresQuestions.comments56"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+
+            <div class="field" ng-if="vm.session.measuresQuestions.answer51=='Yes' ||  vm.session.measuresQuestions.answer52=='Yes'
+            ||  vm.session.measuresQuestions.answer53=='Yes' ||  vm.session.measuresQuestions.answer54=='Yes' ||  vm.session.measuresQuestions.answer55=='Yes'
+            ||  vm.session.measuresQuestions.answer56=='Yes' ">
+
+                <label class = "ui label session">57. <div class="detail">Is the surveillance obviously present ? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="measuresQuestions.answer57"   ng-model="vm.session.measuresQuestions.answer57" ng-options="x for x in vm.choices" onclick="checkProgress()"></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="measuresQuestions.comments57"  ng-model="vm.session.measuresQuestions.comments57"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+            </div>
+
+
+            <div class ="ui raised segment">   <!-- group questions 58 to 61 -->
+            <h4>Can public or private intervention forces (security officers) be in the area within 5 minutes ? </h4>
+
+            <div class="field" ng-if="vm.session.objectQuestions.answer1=='Yes'">
+                <label class = "ui label session">58. <div class="detail">At residences ? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="measuresQuestions.answer58"   ng-model="vm.session.measuresQuestions.answer58" ng-options="x for x in vm.choices" onclick="checkProgress()"></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="measuresQuestions.comments58"  ng-model="vm.session.measuresQuestions.comments58"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+            <div class="field" ng-if="vm.session.objectQuestions.answer5=='Yes'">
+                <label class = "ui label session">59. <div class="detail"> At shops ? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="measuresQuestions.answer59"   ng-model="vm.session.measuresQuestions.answer59" ng-options="x for x in vm.choices" onclick="checkProgress()"></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="measuresQuestions.comments59"  ng-model="vm.session.measuresQuestions.comments59"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label class = "ui label session">60. <div class="detail"> In the public space ? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="measuresQuestions.answer60"   ng-model="vm.session.measuresQuestions.answer60" ng-options="x for x in vm.choices" onclick="checkProgress()"></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="measuresQuestions.comments60"  ng-model="vm.session.measuresQuestions.comments60"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label class = "ui label session">61. <div class="detail">At parkings ? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="measuresQuestions.answer61"   ng-model="vm.session.measuresQuestions.answer61" ng-options="x for x in vm.choices" onclick="checkProgress()"></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="measuresQuestions.comments61"  ng-model="vm.session.measuresQuestions.comments61"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+
+            </div>
+            <div class="field">
+                <label class = "ui label session">62. <div class="detail">Is there an adequate distinction between public, semi-private/communal and private space (also called 'ownership') ? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="measuresQuestions.answer62"   ng-model="vm.session.measuresQuestions.answer62" ng-options="x for x in vm.choices" onclick="checkProgress()"></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="measuresQuestions.comments62"  ng-model="vm.session.measuresQuestions.comments62"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label class = "ui label session">63. <div class="detail">Is the public space designed for easy maintenance ? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="measuresQuestions.answer63"   ng-model="vm.session.measuresQuestions.answer63" ng-options="x for x in vm.choices" onclick="checkProgress()"></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="measuresQuestions.comments63"  ng-model="vm.session.measuresQuestions.comments63"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+            <div class="field"ng-if="vm.session.objectQuestions.answer1=='Yes'" >
+                <label class = "ui label session">64. <div class="detail">What is your protection level against Burglary ? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="measuresQuestions.answer64"   ng-model="vm.session.measuresQuestions.answer64" ng-options="x for x in vm.choicesQ64" onclick="checkProgress()"></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="measuresQuestions.comments64"  ng-model="vm.session.measuresQuestions.comments64"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+            <div class="field" ng-if="vm.session.objectQuestions.answer10=='Yes'">
+                <label class = "ui label session">65. <div class="detail">What is your protection level against Ram Raid ? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="measuresQuestions.answer65"   ng-model="vm.session.measuresQuestions.answer65" ng-options="x for x in vm.choicesQ65" onclick="checkProgress()"></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="measuresQuestions.comments65"  ng-model="vm.session.measuresQuestions.comments65"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label class = "ui label session">66. <div class="detail">What is your protection level against Pickpocketing ? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="measuresQuestions.answer66"   ng-model="vm.session.measuresQuestions.answer66" ng-options="x for x in vm.choicesQ66" onclick="checkProgress()"></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="measuresQuestions.comments66"  ng-model="vm.session.measuresQuestions.comments66"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label class = "ui label session">67. <div class="detail">What is your protection level against Robbery ? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="measuresQuestions.answer67"   ng-model="vm.session.measuresQuestions.answer67" ng-options="x for x in vm.choicesQ67" onclick="checkProgress()"></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="measuresQuestions.comments67"  ng-model="vm.session.measuresQuestions.comments67"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label class = "ui label session">68. <div class="detail">What is your protection level against Vehicle Theft ? </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="measuresQuestions.answer68"   ng-model="vm.session.measuresQuestions.answer68" ng-options="x for x in vm.choicesQ68" onclick="checkProgress()"></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="measuresQuestions.comments68"  ng-model="vm.session.measuresQuestions.comments68"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+
+                <label class = "ui label session">69. <div class="detail">What is your protection against Assault?  </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="measuresQuestions.answer69"   ng-model="vm.session.measuresQuestions.answer69" ng-options="x for x in vm.choicesQ69" onclick="checkProgress()"></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="measuresQuestions.comments69"  ng-model="vm.session.measuresQuestions.comments69"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+
+                <label class = "ui label session">70. <div class="detail">What is your protection against Sexual Assault?  </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="measuresQuestions.answer70"   ng-model="vm.session.measuresQuestions.answer70" ng-options="x for x in vm.choicesQ70" onclick="checkProgress()"></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="measuresQuestions.comments70"  ng-model="vm.session.measuresQuestions.comments70"   placeholder="Comments" >
                     </div>
                 </div>
             </div>
 
 
             <div class="field">
-                <label>On shops?</label>
+
+                <label class = "ui label session">71. <div class="detail">What is your protection against Vandalism?  </div> </label>
                 <div class="two fields">
 
                     <div class="four wide field">
-                        <select name="measuresQuestions.answer52"   ng-model="vm.session.measuresQuestions.answer52" ng-options="x for x in vm.choices" onclick="checkProgress()"/>
+                        <select name="measuresQuestions.answer71"   ng-model="vm.session.measuresQuestions.answer71" ng-options="x for x in vm.choicesQ71" onclick="checkProgress()"></select>
 
                     </div>
 
                     <div class="twelve wide field">
-                        <input type="text" name="measuresQuestions.comments52"  ng-model="vm.session.measuresQuestions.comments52" >
+                        <input type="text" name="measuresQuestions.comments71"  ng-model="vm.session.measuresQuestions.comments71"   placeholder="Comments" >
                     </div>
                 </div>
             </div>
             <div class="field">
-                <label>What is your protection against assault?  </label>
+
+                <label class = "ui label session">72. <div class="detail">What is your protection against Destruction by Riot ?  </div> </label>
                 <div class="two fields">
 
                     <div class="four wide field">
-                        <select name="measuresQuestions.answer69"   ng-model="vm.session.measuresQuestions.answer69" ng-options="x for x in vm.assault" onclick="checkProgress()"/>
+                        <select name="measuresQuestions.answer72"   ng-model="vm.session.measuresQuestions.answer72" ng-options="x for x in vm.choicesQ72" onclick="checkProgress()"></select>
 
                     </div>
 
                     <div class="twelve wide field">
-                        <input type="text" name="measuresQuestions.comments69"  ng-model="vm.session.measuresQuestions.comments69" >
+                        <input type="text" name="measuresQuestions.comments72"  ng-model="vm.session.measuresQuestions.comments72"   placeholder="Comments" >
                     </div>
                 </div>
             </div>
-
-
             <div class="field">
-                <label> What is your protection against Vandalism? </label>
+
+                <label class = "ui label session">73. <div class="detail">What is your protection against Destruction by Fanatics ?  </div> </label>
                 <div class="two fields">
 
                     <div class="four wide field">
-                        <select name="measuresQuestions.answer71"   ng-model="vm.session.measuresQuestions.answer71" ng-options="x for x in vm.assault" onclick="checkProgress()"/>
+                        <select name="measuresQuestions.answer73"   ng-model="vm.session.measuresQuestions.answer73" ng-options="x for x in vm.choicesQ73" onclick="checkProgress()"></select>
 
                     </div>
 
                     <div class="twelve wide field">
-                        <input type="text" name="measuresQuestions.comments71"  ng-model="vm.session.measuresQuestions.comments71" >
+                        <input type="text" name="measuresQuestions.comments73"  ng-model="vm.session.measuresQuestions.comments73"   placeholder="Comments" >
                     </div>
                 </div>
             </div>
+            <div class="field">
+
+                <label class = "ui label session">74. <div class="detail">What is your protection against Graffiti ?  </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="measuresQuestions.answer74"   ng-model="vm.session.measuresQuestions.answer74" ng-options="x for x in vm.choicesQ74" onclick="checkProgress()"></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="measuresQuestions.comments74"  ng-model="vm.session.measuresQuestions.comments74"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+
+                <label class = "ui label session">75. <div class="detail">What is your protection against Mass Killing ?  </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="measuresQuestions.answer75"   ng-model="vm.session.measuresQuestions.answer75" ng-options="x for x in vm.choicesQ75" onclick="checkProgress()"></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="measuresQuestions.comments75"  ng-model="vm.session.measuresQuestions.comments75"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+            <div class="field" ng-if="vm.session.objectQuestions.answer5=='Yes'">
+
+                <label class = "ui label session">76. <div class="detail">What is your protection against Raid ?  </div> </label>
+                <div class="two fields">
+
+                    <div class="four wide field">
+                        <select name="measuresQuestions.answer76"   ng-model="vm.session.measuresQuestions.answer76" ng-options="x for x in vm.choicesQ76" onclick="checkProgress()"></select>
+
+                    </div>
+
+                    <div class="twelve wide field">
+                        <input type="text" name="measuresQuestions.comments76"  ng-model="vm.session.measuresQuestions.comments76"   placeholder="Comments" >
+                    </div>
+                </div>
+            </div>
+
 
         </div>
 
@@ -359,28 +1408,6 @@
                 <button class="ui button"  onclick="deleteform()">Delete Assessement</button>
 
             </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         </div>
@@ -452,12 +1479,16 @@
     $('.ui.sticky')
         .sticky({
             context: '#assessementForm'
+
+
         })
+
     ;
 </script>
 
 <script>
     $('#assessementForm')
+
         .form ({
             on: blur,
             inline: 'true',
@@ -467,7 +1498,7 @@
                 informationDescription: 'empty'
 
             }
-        })
+        });
 </script>
 
 <script>
@@ -486,7 +1517,7 @@
                     return true;
                 },
                 onApprove: function () {
-                    window.alert('delete the form');
+
 
                     $('#modalForm').submit();
 

@@ -1,56 +1,54 @@
+<div class="ui three column very relaxed grid">
+    <div class="column">
+        <p>
+            <button class="ui medium olive left  button" ng-click="vm.Graph1()"><img class="ui avatar image" src="../../images/logo2.png">
+                <span>Indications that attention is required</span></button>
 
+        </p>
 
-<h1>Testfield value: </h1>{{vm.testfield}}
+    </div>
 
+    <div class="column">
+        <p><button class="ui medium yellow   button" ng-click="vm.SortandGraph1()"><img class="ui avatar image" src="../../images/logo2.png">
+            <span>Indications that attention is required - sorted order</span></button></p>
 
+    </div>
 
-<button ng-if="!vm.testfield"  class="  small black ui button"   id="profileButton">Profile</button>
+    <div class="column">
+        <p><button class="ui medium purple  button" ng-click="vm.Graph2()"><img class="ui avatar image" src="../../images/logo2.png">
+            <span>Comparison with reference scenario</span></button></p>
 
-<div  ng-if="vm.testfield"   id="profileField">Div only here if user is logged in </div>
-
-<script>checkSuccessfulLogin();</script>
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-    var checkSuccessfulLogin= function() {
+    </div>
+</div>
 
 
 
-        // Get the div you want to look in.
-        var logoutBtn = document.getElementById("profileField");
-        alert("in checkSuccessfulLogin");
-        if (logoutBtn == null)
-    {
-        alert("in profile screen, the div is not there ")
-    } else {
-
-            alert("in profile screen the div is present ");
-        }
-
-    }
-</script>
-
-<script>
-  //  $(document).ready(checkSuccessfulLogin);
-</script>
 
 
 
-<script type="text/ng-template" id="/tpl.html">
-    Content of the template.
 
-</script>
+<div class = "ui segment">
+    <button class="ui medium pink  button" ng-click="vm.Graph3()"><img class="ui avatar image" src="../../images/logo2.png">
+        <span>Line chart</span></button>
+</div>
 
-<a ng-init="currentTpl='/tpl.html'" id="tpl-link">Load inlined template</a>
-<div id="tpl-content" ng-include src="currentTpl"></div>
+
+<!--<canvas id="myChart" width="400" height="200"></canvas> -->
+
+
+<!--<canvas id="myChart2" width="400" height="200"></canvas> -->
+
+
+
+
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+<p id="caption">The chart is displaying apples & oranges</p>
+
+
+
+
+
+
 

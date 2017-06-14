@@ -1,3 +1,12 @@
 /*******************************
          Site Overrides
 *******************************/
+.ui.label.session {
+
+
+
+    background-color: #00b5ad!important;
+    border-color: #00b5ad!important;
+    color: #fff!important;
+
+    }

@@ -75,8 +75,10 @@ function LoginController($http,$location,$window, AuthFactory, jwtHelper,$route)
                 console.log(vm.loggedInUser);
 
             //THIS reloads the page - showing the new options that are available now that user is logged in ...
-
+                $('.ui.modal')
+                    .modal('hide');
                 $route.reload();
+
 
 
 

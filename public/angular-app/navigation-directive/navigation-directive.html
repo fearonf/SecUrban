@@ -56,8 +56,7 @@
 
 <div class="ui modal">
     <i class="close icon"></i>
-    <!-- this div is connected with the scripts at the end re is user logged in , close the modal -->
- <!--  <div  ng-if="vm.isLoggedIn()"   id="loggedInDiv">Div only here if user is logged in</div> -->
+
 
     <div class="header">
         Login Form
@@ -106,6 +105,7 @@
                     <i class="close icon"></i>
                     <div class="header">
                         {{vm.message}}
+
                     </div>
 
                 </div>
@@ -141,16 +141,7 @@
 
 
 </script>
-<script>
-    var CloseM = function() {
-        alert("going to close the modal now");
-        $('.ui.modal')
-            .modal('hide');
 
-    }
-
-
-</script>
 
 
 
@@ -204,34 +195,7 @@
 
 
 
-<!-- code below is trying to find out if the user has logged in...close the modal -->
-<!--<script>
-    var checkSuccessfulLogin= function() {
 
-        // Get the div you want to look in.
-        var logoutBtn = document.getElementById("loggedInDiv");
-        alert("in checkSuccessfulLogin");
-        if (logoutBtn == null)
-        {
-            alert("the user is not logged in ")
-        } else {
-
-            alert("user is already logged in ");
-
-
-                alert("going to close the modal now");
-                $('.ui.modal')
-                    .modal('hide');
-
-        }
-
-    }
-</script>
-
-<script>
- //   $(document).ready(checkSuccessfulLogin);
-
-</script>   -->
 
 
 
