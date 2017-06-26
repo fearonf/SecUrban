@@ -10,6 +10,8 @@ function ResultsController($routeParams,sessionDataFactory,$window, jwtHelper) {
 
     var userId;
     var myChart;
+    var myChart2;
+    var myChart3;
     vm.compareSession = '';
 
 
@@ -187,15 +189,7 @@ function ResultsController($routeParams,sessionDataFactory,$window, jwtHelper) {
          vm.graphOutputSorted.sort(function(a, b){return b.value - a.value});
 
 
-
-
-
      });
-
-
-
-
-
 
 
     function addToMax(item, index) {
@@ -487,12 +481,6 @@ function ResultsController($routeParams,sessionDataFactory,$window, jwtHelper) {
             }
 
 
-
-
-
-
-
-
             graphItem1 = {
                 label: label1,
                 value: burglaryPercent
@@ -590,10 +578,18 @@ function ResultsController($routeParams,sessionDataFactory,$window, jwtHelper) {
 
 
 DrawGraph = function() {
+    // if a chart already exists in this space, destroy it to prevent overlay
 
+    if(myChart) {
+
+        myChart.destroy();
+    }
 
         var ctx = document.getElementById("Chart1").getContext('2d');
-        var myChart = new Chart(ctx, {
+
+
+
+         myChart = new Chart(ctx, {
 
             type: 'bar',
             data: {
@@ -638,12 +634,17 @@ DrawGraph = function() {
     };
 
     vm.GraphOneSession = function () {
+// if a chart already exists in this space, destroy it to prevent overlay
 
+        if(myChart) {
+
+            myChart.destroy();
+        }
 
 
         var ctx = document.getElementById("Chart1").getContext('2d');
 
-         var myChart = new Chart(ctx, {
+          myChart = new Chart(ctx, {
 
             type: 'bar',
             data: {
@@ -702,10 +703,15 @@ DrawGraph = function() {
         vm.sortGraphOutput.sort(function(a,b) {return b.current.value - a.current.value});
 
 
+// if a chart already exists in this space, destroy it to prevent overlay
 
+        if(myChart2) {
+
+            myChart2.destroy();
+        }
 
         var ctx = document.getElementById("Chart2").getContext('2d');
-        var myChart = new Chart(ctx, {
+         myChart2 = new Chart(ctx, {
 
             type: 'bar',
             data: {
@@ -754,11 +760,16 @@ DrawGraph = function() {
     SortandGraphOneSession = function () {
 
 
+// if a chart already exists in this space, destroy it to prevent overlay
 
+        if(myChart2) {
+
+            myChart2.destroy();
+        }
 
 
         var ctx = document.getElementById("Chart2").getContext('2d');
-        var  myChart = new Chart(ctx, {
+          myChart2 = new Chart(ctx, {
 
             type: 'bar',
             data: {
@@ -799,14 +810,21 @@ DrawGraph = function() {
 
     GraphCompare = function () {
 
+        // if a chart already exists in this space, destroy it to prevent overlay
+
+        if(myChart3) {
+
+            myChart3.destroy();
+        }
+
         var ctx = document.getElementById("Chart3").getContext('2d');
-        var myChart = new Chart(ctx, {
+         myChart3 = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: [vm.graphOutput[0].label, vm.graphOutput[1].label, vm.graphOutput[2].label, vm.graphOutput[3].label, vm.graphOutput[4].label,
                     vm.graphOutput[5].label,vm.graphOutput[6].label, vm.graphOutput[7].label, vm.graphOutput[8].label,vm.graphOutput[9].label, vm.graphOutput[10].label,vm.graphOutput[11].label, vm.graphOutput[12].label],
                 datasets: [{
-                    label: 'Comparison with reference scanario',
+                    label: 'Comparison of ' +vm.session1.name +' and ' + vm.session.name,
 
                     data: [vm.graphOutput[0].value - vm.graphOutputReference[0].value, vm.graphOutput[1].value - vm.graphOutputReference[1].value,vm.graphOutput[2].value - vm.graphOutputReference[2].value,vm.graphOutput[3].value - vm.graphOutputReference[3].value
                         ,vm.graphOutput[4].value - vm.graphOutputReference[4].value,vm.graphOutput[5].value - vm.graphOutputReference[5].value,
@@ -837,64 +855,25 @@ DrawGraph = function() {
 
 
 
-    vm.Graph3 = function () {
 
-        var ctx = document.getElementById("myChart").getContext('2d');
-
-        var original = Chart.defaults.global.legend.onClick;
-        Chart.defaults.global.legend.onClick = function (e, legendItem) {
-            update_caption(legendItem);
-            original.call(this, e, legendItem);
-        };
-
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ["M", "T", "W", "T", "F", "S", "S"],
-                datasets: [{
-                    label: 'apples',
-                    backgroundColor: "rgba(153,255,51,1)",
-                    data: [12, 19, 3, 17, 28, 24, 7],
-                }, {
-                    label: 'oranges',
-                    backgroundColor: "rgba(255,153,0,1)",
-                    data: [30, 29, 5, 5, 20, 3, 10],
-                }]
-            }
-        });
-
-        var labels = {
-            "apples": true,
-            "oranges": true
-        };
-
-        var caption = document.getElementById("caption");
-
-        var update_caption = function (legend) {
-            labels[legend.text] = legend.hidden;
-
-            var selected = Object.keys(labels).filter(function (key) {
-                return labels[key];
-            });
-
-            var text = selected.length ? selected.join(" & ") : "nothing";
-
-            caption.innerHTML = "The chart is displaying " + text;
-        };
-    }
 
     vm.ChooseWhatToDo = function() {
         console.log("CHoosing which set of graphs to do now...");
         console.log("vm.compareSession" + vm.compareSession);
         if(!vm.compareSession)
         {
+            if (myChart3) {
+                myChart3.destroy();
+            }
             vm.GraphOneSession();
         }
         else
         {
             vm.Graph();
         }
+        vm.compareSession = "";
     }
+
 
 
 
