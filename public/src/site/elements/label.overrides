@@ -5,8 +5,11 @@
 
 
 
-    background-color: #00b5ad!important;
-    border-color: #00b5ad!important;
-    color: #fff!important;
+    background-color: rgb(89, 149, 202)!important;
+    border-color: rgb(89, 149, 202)!important;
+    color: #fff !important;
+
+
+    font-size: .92857143em !important;
 
     }

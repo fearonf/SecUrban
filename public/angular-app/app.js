@@ -10,10 +10,18 @@ function config($routeProvider, $httpProvider) {
     $routeProvider
 
         .when('/', {
-            templateUrl: 'angular-app/main/main.html',
-            //access property tells if authorisation (token) required or not
-            // see in the 'run' function below....this property is checked for true/false
-            //before allow jump to next route...
+        templateUrl: 'angular-app/main/main.html',
+        //access property tells if authorisation (token) required or not
+        // see in the 'run' function below....this property is checked for true/false
+        //before allow jump to next route...
+        access: {
+            restricted: false
+        }
+
+    })
+        .when('/home', {
+            templateUrl: 'angular-app/main/home.html',
+
             access: {
                 restricted: false
             }
@@ -69,6 +77,16 @@ function config($routeProvider, $httpProvider) {
                 restricted: true
             }
         })
+
+        .when('/results/:id', {
+            templateUrl: 'angular-app/results/results.html',
+            controller: ResultsController,
+            controllerAs: 'vm',
+            access: {
+                restricted: false
+            }
+        })
+
             //if no paths match, just redirect to root of application
         .otherwise( {
             redirectTo: '/'

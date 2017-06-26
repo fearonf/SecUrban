@@ -4615,6 +4615,18 @@ input::selection {
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.button.session.blue {
+  background-color: rgba(141, 223, 255, 0.52) !important;
+  border-color: rgba(141, 223, 255, 0.52) !important;
+  color: #1b1c1d !important;
+}
+
+.ui.button.session.grey {
+  background-color: rgba(91, 131, 160, 0.93) !important;
+  border-color: rgba(91, 131, 160, 0.93) !important;
+  color: rgba(255, 255, 255, 0.91) !important;
+}
 /*!
  * # Semantic UI 2.2.10 - Container
  * http://github.com/semantic-org/semantic-ui/
@@ -13692,9 +13704,10 @@ a.ui.basic.label:hover {
 *******************************/
 
 .ui.label.session {
-  background-color: #00b5ad!important;
-  border-color: #00b5ad!important;
-  color: #fff!important;
+  background-color: #5995ca !important;
+  border-color: #5995ca !important;
+  color: #fff !important;
+  font-size: .92857143em !important;
 }
 /*!
  * # Semantic UI 2.2.10 - List

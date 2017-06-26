@@ -1,0 +1,62 @@
+<div class="ui segment">
+    <h1 class="ui dividing header">Assessement Results: </h1>
+
+
+
+
+    <form class="ui form  segment  " name="vm.compareSessionForm"
+          ng-submit="vm.ChooseWhatToDo()"
+          id="compareSessionForm">
+
+
+        <div class="ui header">Reference Assessement</div>
+
+        <div class="field">
+            <!-- 'session' in the class for form fields is related to the colour of the label only - this is set in src/site/elements/label.overrides -->
+            <div class="ui  pointing below session label">
+                <div class="detail">Name of the Assessement</div>
+            </div>
+            <div class="eight wide field">
+                <select class="ui dropdown" ng-model="vm.compareSession" name="compareSession" required
+                        ng-options="session.name for session in vm.sessions"></select>
+            </div>
+
+
+        </div>
+
+        <button class="ui medium blue  left  button" type="submit">Compare</button>
+
+
+    </form>
+
+
+    <div class="ui raised segment">
+        <div>
+            <canvas id="Chart1"></canvas>
+        </div>
+
+    </div>
+
+    <div class="ui raised segment">
+        <div>
+            <canvas id="Chart2"></canvas>
+        </div>
+    </div>
+
+    <div class="ui raised segment">
+        <div>
+            <canvas id="Chart3"></canvas>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+

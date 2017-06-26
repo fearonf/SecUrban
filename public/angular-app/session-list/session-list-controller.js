@@ -13,6 +13,8 @@ function SessionsController(sessionDataFactory,$route,$window, jwtHelper,AuthFac
     var vm = this;
     vm.title = 'Secur App';
     vm.isSubmitted = false;
+    var userId;
+    const futureAnalyticsUser = 'future@gmail.com';
 
 
     //***************just seeing that i can get the token stuff here: Yes
@@ -20,19 +22,26 @@ function SessionsController(sessionDataFactory,$route,$window, jwtHelper,AuthFac
          var token = $window.sessionStorage.token;
           var decodedToken = jwtHelper.decodeToken(token);
           vm.loggedInUser = decodedToken.email;
-         console.log(decodedToken);
-    } else {
-        console.log("no token decoded, not logged in ");
+          userId = decodedToken.email;
+         console.log(vm.loggedInUser);
     }
 
     ///**************************************************************
 
-
-    sessionDataFactory.sessionList().then(function(response) {
+    if (userId == futureAnalyticsUser)
+    { sessionDataFactory.sessionListAll().then(function (response) {
         vm.sessions = response.data;
         console.log(response);
 
-    });
+    })
+
+    }else {
+        sessionDataFactory.sessionList(userId).then(function (response) {
+            vm.sessions = response.data;
+            console.log(response);
+
+        });
+    }
 
 
 
@@ -48,38 +57,6 @@ function SessionsController(sessionDataFactory,$route,$window, jwtHelper,AuthFac
 
 
 
-    vm.addSession = function() {
-        // console.log("do they feel safe? ",vm.safe);
-        /*   var postData = {
-         name: vm.name
-         //
-         //
-         //more session fields here...............
 
-
-         };
-         */
-
-
-        //  if(vm.addForm.$valid) {
-        //      sessionDataFactory.postNewSession(postData).then(function(response)
-        //          console.log(response);
-        //           if (response.status === 201)
-        //            {
-        //                $route.reload();
-        //            }
-        //     })
-        //             .catch(function(error) {
-        //             console.log(error);
-        //             });
-//
-        //      }
-        //     else {
-//
-//           vm.isSubmitted = true;
-//           console.log("invalid data");
-//       }
-
-    }
 
 }

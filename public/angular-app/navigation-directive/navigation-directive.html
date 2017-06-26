@@ -9,7 +9,7 @@
         <div class="ui container">
             <a href="#" class="header item">
                 <img class="ui mini spaced image" src="../../images/logo2.png">
-                Secur
+                SecUrban
             </a>
 
             <a ng-class = "vm.isActiveTab('')" class="active item" href="#/">Home</a>
@@ -19,7 +19,7 @@
             <a ng-if="vm.isLoggedIn()"  class="item" ng-class = "vm.isActiveTab('register')" href="#!/register" >
                 Register
             </a>
-            <a class="item"  ng-if ="vm.isLoggedIn && vm.loggedInUser == 'admin@gmail.com'" href="#!/admin" >
+            <a class="item"  ng-if ="vm.isLoggedIn() && vm.loggedInUser == 'future@gmail.com'" href="#!/admin" >
                 Admin
             </a>
             <div ng-if="vm.isLoggedIn()" class="ui simple dropdown item">

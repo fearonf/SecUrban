@@ -3449,3 +3449,13 @@
          Site Overrides
 *******************************/
 
+.ui.button.session.blue {
+  background-color: rgba(141, 223, 255, 0.52) !important;
+  border-color: rgba(141, 223, 255, 0.52) !important;
+  color: #1b1c1d !important;
+}
+.ui.button.session.grey {
+  background-color: rgba(91, 131, 160, 0.93) !important;
+  border-color: rgba(91, 131, 160, 0.93) !important;
+  color: rgba(255, 255, 255, 0.91) !important;
+}

@@ -49,6 +49,7 @@ function RegisterController($http,$route) {
                          $http.post('/api/users/register',user).then(function(result) {
                              console.log("User profile added to secur database too")
                              console.log(result);
+                             vm.message='Registration successful';
 
 
                          }).catch(function(error) {

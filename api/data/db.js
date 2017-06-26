@@ -1,7 +1,7 @@
 //require the mongoose modelling tool and the database connection string
 
 var mongoose = require('mongoose');
-//var dburl = 'mongodb://localhost:27017/meanhotel';
+
 var dburl = 'mongodb://localhost:27017/secur';
 
 
@@ -55,6 +55,6 @@ process.once('SIGUSR2', function() {
 
 // BRING IN SCHEMAS AND MODELS
 
-require('./hotels.model.js');
+
 require('./users.model');
 require('./sessions.model');

@@ -70,13 +70,17 @@ function LoginController($http,$location,$window, AuthFactory, jwtHelper,$route)
                 var decodedToken = jwtHelper.decodeToken(token);
                 vm.loggedInUser = decodedToken.email;
                 vm.error = '';
-                vm.message = "Welcome " + vm.loggedInUser+" ....";
+
                 console.log(decodedToken);
                 console.log(vm.loggedInUser);
 
-            //THIS reloads the page - showing the new options that are available now that user is logged in ...
+            //THIS sends the user to the Start screen of the app  - showing the new options that are available now that user is logged in ...
                 $('.ui.modal')
                     .modal('hide');
+
+
+                $location.path( '/home');
+             //   $location.path( '/home').replace();
                 $route.reload();
 
 

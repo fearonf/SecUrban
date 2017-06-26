@@ -1,7 +1,7 @@
 {
   "name": "secur-app",
   "version": "1.0.0",
-  "description": "Secur application",
+  "description": "SecUrban application",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fearonf/Secur"
+    "url": "git+https://github.com/fearonf/SecUrban"
   },
   "keywords": [
     "secur"
@@ -18,9 +18,9 @@
   "license": "UNLICENSED",
   "private:": "true",
   "bugs": {
-    "url": "https://github.com/fearonf/Secur/issues"
+    "url": "https://github.com/fearonf/SecUrban/issues"
   },
-  "homepage": "https://github.com/fearonf/Secur/#readme",
+  "homepage": "https://github.com/fearonf/SecUrban/#readme",
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
