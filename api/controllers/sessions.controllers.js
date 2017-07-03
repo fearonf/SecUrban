@@ -15,17 +15,19 @@ module.exports.sessionsGetAll = function (req, res) {
     //req.user is put into the req by the .authenticate function called at time of login.
     //in users.controllers.js
     //i.e. req.user = decoded.username (from the jwt.verify (token..) when decoded
-    //only present here if authenticate is called before display all tho
+    //req.user is only present in this get,  if authenticate is called before GetAll function.
+    // the function GetAllByUserId( below ) will always have the userId supplied....
     //console.log('Requested by: ' + req.user);
 
 
     var offset = 0;
-    var count = 10;
-    var maxCount = 20;
+    var count = 100;
+    //var maxCount = 100;
 
-    // check if query string is present...
-    //check for existence of lat and long query string (?lat=46.7&lat=19.45)
-    //if they exist, call a new function (declared above) to deal with this query
+    // check if query string is present...***leaving this code in , in case we need to limit the number of returns
+    // in future.....
+
+
     //pass the new function the req and res objects
     // then call 'return' to stop code continuing after this function is called
 
@@ -68,7 +70,7 @@ module.exports.sessionsGetAll = function (req, res) {
 */
 
 
-    //find is done using the MODEL itself...  ( Hotel )
+    //find is done using the MODEL itself...
     //done as...find all..skip some, limit to some and then execute this query...
 //if any err returned from exec function, report error and status 500 (internal server err)
 
@@ -96,18 +98,15 @@ module.exports.sessionsGetAll = function (req, res) {
 };
 module.exports.sessionsGetAllByUserId = function (req, res) {
 
-    //req.user is put into the req by the .authenticate function called at time of login.
-    //in users.controllers.js
-    //i.e. req.user = decoded.username (from the jwt.verify (token..) when decoded
-    //only present here if authenticate is called before display all tho
-    //console.log('Requested by: ' + req.user);
 
+// userId is included as a parameter for this get request
 
     var offset = 0;
-    var count = 10;
-    var maxCount = 20;
+    var count = 100;
+   // var maxCount = 100;
 
-    // check if query string is present...
+    // check if query string is present...***leaving this code in, in case we need to limit the number of returns
+    // in the future...
 
 
     //pass the new function the req and res objects
@@ -233,18 +232,18 @@ module.exports.sessionsGetOne = function (req, res) {
 // if you use the native 'split' function, and you pass in an empty string...
 // ...it will return an array with one empty OBJECT
 // instead, this will return just an empty array: "[]"
-var _splitArray = function(input) {
-    var output;
-    if(input && input.length > 0) {
-        output = input.split(";");
-        // output = input.split(",");
-
-
-    } else {
-        output = [];
-    }
-    return output;
-};
+// var _splitArray = function(input) {
+//     var output;
+//     if(input && input.length > 0) {
+//         output = input.split(";");
+//         // output = input.split(",");
+//
+//
+//     } else {
+//         output = [];
+//     }
+//     return output;
+// };
 
 
 

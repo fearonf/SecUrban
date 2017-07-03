@@ -15,6 +15,9 @@ function SessionsController(sessionDataFactory,$route,$window, jwtHelper,AuthFac
     vm.isSubmitted = false;
     var userId;
     const futureAnalyticsUser = 'future@gmail.com';
+    //initialise the sidebar option to show 'object questions' part of survey, when a session is chosen from the list
+    vm.showFlag = 1;
+    $window.localStorage && $window.localStorage.setItem('my-storage', vm.showFlag);
 
 
     //***************just seeing that i can get the token stuff here: Yes

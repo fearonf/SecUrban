@@ -13,6 +13,8 @@ function ResultsController($routeParams,sessionDataFactory,$window, jwtHelper) {
     var myChart2;
     var myChart3;
     vm.compareSession = '';
+    vm.showQuestionList = false;
+    vm.showCompareGraph = false;
 
 
     const futureAnalyticsUser = 'future@gmail.com';
@@ -188,6 +190,30 @@ function ResultsController($routeParams,sessionDataFactory,$window, jwtHelper) {
 
          vm.graphOutputSorted.sort(function(a, b){return b.value - a.value});
 
+         //save the relevant list of questions for this session;
+         vm.burglaryRelevantQuestions = burglaryRelevantQuestions;
+         vm.ramRaidRelevantQuestions = ramRaidRelevantQuestions;
+         vm.pickPocketingRelevantQuestions = pickPocketingRelevantQuestions;
+         vm.robberyRelevantQuestions = robberyRelevantQuestions;
+         vm.raidRelevantQuestions = raidRelevantQuestions;
+         vm.vehicleTheftRelevantQuestions = vehicleTheftRelevantQuestions;
+         vm.assaultRelevantQuestions = assaultRelevantQuestions;
+         vm.sexualAssaultRelevantQuestions = sexualAssaultRelevantQuestions;
+         vm.vandalismRelevantQuestions = vandalismRelevantQuestions;
+         vm.graffitiRelevantQuestions = graffitiRelevantQuestions;
+         vm.massKillingRelevantQuestions = massKillingRelevantQuestions;
+         vm.destructionByRiotRelevantQuestions = destructionByRiotRelevantQuestions;
+         vm.destructionByFanaticRelevantQuestions = destructionByFanaticRelevantQuestions;
+
+
+         //get the reference session back following call to an information link
+         //
+         // vm.compareSession = $window.localStorage && $window.localStorage.getItem('compare-session');
+         // console.log("value of compare session:" + vm.compareSession);
+
+
+         vm.ChooseWhatToDo();
+
 
      });
 
@@ -202,6 +228,61 @@ function ResultsController($routeParams,sessionDataFactory,$window, jwtHelper) {
 
     // Calculate a set of results for the current assessemtent (vm.session)
         function CalculateResults() {
+
+            //reset questions that depend on other questions:
+            // if answer 1 is blank or 'No' answers 2,3,4,39,51,53,58,64 are not valid so set all of it to space (including the comments)
+            //if answer 5 is blank or 'No' answers 6,7,8,9,49,52,59,76 are not valid
+            //if answer 10 is blank or 'No' answers 11,32,40,65 are not valid
+            //if answer 12 is blank or 'No' answer 55 is not valid
+            //if answer 51,52,53,54,55,56 are all blank  or 'No' answer 57 is not valid
+
+
+            if(vm.session.questions[0].answer != 'Yes')
+            {
+
+                vm.session.questions[1] = '';
+                vm.session.questions[2] = '';
+                vm.session.questions[3] = '';
+                vm.session.questions[38] = '';
+                vm.session.questions[50] = '';
+                vm.session.questions[52] = '';
+                vm.session.questions[57] = '';
+                vm.session.questions[63] = '';
+            };
+            if(vm.session.questions[4].answer != 'Yes')
+            {
+
+                vm.session.questions[5] = '';
+                vm.session.questions[6] = '';
+                vm.session.questions[7] = '';
+                vm.session.questions[8] = '';
+                vm.session.questions[48] = '';
+                vm.session.questions[51] = '';
+                vm.session.questions[58] = '';
+                vm.session.questions[75] = '';
+            };
+            if(vm.session.questions[9].answer != 'Yes') {
+
+                vm.session.questions[10] = '';
+                vm.session.questions[31] = '';
+                vm.session.questions[39] = '';
+                vm.session.questions[64] = '';
+            };
+            if(vm.session.questions[11].answer != 'Yes') {
+
+                vm.session.questions[54] = '';
+            };
+
+            if(vm.session.questions[50].answer != 'Yes' && vm.session.questions[51].answer != 'Yes' && vm.session.questions[52].answer != 'Yes' &&
+                vm.session.questions[53].answer != 'Yes' && vm.session.questions[54].answer != 'Yes' && vm.session.questions[55].answer != 'Yes')
+            {
+
+                vm.session.questions[56] = '';
+            };
+
+
+
+
 
 
             //  convert the answers  into numbers using the conversion table : 'No' = 0; 'Yes' = 1; etc
@@ -261,7 +342,7 @@ function ResultsController($routeParams,sessionDataFactory,$window, jwtHelper) {
             else if (vm.session.questions[63].answer == "Typical for modern residence") {
                 questionArray[63] = 0.5
             }
-            else if (vm.session.questions[63].answer == "Typical for 50s style residence") {
+            else if (vm.session.questions[63].answer == "Typical for '50s style residence") {
                 questionArray[63] = 0.25
             }
             else {
@@ -405,79 +486,115 @@ function ResultsController($routeParams,sessionDataFactory,$window, jwtHelper) {
 
             // each element in the array is a question number, take one off this number to give the index to the question array (zero start array)
             //...then add the score (for this question) to the running total.
+
+            var relevantQuestions = [];
             var total = 0;
             var weightsArray = burglaryWeights;
             burglary.forEach(addToTotal);
 
             //calculate the percentage
             burglaryPercent = total / burglaryMax * 100;
+            burglaryRelevantQuestions = relevantQuestions;
 
+
+            relevantQuestions = [];
             total = 0;
             weightsArray = ramRaidWeights;
             ramRaid.forEach(addToTotal);
             ramRaidPercent = total / ramRaidMax * 100;
+            ramRaidRelevantQuestions = relevantQuestions;
 
+            relevantQuestions = [];
             total = 0;
             weightsArray = pickPocketingWeights;
             pickPocketing.forEach(addToTotal);
             pickPocketingPercent = total / pickPocketingMax * 100;
+            pickPocketingRelevantQuestions = relevantQuestions;
 
+            relevantQuestions = [];
             total = 0;
             weightsArray = robberyWeights;
             robbery.forEach(addToTotal);
             robberyPercent = total / robberyMax * 100;
+            robberyRelevantQuestions = relevantQuestions;
 
 
+            relevantQuestions = [];
             total = 0;
             weightsArray = raidWeights;
             raid.forEach(addToTotal);
             raidPercent = total /  raidMax * 100;
+            raidRelevantQuestions = relevantQuestions;
 
+            relevantQuestions = [];
             total = 0;
             weightsArray = vehicleTheftWeights;
             vehicleTheft.forEach(addToTotal);
             vehicleTheftPercent = total / vehicleTheftMax * 100;
+            vehicleTheftRelevantQuestions = relevantQuestions;
 
+            relevantQuestions = [];
             total = 0;
             weightsArray = assaultWeights;
             assault.forEach(addToTotal);
             assaultPercent = total /  assaultMax * 100;
+            assaultRelevantQuestions = relevantQuestions;
 
+            relevantQuestions = [];
             total = 0;
             weightsArray = sexualAssaultWeights;
             sexualAssault.forEach(addToTotal);
             sexualAssaultPercent = total /  sexualAssaultMax * 100;
+            sexualAssaultRelevantQuestions = relevantQuestions;
 
+            relevantQuestions = [];
             total = 0;
             weightsArray = vandalismWeights;
             vandalism.forEach(addToTotal);
             vandalismPercent = total / vandalismMax * 100;
+            vandalismRelevantQuestions = relevantQuestions;
 
+            relevantQuestions = [];
             total = 0;
             weightsArray = graffitiWeights;
             graffiti.forEach(addToTotal);
             graffitiPercent = total / graffitiMax * 100;
+            graffitiRelevantQuestions = relevantQuestions;
 
+            relevantQuestions = [];
             total = 0;
             weightsArray = massKillingWeights;
             massKilling.forEach(addToTotal);
             massKillingPercent = total /  massKillingMax * 100;
+            massKillingRelevantQuestions = relevantQuestions;
 
+            relevantQuestions = [];
             total = 0;
             weightsArray = destructionByRiotWeights;
             destructionByRiot.forEach(addToTotal);
             destructionByRiotPercent = total /destructionByRiotMax * 100;
+            destructionByRiotRelevantQuestions = relevantQuestions;
 
+            relevantQuestions = [];
             total = 0;
             weightsArray = destructionByFanaticWeights;
             destructionByFanatic.forEach(addToTotal);
             destructionByFanaticPercent = total /destructionByFanaticMax * 100;
+            destructionByFanaticRelevantQuestions = relevantQuestions;
 
 
 
             function addToTotal(item, index) {
 
                 total = total + questionArray[item - 1] * weightsArray[index];
+
+                //if the corresponding answer in the question array  is not blank (i.e. has been answered) add this question number (subscript+1) to the list of
+                // relevant questions for this survey/classification combination
+              //  if (vm.session.questions[item - 1].answer != '')
+                if (vm.session.questions[item - 1].answer)
+                {
+                    relevantQuestions.push(item);
+                }
             }
 
 
@@ -551,7 +668,7 @@ function ResultsController($routeParams,sessionDataFactory,$window, jwtHelper) {
 
         console.log(vm.compareSession);
 
-        //var id2 = vm.compareSession._id;
+
 
 
 
@@ -860,6 +977,7 @@ DrawGraph = function() {
     vm.ChooseWhatToDo = function() {
         console.log("CHoosing which set of graphs to do now...");
         console.log("vm.compareSession" + vm.compareSession);
+        vm.showQuestionList = true;
         if(!vm.compareSession)
         {
             if (myChart3) {
@@ -869,9 +987,15 @@ DrawGraph = function() {
         }
         else
         {
+           // $window.localStorage && $window.localStorage.setItem('compare-session', vm.compareSession);
+
             vm.Graph();
         }
         vm.compareSession = "";
+
+
+       // $window.localStorage && $window.localStorage.setItem('compare-session', vm.compareSession);
+
     }
 
 

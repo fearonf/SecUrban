@@ -29,14 +29,22 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
     vm.choicesQ74 = ["","No Target hardening, Directing traffic flows, Target removal or Deflection measures taken","Either Target hardening, Directing traffic flows, Target removal or Deflection","More than one type of measure adequately"];
     vm.choicesQ75 = ["","No Target hardening, Target removal, Access control or Screening measures taken","Either Target hardening, Target removal, Access control or Screening","More than one type of measure adequately"];
     vm.choicesQ76 = ["","No Directing traffic flows or Facilitating compliance measures taken","Either Directing traffic flows or Facilitating compliance","More than one type of measure adequately"];
-    vm.showObjectQuestions = false;
-    vm.showPeopleQuestions = false;
-    vm.showLocationQuestions = false;
-    vm.showSurroundingsQuestions = false;
-    vm.showMeasuresQuestions = false;
+
+
+
     vm.today = false;
     vm.filledPercentage = 100;
-    //***************just seeing that i can get the token stuff here: Yes
+
+
+//get the survey 'section of the questions' that was displayed before now....this is to cope with
+    //choosing the 'information' icon during session entry and then returning to the screen to continue
+
+    vm.showFlag = $window.localStorage && $window.localStorage.getItem('my-storage');
+    console.log("value of switch:" + vm.showFlag);
+
+
+
+
     if($window.sessionStorage.token) {
         var token = $window.sessionStorage.token;
         var decodedToken = jwtHelper.decodeToken(token);
@@ -47,7 +55,7 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
         console.log("no token decoded, not logged in ");
     }
 
-    ///**************************************************************
+
 
 //this is called when a particular session is selected from the list of Sessions returned (from sessions.html)
     if(id) {
@@ -74,63 +82,59 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
 
         vm.timestamp = Date.now();
         vm.session.timestamp = vm.timestamp;
+
+        vm.showFlag = 1;
+        $window.localStorage && $window.localStorage.setItem('my-storage', vm.showFlag);
+
+
+
     };
 
 
 //
     vm.objectButton = function() {
     console.log ("objbuttonpressed");
-    vm.showObjectQuestions = true;
-    vm.showPeopleQuestions = false;
-    vm.showLocationQuestions = false;
-    vm.showSurroundingsQuestions = false;
-        vm.showMeasuresQuestions = false;
+
+        vm.showFlag = 1;
+         $window.localStorage && $window.localStorage.setItem('my-storage', vm.showFlag);
+
 
 }
 
     vm.peopleButton = function() {
 
         console.log ("pplbuttonpressed");
-        vm.showObjectQuestions = false;
-        vm.showPeopleQuestions = true;
-        vm.showLocationQuestions = false;
-        vm.showSurroundingsQuestions = false;
-        vm.showMeasuresQuestions = false;
+
+        vm.showFlag = 2;
+        $window.localStorage && $window.localStorage.setItem('my-storage', vm.showFlag);
 
 
     }
 
     vm.locationButton = function() {
 
-        vm.showLocationQuestions = true;
-        vm.showObjectQuestions = false;
-        vm.showPeopleQuestions = false;
-        vm.showSurroundingsQuestions = false;
-        vm.showMeasuresQuestions = false;
+
+        vm.showFlag = 3;
+        $window.localStorage && $window.localStorage.setItem('my-storage', vm.showFlag);
 
     }
 
     vm.surroundingsButton = function() {
 
-        vm.showObjectQuestions = false;
-        vm.showPeopleQuestions = false;
-        vm.showLocationQuestions = false;
-        vm.showSurroundingsQuestions = true;
-        vm.showMeasuresQuestions = false;
+
+        vm.showFlag = 4;
+        $window.localStorage && $window.localStorage.setItem('my-storage', vm.showFlag);
 
     }
     vm.measuresButton = function() {
 
-        vm.showObjectQuestions = false;
-        vm.showPeopleQuestions = false;
-        vm.showLocationQuestions = false;
-        vm.showSurroundingsQuestions = false;
-        vm.showMeasuresQuestions = true;
+
+        vm.showFlag = 5;
+        $window.localStorage && $window.localStorage.setItem('my-storage', vm.showFlag);
 
     }
 
-    // added to check user is logged in before adding a review
-    // code is the same as in  the login-controller.js controller
+
 
     vm.isLoggedIn = function() {
 
@@ -150,7 +154,6 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
         if(vm.today) {
             vm.session.timestamp = Date.now();
         }
-
 
 
         var postData = {
@@ -178,7 +181,7 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
 
 
                  //   $window.location.href = '#!/session/'+vm.session._id;
-                      $route.reload();
+                  //    $route.reload();
                 }
             })
                 .catch(function(error) {

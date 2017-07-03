@@ -8,3 +8,7 @@ margin-top: 5rem;
 .ui.segment:first-child {
 margin-top: 5rem;
 }
+
+.ui.raised.segment {
+margin-top: 0;
+}

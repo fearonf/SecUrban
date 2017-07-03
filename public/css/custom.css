@@ -27,3 +27,8 @@ body > .container {
     background-color: #f5f5f5;
     padding-top: 20px;
 }
+.ui.table {font-size: medium}
+
+
+.whiteback {background-color: white}
+.ui.raised.segment {margin-top:0}
