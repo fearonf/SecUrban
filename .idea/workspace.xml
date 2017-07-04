@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f1071429-9588-4bd1-8267-a5a064f1b53a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/controllers/sessions.controllers.js" afterPath="$PROJECT_DIR$/api/controllers/sessions.controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/angular-app/main/home.html" afterPath="$PROJECT_DIR$/public/angular-app/main/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/angular-app/main/main.html" afterPath="$PROJECT_DIR$/public/angular-app/main/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/angular-app/navigation-directive/navigation-directive.html" afterPath="$PROJECT_DIR$/public/angular-app/navigation-directive/navigation-directive.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/angular-app/register/register.html" afterPath="$PROJECT_DIR$/public/angular-app/register/register.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/angular-app/results/results-controller.js" afterPath="$PROJECT_DIR$/public/angular-app/results/results-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/angular-app/results/results.html" afterPath="$PROJECT_DIR$/public/angular-app/results/results.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/angular-app/session-display/session-display-controller.js" afterPath="$PROJECT_DIR$/public/angular-app/session-display/session-display-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/angular-app/session-display/session.html" afterPath="$PROJECT_DIR$/public/angular-app/session-display/session.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/angular-app/session-list/session-list-controller.js" afterPath="$PROJECT_DIR$/public/angular-app/session-list/session-list-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/custom.css" afterPath="$PROJECT_DIR$/public/css/custom.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/site/elements/segment.overrides" afterPath="$PROJECT_DIR$/public/src/site/elements/segment.overrides" />
-    </list>
+    <list default="true" id="f1071429-9588-4bd1-8267-a5a064f1b53a" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -94,8 +80,8 @@
       <file leaf-file-name="session.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/angular-app/session-display/session.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1778" column="32" lean-forward="true" selection-start-line="1778" selection-start-column="32" selection-end-line="1778" selection-end-column="32" />
+            <state relative-caret-position="442">
+              <caret line="1803" column="11" lean-forward="true" selection-start-line="1803" selection-start-column="11" selection-end-line="1803" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -906,12 +892,12 @@
       <workItem from="1498722821890" duration="5644000" />
       <workItem from="1498730771713" duration="6920000" />
       <workItem from="1498744700186" duration="9241000" />
-      <workItem from="1499068969706" duration="9557000" />
+      <workItem from="1499068969706" duration="10753000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="808610000" />
+    <option name="totallyTimeSpent" value="809806000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2019" y="42" width="1801" height="1027" extended-state="0" />
@@ -1315,8 +1301,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/angular-app/session-display/session.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1778" column="32" lean-forward="true" selection-start-line="1778" selection-start-column="32" selection-end-line="1778" selection-end-column="32" />
+        <state relative-caret-position="442">
+          <caret line="1803" column="11" lean-forward="true" selection-start-line="1803" selection-start-column="11" selection-end-line="1803" selection-end-column="11" />
           <folding />
         </state>
       </provider>
