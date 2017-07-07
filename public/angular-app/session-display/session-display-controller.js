@@ -10,7 +10,9 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
     console.log('start of session controller');
     var id = ($routeParams.id || null);
     vm.isSubmitted = false;
-    vm.choices = ["","Yes", "No"];
+   vm.choices = ["","Yes", "No"];
+
+
     vm.sometimes = ["","No","Sometimes","Frequently"];
     vm.choicesQ64 = ["","Typical for shed","Typical for '50s style residence","Typical for modern residence", "Typical for villas/offices","Typical for banks and high-risk offices"];
     vm.choicesQ65 = ["","No or minimal measures","Adequate measures"];
@@ -40,7 +42,7 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
     //choosing the 'information' icon during session entry and then returning to the screen to continue
 
     vm.showFlag = $window.localStorage && $window.localStorage.getItem('my-storage');
-    console.log("value of switch:" + vm.showFlag);
+
 
 
 
@@ -69,14 +71,19 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
 
         })
     } else {
+
+
         vm.session = {};
         vm.session.questions = [];
 
-
+        //initialise the answer to blank as otherwise will get double blank answer first time through for dropdown
          for(i = 0; i < 76; i++)
          {
-             vm.session.questions[i] = '';
+             //vm.session.questions[i] = '';
+             vm.session.questions[i] = {};
+             vm.session.questions[i].answer = "";
          }
+
 
 
 
@@ -93,8 +100,8 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
 
 //
     vm.objectButton = function() {
-    console.log ("objbuttonpressed");
 
+        //set which group of questions to show and save this in case of reentry, will return to same point
         vm.showFlag = 1;
          $window.localStorage && $window.localStorage.setItem('my-storage', vm.showFlag);
 
@@ -103,7 +110,6 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
 
     vm.peopleButton = function() {
 
-        console.log ("pplbuttonpressed");
 
         vm.showFlag = 2;
         $window.localStorage && $window.localStorage.setItem('my-storage', vm.showFlag);
@@ -149,85 +155,79 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
 
     vm.updateSession = function() {
 
-        console.log(vm.session.timestamp);
-        console.log(vm.timestamp);
-        if(vm.today) {
-            vm.session.timestamp = Date.now();
-        }
+        // check for these details here in case update is called from select field rather than update button
+        if (vm.session.name  && vm.session.objectDescription && vm.session.informationDescription) {
+
+            if (vm.today) {
+                vm.session.timestamp = Date.now();
+            }
 
 
-        var postData = {
-            userId: vm.loggedInUser,
-            name: vm.session.name,
+            var postData = {
+                userId: vm.loggedInUser,
+                name: vm.session.name,
 
 
-            objectDescription : vm.session.objectDescription,
-            informationDescription : vm.session.informationDescription,
-            timestamp: vm.session.timestamp,
+                objectDescription: vm.session.objectDescription,
+                informationDescription: vm.session.informationDescription,
+                timestamp: vm.session.timestamp,
 
 
-            questions: vm.session.questions
+                questions: vm.session.questions
 
-        };
-
-
-       // if(vm.addForm.$valid) {
-            if(id) {
-
-            sessionDataFactory.putSession(id,postData).then(function(response) {
-                console.log(response);
-                if (response.status === 204)
-                {
+            };
 
 
-                 //   $window.location.href = '#!/session/'+vm.session._id;
-                  //    $route.reload();
-                }
-            })
-                .catch(function(error) {
-                    console.log(error);
-                });
+            if (id) {
 
-        }
-        else {
-
-                sessionDataFactory.postNewSession(postData).then(function(response) {
+                sessionDataFactory.putSession(id, postData).then(function (response) {
                     console.log(response);
-                    console.log(response.data._id);
-                    if (response.status === 201)
-                    {
+                    if (response.status === 204) {
 
-                       // this works, but the back arrow gets confused...
-                   //     $window.location.href = '#!/session/'+response.data._id;
-                   //     $route.reload();
 
-                    // trying this to see if 'back' button will work by REPLACING the path in the history
-                        $location.path( '/session/'+response.data._id).replace();
+                        //   $window.location.href = '#!/session/'+vm.session._id;
+                        //    $route.reload();
                     }
                 })
-                    .catch(function(error) {
+                    .catch(function (error) {
                         console.log(error);
                     });
 
-           // vm.isSubmitted = true;
-           // console.log("invalid data");
-        }
+            }
+            else {
 
+                sessionDataFactory.postNewSession(postData).then(function (response) {
+                    console.log(response);
+                    console.log(response.data._id);
+                    if (response.status === 201) {
+
+                        // once you've posted a new session, re enter via the session/id path so further updates are 'put'
+                        //...rather than 'post'
+                        // 'back' button will work by REPLACING the path in the history
+                        $location.path('/session/' + response.data._id).replace();
+                    }
+                })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+
+
+            }
+
+        }
     };
 
     vm.deleteSession = function() {
 
-        console.log("about to delete the session");
-        console.log(id);
+
 
         sessionDataFactory.deleteSession(id).then(function(response) {
-            console.log(response);
+
             if (response.status === 204)
             {
-                //this works, but the back arrow gets confused .... trying replace() instead...seems better.
-              //  $window.location.href = '#!/sessions';
 
-              //   $route.reload();  // sessionid is no longer valid...load sessions list route instead
+
+                // sessionid is no longer valid...load sessions list route instead
                 $location.path( '/sessions').replace();
             }
         })
@@ -281,6 +281,13 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
             $location.path( '/results/'+ id);
 
 
+        }
+        else
+        {
+            $('#progressMessage')
+
+                .transition('fade')
+            ;
         }
 
 

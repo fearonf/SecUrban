@@ -47,8 +47,8 @@ function RegisterController($http,$route) {
                         //Create a new user in the secur database too, for user profile
 
                          $http.post('/api/users/register',user).then(function(result) {
-                             console.log("User profile added to secur database too")
-                             console.log(result);
+
+
                              vm.message='Registration successful';
 
 
@@ -68,6 +68,14 @@ function RegisterController($http,$route) {
                         vm.error = errorMessage;
                         vm.message='';
                         console.log(vm.error);
+                        $('#registerError')
+
+                            .transition('fade')
+                        ;
+
+
+
+
 
 
                     });

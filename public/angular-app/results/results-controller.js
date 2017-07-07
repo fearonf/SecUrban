@@ -57,6 +57,9 @@ function ResultsController($routeParams,sessionDataFactory,$window, jwtHelper) {
     var destructionByFanaticWeights = [1,1,1,1,1,1,1,-1,-1,-1];
 
     //calculate the maximum figure - the total of the questions with positive weights
+    //this is just the max positive number that a score can be... - this calculation of 'what is 100%' will change
+    // depending on last bit of algorithm.
+
     var max = 0;
     burglaryWeights.forEach(addToMax);
     burglaryMax = max;
@@ -162,8 +165,6 @@ function ResultsController($routeParams,sessionDataFactory,$window, jwtHelper) {
 
 
     var id = ($routeParams.id || null); // get id passed from session details screen.
-    console.log("This is the id received");
-    console.log(id);
 
 
      sessionDataFactory.sessionDisplay(id).then(function (response) {
@@ -204,12 +205,6 @@ function ResultsController($routeParams,sessionDataFactory,$window, jwtHelper) {
          vm.massKillingRelevantQuestions = massKillingRelevantQuestions;
          vm.destructionByRiotRelevantQuestions = destructionByRiotRelevantQuestions;
          vm.destructionByFanaticRelevantQuestions = destructionByFanaticRelevantQuestions;
-
-
-         //get the reference session back following call to an information link
-         //
-         // vm.compareSession = $window.localStorage && $window.localStorage.getItem('compare-session');
-         // console.log("value of compare session:" + vm.compareSession);
 
 
          vm.ChooseWhatToDo();
@@ -975,8 +970,7 @@ DrawGraph = function() {
 
 
     vm.ChooseWhatToDo = function() {
-        console.log("CHoosing which set of graphs to do now...");
-        console.log("vm.compareSession" + vm.compareSession);
+
         vm.showQuestionList = true;
         if(!vm.compareSession)
         {
@@ -987,14 +981,14 @@ DrawGraph = function() {
         }
         else
         {
-           // $window.localStorage && $window.localStorage.setItem('compare-session', vm.compareSession);
+
 
             vm.Graph();
         }
         vm.compareSession = "";
 
 
-       // $window.localStorage && $window.localStorage.setItem('compare-session', vm.compareSession);
+
 
     }
 

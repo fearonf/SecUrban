@@ -1,2 +1,37 @@
 
 
+
+
+
+
+
+
+<div class = "ui segment"></div>
+
+
+<div class="ui negative message" ng-show="vm.filledPercentage < 100" id="messagetoclose">
+    <i class="close icon"></i>
+    <div class="header">
+        Welcome back!
+    </div>
+    <p>This is a special notification which you can dismiss if you're bored with it.</p>
+</div>
+
+
+
+<button class="ui blue fluid session button" ng-click=" vm.objectButton() ">Show Results</button>
+
+
+
+
+<script>
+$('.message .close')
+.on('click', function() {
+$('#messagetoclose')
+
+.transition('fade')
+;
+})
+;
+
+</script>

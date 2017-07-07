@@ -5,7 +5,7 @@
 
 
     <div class="item">
-        <div class="ui black big left attached fixed button" ng-click="vm.objectButton()">Objects</div>
+        <div class="ui  big black left attached  fixed button" ng-click="vm.objectButton()">Objects</div>
     </div>
     <div class="item">
         <div class="ui black big left attached fixed button" ng-click="vm.peopleButton()">People</div>
@@ -19,6 +19,7 @@
     <div class="item">
         <div class="ui black big left attached fixed button" ng-click="vm.measuresButton()">Measures</div>
     </div>
+
 
 
 </div>
@@ -42,13 +43,27 @@
             <button class="ui blue fluid session button" ng-click="vm.verifyProgress()">Show Results</button>
 
 
-            <div class="ui negative message" ng-show="vm.filledPercentage < 100">
+            <!--<div class="ui negative message" ng-show="vm.filledPercentage < 100">-->
 
+                <!--<div class="header">-->
+                    <!--Please complete all the answers!-->
+                <!--</div>-->
+
+            <!--</div>-->
+
+            <div class="ui negative message" ng-show="vm.filledPercentage < 100" id="progressMessage">
+                <i class="close icon"></i>
                 <div class="header">
                     Please complete all the answers!
                 </div>
 
             </div>
+
+
+
+
+
+
         </div>
 
 
@@ -86,7 +101,8 @@
                     <div class="field">
                         <!-- 'session' in the class for form fields is related to the colour of the label only - this is set in src/site/elements/label.overrides -->
                         <div class="ui  pointing below session label">A.
-                            <div class="detail">Name of the Assessement</div>
+                            <div class="detail">Name of the Assessement&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Name_of_the_scenario" target="_blank" > <i class="whiteback medium info circle icon">
+                            </i></a></div>
                         </div>
                         <div class="field">
                             <div class="eight wide field">
@@ -101,7 +117,8 @@
                     <div class="field">
 
                         <div class="ui  pointing below session label">B.
-                            <div class="detail">Description of objects under consideration:</div>
+                                    <div class="detail">Description of objects under consideration:&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Objects_under_consideration" target="_blank" tabindex="-1"> <i class="whiteback medium info circle icon">
+                            </i></a></div>
                         </div>
                         <div class="field">
                             <div class="eight wide field">
@@ -115,7 +132,8 @@
                     <div class="field">
 
                         <div class="ui  pointing below session label">C.
-                            <div class="detail">Description of the information and versions used for the assessement:
+                            <div class="detail">Description of the information and versions used for the assessement:&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Versions_of_the_documents_used" target="_blank" tabindex="-1"> <i class="whiteback medium info circle icon">
+                            </i></a>
                             </div>
                         </div>
                         <div class="field">
@@ -137,7 +155,7 @@
 
                         <div class="inline field">
                             <div class="ui checkbox">
-                                <input type="checkbox" tabindex="0" ng-model="vm.today" ng-true-value="'true'">
+                                <input type="checkbox" tabindex="-1" ng-model="vm.today" ng-true-value="'true'">
                                 <label>Use current date/time?</label>
                             </div>
                         </div>
@@ -199,7 +217,7 @@
                     </div>
                     <div class="field" ng-if="vm.session.questions[0].answer=='Yes'">
                         <label class="ui label session">3.
-                            <div class="detail">Is there a concentration of residential dwellings? &nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Residential_concentration"> <i class="whiteback medium info circle icon">
+                            <div class="detail">Is there a concentration of residential dwellings? &nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Residential_concentration" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a> </div>
                         </label>
                         <div class="two fields">
@@ -236,7 +254,7 @@
                     </div>
                     <div class="field">
                         <label class="ui label session">5.
-                            <div class="detail">Are there shops (retail and commercial services? &nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Retail_and_commercial_services"> <i class="whiteback medium info circle icon">
+                            <div class="detail">Are there shops (retail and commercial services? &nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Retail_and_commercial_services" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a> </div>
                         </label>
                         <div class="two fields">
@@ -358,7 +376,7 @@
                     </div>
                     <div class="field" ng-if="vm.session.questions[9].answer=='Yes'">
                         <label class="ui label session">11.
-                            <div class="detail">Are these ATMs accessible by car ? &nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Car_access_to_ATMs"> <i class="whiteback medium info circle icon">
+                            <div class="detail">Are these ATMs accessible by car ? &nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Car_access_to_ATMs" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
 
@@ -399,7 +417,7 @@
                     <div class="field">
 
                         <label class="ui label session">13.
-                            <div class="detail">Are there many dispensaries of alcohol and/or recreationsl drugs?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Dispensaries_of_alcohol_or_drugs"> <i class="whiteback medium info circle icon">
+                            <div class="detail">Are there many dispensaries of alcohol and/or recreationsl drugs?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Dispensaries_of_alcohol_or_drugs" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a> </div>
                         </label>
                         <div class="two fields">
@@ -418,7 +436,7 @@
                     <div class="field">
 
                         <label class="ui label session">14.
-                            <div class="detail">Is there a concentration of bars and alcohol serving establishments? &nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Concentration_of_bars_and_alcohol_serving_estabishments"> <i class="whiteback medium info circle icon">
+                            <div class="detail">Is there a concentration of bars and alcohol serving establishments? &nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Concentration_of_bars_and_alcohol_serving_estabishments" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a>
                             </div>
                         </label>
@@ -440,7 +458,7 @@
 
                         <label class="ui label session">15.
                             <div class="detail">Do you expect crowds? (waiting lines, crowds of spectators, gatherings,
-                                etc.)&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Crowd"> <i class="whiteback medium info circle icon">
+                                etc.)&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Crowd" target="_blank"> <i class="whiteback medium info circle icon">
                                 </i></a>
                             </div>
                         </label>
@@ -462,7 +480,7 @@
 
                         <label class="ui label session ">16.
                             <div class="detail">Do you expect busy places? (markets, tourist attractions, station,
-                                shopping street)&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Busy_place"> <i class="whiteback medium info circle icon">
+                                shopping street)&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Busy_place" target="_blank"> <i class="whiteback medium info circle icon">
                                 </i></a>
                             </div>
                         </label>
@@ -527,7 +545,7 @@
 
                         <label class="ui label session">19.
                             <div class="detail">Are there many targets for vandalism ? (such as easily accessible and
-                                easily damaged public street furniture)&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Targets_for_vandalism"> <i class="whiteback medium info circle icon">
+                                easily damaged public street furniture)&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Targets_for_vandalism" target="_blank"> <i class="whiteback medium info circle icon">
                                 </i></a>
                             </div>
                         </label>
@@ -692,7 +710,7 @@
                     <div class="field">
 
                         <label class="ui label session">25.
-                            <div class="detail"> Is there an object with symbolic value?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Object_with_symbolic_value"> <i class="whiteback medium info circle icon">
+                            <div class="detail"> Is there an object with symbolic value?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Object_with_symbolic_value" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
 
@@ -713,7 +731,7 @@
 
                         <label class="ui label session">26.
                             <div class="detail"> Are there ideological / prominence values associated with the
-                                location?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Location_with_ideological_or_prominence_values"> <i class="whiteback medium info circle icon">
+                                location?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Location_with_ideological_or_prominence_values" target="_blank"> <i class="whiteback medium info circle icon">
                                 </i></a>
                             </div>
                         </label>
@@ -779,7 +797,7 @@
                     <div class="field">
                         <label class="ui label session">29.
                             <div class="detail"> Is the expected ethnic heterogenity of the inhabitants higher than
-                                average?  &nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Ethnic_heterogenity"> <i class="whiteback medium info circle icon">
+                                average?  &nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Ethnic_heterogenity" target="_blank"> <i class="whiteback medium info circle icon">
                                 </i></a>
                             </div>
                         </label>
@@ -848,7 +866,7 @@
                     <div class="field" ng-if="vm.session.questions[9].answer=='Yes'">
                         <label class="ui label session">32.
                             <div class="detail">Is the area located in a suburban area or close to an access route to
-                                the city/town ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Suburban_lie_or_proximity_to_access_route"> <i class="whiteback medium info circle icon">
+                                the city/town ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Suburban_lie_or_proximity_to_access_route" target="_blank"> <i class="whiteback medium info circle icon">
                                 </i></a>
                             </div>
                         </label>
@@ -890,7 +908,7 @@
                     </div>
                     <div class="field">
                         <label class="ui label session">34.
-                            <div class="detail">Are there multiple possible exits from the area ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Multiple_exits_to_an_area"> <i class="whiteback medium info circle icon">
+                            <div class="detail">Are there multiple possible exits from the area ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Multiple_exits_to_an_area" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -931,7 +949,7 @@
                         <label class="ui label session">36.
                             <div class="detail">Are there locations that are particularly suited to commit robbery ?
                                 i.e. locations with the following
-                                characteristics:&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Locations_suited_to_commit_robbery"> <i class="whiteback medium info circle icon">
+                                characteristics:&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Locations_suited_to_commit_robbery" target="_blank"> <i class="whiteback medium info circle icon">
                                 </i></a>
                             </div>
                         </label>
@@ -1009,7 +1027,7 @@
                     <div class="field" ng-if="vm.session.questions[0].answer=='Yes'">
                         <label class="ui label session">39.
                             <div class="detail">Is there an increased level of burglary within 4 kilometres of the
-                                object ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Burglary"> <i class="whiteback medium info circle icon">
+                                object ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Burglary" target="_blank"> <i class="whiteback medium info circle icon">
                                 </i></a>
                             </div>
                         </label>
@@ -1033,7 +1051,7 @@
                     <div class="field" ng-if="vm.session.questions[9].answer=='Yes'">
 
                         <label class="ui label session">40.
-                            <div class="detail">Is there an increased level of ram-raiding within 5km ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Ram_raid"> <i class="whiteback medium info circle icon">
+                            <div class="detail">Is there an increased level of ram-raiding within 5km ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Ram_raid" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1055,7 +1073,7 @@
                     <div class="field">
 
                         <label class="ui label session">41.
-                            <div class="detail">Is there an increased level of pickpocketing within 5km ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Pickpocketing"> <i class="whiteback medium info circle icon">
+                            <div class="detail">Is there an increased level of pickpocketing within 5km ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Pickpocketing" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1076,7 +1094,7 @@
                     <div class="field">
 
                         <label class="ui label session">42.
-                            <div class="detail">Is there an increased level of robbery within 4km ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Robbery"> <i class="whiteback medium info circle icon">
+                            <div class="detail">Is there an increased level of robbery within 4km ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Robbery" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1097,7 +1115,7 @@
                     <div class="field">
 
                         <label class="ui label session">43.
-                            <div class="detail">Is there an increased level of vehicle theft within 5km ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Vehicle_theft"> <i class="whiteback medium info circle icon">
+                            <div class="detail">Is there an increased level of vehicle theft within 5km ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Vehicle_theft" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1118,7 +1136,7 @@
                     <div class="field">
 
                         <label class="ui label session">44.
-                            <div class="detail">Is there an increased level of physical assault within 2km ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Assault"> <i class="whiteback medium info circle icon">
+                            <div class="detail">Is there an increased level of physical assault within 2km ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Assault" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1139,7 +1157,7 @@
                     <div class="field">
 
                         <label class="ui label session">45.
-                            <div class="detail">Is there an increased level of sexual assault within 2km ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Sexual_assault"> <i class="whiteback medium info circle icon">
+                            <div class="detail">Is there an increased level of sexual assault within 2km ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Sexual_assault" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1160,7 +1178,7 @@
                     <div class="field">
 
                         <label class="ui label session">46.
-                            <div class="detail">Is there an increased level of vandalism within 2km of the object?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Vandalism"> <i class="whiteback medium info circle icon">
+                            <div class="detail">Is there an increased level of vandalism within 2km of the object?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Vandalism" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1204,7 +1222,7 @@
 
                         <label class="ui label session">48.
                             <div class="detail">Is there an increased level of graffiti offences within 2km of the
-                                object?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Graffiti"> <i class="whiteback medium info circle icon">
+                                object?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Graffiti" target="_blank"> <i class="whiteback medium info circle icon">
                                 </i></a>
                             </div>
                         </label>
@@ -1227,7 +1245,7 @@
 
                         <label class="ui label session">49.
                             <div class="detail">Is there an increased level of raiding (robbery of commercial venues)
-                                within 4km ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Raid"> <i class="whiteback medium info circle icon">
+                                within 4km ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Raid" target="_blank"> <i class="whiteback medium info circle icon">
                                 </i></a>
                             </div>
                         </label>
@@ -1250,7 +1268,7 @@
 
                         <label class="ui label session">50.
                             <div class="detail">Are there safety threats to the objects that could be misused by
-                                fanatics? (natural or technical threats)&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Safety"> <i class="whiteback medium info circle icon">
+                                fanatics? (natural or technical threats)&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Safety" target="_blank"> <i class="whiteback medium info circle icon">
                                 </i></a>
                             </div>
                         </label>
@@ -1285,7 +1303,7 @@
 
                     <div class=" ui raised segment">  <!-- group questions 51 to 56  -->
                         <h4>Is there an adequate level (regarding quality and time coverage) of surveillance (either
-                            natural or by dedicated observers)? &nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Measure:_Surveillance"> <i class="whiteback medium info circle icon">
+                            natural or by dedicated observers)? &nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Measure:_Surveillance" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></h4>
 
 
@@ -1524,7 +1542,7 @@
                     <div class="field">
                         <label class="ui label session">62.
                             <div class="detail">Is there an adequate distinction between public, semi-private/communal
-                                and private space (also called 'ownership') ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Measure:_Ownership"> <i class="whiteback medium info circle icon">
+                                and private space (also called 'ownership') ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Measure:_Ownership" target="_blank"> <i class="whiteback medium info circle icon">
                                 </i></a>
                             </div>
                         </label>
@@ -1545,7 +1563,7 @@
                     </div>
                     <div class="field">
                         <label class="ui label session">63.
-                            <div class="detail">Is the public space designed for easy maintenance ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Measure:_Maintenance"> <i class="whiteback medium info circle icon">
+                            <div class="detail">Is the public space designed for easy maintenance ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Measure:_Maintenance" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1565,7 +1583,7 @@
                     </div>
                     <div class="field" ng-if="vm.session.questions[0].answer=='Yes'">
                         <label class="ui label session">64.
-                            <div class="detail">What is your protection level against Burglary ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_burglary"> <i class="whiteback medium info circle icon">
+                            <div class="detail">What is your protection level against Burglary ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_burglary" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1585,7 +1603,7 @@
                     </div>
                     <div class="field" ng-if="vm.session.questions[9].answer=='Yes'">
                         <label class="ui label session">65.
-                            <div class="detail">What is your protection level against Ram Raid ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_ram_raid"> <i class="whiteback medium info circle icon">
+                            <div class="detail">What is your protection level against Ram Raid ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_ram_raid" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1605,7 +1623,7 @@
                     </div>
                     <div class="field">
                         <label class="ui label session">66.
-                            <div class="detail">What is your protection level against Pickpocketing ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_pickpocketing"> <i class="whiteback medium info circle icon">
+                            <div class="detail">What is your protection level against Pickpocketing ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_pickpocketing" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1625,7 +1643,7 @@
                     </div>
                     <div class="field">
                         <label class="ui label session">67.
-                            <div class="detail">What is your protection level against Robbery ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_robbery"> <i class="whiteback medium info circle icon">
+                            <div class="detail">What is your protection level against Robbery ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_robbery" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1645,7 +1663,7 @@
                     </div>
                     <div class="field">
                         <label class="ui label session">68.
-                            <div class="detail">What is your protection level against Vehicle Theft ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_vehicle_theft"> <i class="whiteback medium info circle icon">
+                            <div class="detail">What is your protection level against Vehicle Theft ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_vehicle_theft" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1667,7 +1685,7 @@
                     <div class="field">
 
                         <label class="ui label session">69.
-                            <div class="detail">What is your protection against Assault?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_assault"> <i class="whiteback medium info circle icon">
+                            <div class="detail">What is your protection against Assault?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_assault" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1688,7 +1706,7 @@
                     <div class="field">
 
                         <label class="ui label session">70.
-                            <div class="detail">What is your protection against Sexual Assault?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_sexual_assault"> <i class="whiteback medium info circle icon">
+                            <div class="detail">What is your protection against Sexual Assault?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_sexual_assault" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1711,7 +1729,7 @@
                     <div class="field">
 
                         <label class="ui label session">71.
-                            <div class="detail">What is your protection against Vandalism?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_vandalism"> <i class="whiteback medium info circle icon">
+                            <div class="detail">What is your protection against Vandalism?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_vandalism" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1732,7 +1750,7 @@
                     <div class="field">
 
                         <label class="ui label session">72.
-                            <div class="detail">What is your protection against Destruction by Riot ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_destruction_by_riots"> <i class="whiteback medium info circle icon">
+                            <div class="detail">What is your protection against Destruction by Riot ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_destruction_by_riots" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1753,7 +1771,7 @@
                     <div class="field">
 
                         <label class="ui label session">73.
-                            <div class="detail">What is your protection against Destruction by Fanatics ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_destruction_by_fanatics"> <i class="whiteback medium info circle icon">
+                            <div class="detail">What is your protection against Destruction by Fanatics ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_destruction_by_fanatics" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1774,7 +1792,7 @@
                     <div class="field">
 
                         <label class="ui label session">74.
-                            <div class="detail">What is your protection against Graffiti ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_graffiti"> <i class="whiteback medium info circle icon">
+                            <div class="detail">What is your protection against Graffiti ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_graffiti" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1795,7 +1813,7 @@
                     <div class="field">
 
                         <label class="ui label session">75.
-                            <div class="detail">What is your protection against Mass Killing ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_mass_killing"> <i class="whiteback medium info circle icon">
+                            <div class="detail">What is your protection against Mass Killing ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_mass_killing" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1816,7 +1834,7 @@
                     <div class="field" ng-if="vm.session.questions[4].answer=='Yes'">
 
                         <label class="ui label session">76.
-                            <div class="detail">What is your protection against Raid ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_raid"> <i class="whiteback medium info circle icon">
+                            <div class="detail">What is your protection against Raid ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_raid" target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1840,12 +1858,12 @@
 
                 <div class="ui hidden divider"></div>
 
-                <!-- Not required -updating as answers are entered...only show this extra update button if any of the detailed questions are on view -->
 
-                <!--<div ng-show="vm.showObjectQuestions || vm.showPeopleQuestions || vm.showLocationQuestions || vm.showSurroundingsQuestions || vm.showMeasuresQuestions">-->
+                <!--... This is an extra update button which is an alternative to updating on each input    -->
+                <!-- all set up to update from here , just uncomment the next line...  -->
 
-                    <!--<button type="submit" class="ui  blue  session   button">Update Assessement</button>-->
-                <!--</div>-->
+               <!--     <button type="submit" class="ui  blue  session   button">Update Assessement</button>  -->
+
 
             </form>
 
@@ -1853,10 +1871,16 @@
             <h3>Delete Assessement</h3>
 
 
-            <form class="ui form" name="vm.delForm" id="deleteForm">
+            <form class="ui form" name="vm.delForm" id="deleteForm"  >
 
-                <div class="ui small modal" id="deleteOrNot">
+
+
+                <div  class="ui small modal" id="deleteOrNot"   >
                     <i class="close icon"></i>
+
+                    <div class = "ui hidden divider"></div>
+                    <div class = "ui hidden divider"></div>
+                    <div class = "ui hidden divider"></div>
 
                     <div class="ui header">Delete the Assessement?</div>
                     <ng-form class="ui form" name="vm.modalForm" ng-submit="vm.deleteSession()"
@@ -1887,6 +1911,7 @@
 
     </div>
 </div>
+
 
 
 <script>
@@ -1999,8 +2024,17 @@
 
 
 
+<script>
+    $('.message .close')
+        .on('click', function() {
+            $('#progressMessage')
 
+                .transition('fade')
+            ;
+        })
+    ;
 
+</script>
 
 
 

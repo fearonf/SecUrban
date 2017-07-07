@@ -12,8 +12,8 @@
 
      <h1>Register</h1>
 
-     <div ng-show="vm.error" class="ui negative message">
-
+     <div ng-show="vm.error" class="ui negative message" id="registerError">
+         <i class="close icon"></i>
          <div class="header">
               {{vm.error}}
          </div>
@@ -75,7 +75,7 @@
 
 
 
-    <!-- <button  class="ui   button " onclick="actualRegister()"  >Register</button> -->
+
      <button  class="ui   button "   >Register</button>
 
 
@@ -93,21 +93,12 @@
 
 
 <script>
-   /* var actualRegister = function() {
-        window.console.log("register button clicked");  */
+
 
         $('#register').form({
 
             on: 'blur',
             inline: 'true',
-
-
-            onSuccess: function () {
-                //submit the form here NO its submitted on click when formis $valid and $dirty
-
-
-            },
-
 
             fields: {
 
