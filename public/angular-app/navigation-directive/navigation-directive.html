@@ -1,8 +1,7 @@
 <!-- Note ** the controller for this html page is declared here.....login-controller.js ***  -->
 
-<!--<nav ng-controller="LoginController as vm" class="navbar navbar-default navbar-fixed-top" ng-init="vm.init()"> -->
 
-    <nav ng-controller="LoginController as vm" class="ui top fixed menu" ng-init="vm.init()">
+<nav ng-controller="LoginController as vm" class="ui top fixed menu" ng-init="vm.init()">
 
 
     <div class="ui fixed inverted menu">
@@ -12,129 +11,111 @@
                 SecUrban
             </a>
 
-            <a ng-class = "vm.isActiveTab('')" class="active item" href="#!/home">Home</a>
-            <a ng-if="vm.isLoggedIn()" class = "item" ng-class = "vm.isActiveTab('profile')" href="#!/profile" >
+            <a ng-class="vm.isActiveTab('')" class="active item" href="#!/home">Home</a>
+            <a ng-if="vm.isLoggedIn()" class="item" ng-class="vm.isActiveTab('profile')" href="#!/profile">
                 Profile
             </a>
-            <a ng-if="vm.isLoggedIn()"  class="item" ng-class = "vm.isActiveTab('register')" href="#!/register" >
+            <a ng-if="vm.isLoggedIn()" class="item" ng-class="vm.isActiveTab('register')" href="#!/register">
                 Register
             </a>
-            <a class="item"  ng-if ="vm.isLoggedIn() && vm.loggedInUser == 'future@gmail.com'" href="#!/admin" >
+            <a class="item" ng-if="vm.isLoggedIn() && vm.loggedInUser == 'future@gmail.com'" href="#!/admin">
                 Admin
             </a>
             <div ng-if="vm.isLoggedIn()" class="ui simple dropdown item">
-                Assessements <i class="dropdown icon" ></i>
+                Assessements <i class="dropdown icon"></i>
                 <div class="menu">
-                    <a class="item" ng-class = "vm.isActiveTab('sessions')"href="#!/sessions">All Assessements</a>
+                    <a class="item" ng-class="vm.isActiveTab('sessions')" href="#!/sessions">All Assessements</a>
                     <a class="item" href="#!/session">New Assessement</a>
-                    <div class="divider"></div>
-                    <div class="header">Header Item</div>
-                    <div class="item">
-                        <i class="dropdown icon"></i>
-                        Sub Menu
-                        <div class="menu">
-                            <a class="item" href="#!/sessions">All Sessions</a>
-                            <a class="item" href="#">Home</a>
-                        </div>
-                    </div>
-                    <a class="item" href="#">Link Item</a>
+
                 </div>
             </div>
         </div>
         <div class="right menu">
 
 
+            <button ng-if="!vm.isLoggedIn()" class="small black ui button " id="Login" onclick="Login()">Login</button>
 
-            <button ng-if="!vm.isLoggedIn()" class="small black ui button " id ="Login" onclick="Login()">Login</button>
-
-                 <button ng-if="vm.isLoggedIn()"  class="  small black ui button"  ng-if = "vm.isLoggedIn()" ng-click="vm.logout()" id="logoutButton">Logout</button>
+            <button ng-if="vm.isLoggedIn()" class="  small black ui button" ng-if="vm.isLoggedIn()"
+                    ng-click="vm.logout()" id="logoutButton">Logout
+            </button>
 
         </div>
     </div>
 
 
+    <div class="ui modal">
+        <i class="close icon"></i>
 
-<div class="ui modal">
-    <i class="close icon"></i>
 
+        <div class="header">
+            Login
+        </div>
+        <div class=content">
 
-    <div class="header">
-        Login
-    </div>
-    <div class = content">
-
-        <div class="ui middle aligned center aligned grid">
-            <div class="column">
-                <h2 class="ui teal image header">
-                    <img src="../../images/logo3.jpg" class="image">
-                    <div class="content">
-                        Login to your account
-                    </div>
-                </h2>
-                <form class="ui form" name="loginForm" id="loginForm" novalidate ng-submit="loginForm.$valid && loginForm.$dirty && vm.login()" >
-                    <div class="ui stacked segment">
-                        <div class="field">
-                            <div class="ui left icon input">
-                                <i class="user icon"></i>
-                                <input type="email" name="email" placeholder="E-mail address"ng-model="vm.username" required id="email">
-                            </div>
+            <div class="ui middle aligned center aligned grid">
+                <div class="column">
+                    <h2 class="ui teal image header">
+                        <img src="../../images/logo3.jpg" class="image">
+                        <div class="content">
+                            Login to your account
                         </div>
-                        <div class="field">
-                            <div class="ui left icon input">
-                                <i class="lock icon"></i>
-                                <input type="password" name="password" placeholder="Password" ng-model="vm.password" required ng-minlength="6">
+                    </h2>
+                    <form class="ui form" name="loginForm" id="loginForm" novalidate
+                          ng-submit="loginForm.$valid && loginForm.$dirty && vm.login()">
+                        <div class="ui stacked segment">
+                            <div class="field">
+                                <div class="ui left icon input">
+                                    <i class="user icon"></i>
+                                    <input type="email" name="email" placeholder="E-mail address" ng-model="vm.username"
+                                           required id="email">
+                                </div>
                             </div>
+                            <div class="field">
+                                <div class="ui left icon input">
+                                    <i class="lock icon"></i>
+                                    <input type="password" name="password" placeholder="Password" ng-model="vm.password"
+                                           required ng-minlength="6">
+                                </div>
+                            </div>
+                            <button class="ui   fluid large teal  button">Login</button>
+
                         </div>
-                        <button class="ui   fluid large teal  button"    >Login</button>
+
+                        <div class="ui error message"></div>
+
+                    </form>
+
+
+                    <div ng-show="vm.error && loginForm.$dirty " class="ui negative message">
+                        <i class="close icon"></i>
+                        <div class="header" id="errorMessage">
+                            {{vm.error}}
+                        </div>
 
                     </div>
+                    <div ng-show="vm.message" class="ui positive message">
+                        <i class="close icon"></i>
+                        <div class="header">
+                            {{vm.message}}
 
-                    <div class="ui error message"></div>
-
-                </form>
-
-
-                <div ng-show="vm.error && loginForm.$dirty " class="ui negative message" >
-                    <i class="close icon"></i>
-                    <div class="header" id="errorMessage">
-                        {{vm.error}}
-                    </div>
-
-                </div>
-                <div ng-show="vm.message" class="ui positive message">
-                    <i class="close icon"></i>
-                    <div class="header">
-                        {{vm.message}}
+                        </div>
 
                     </div>
-
                 </div>
             </div>
         </div>
-    </div>
 
-</div>
+    </div>
 
 
 </nav>
 
 
-
 <script>
     function Login() {
-     //   alert("in login function");
-     //   $('.ui.form')
-     //       .form('reset');  // This (or the clear either) just clears form fields, doesn't reset $dirty or $valid or 'vm.'..values
-      //  $('.ui.negative.message').empty();   shows up empty from now on ...even when error exists...
-
-      //  $('#errorMessage').text("");    //doesn't show up at all when use hide()..(even when set later)
-
 
         $('.ui.modal')
-            .modal({
-
-
-            }).modal('show');
+            .modal({}).modal('show');
 
 
     }
@@ -143,12 +124,10 @@
 </script>
 
 
-
-
 <script>
     $('.ui.form')
         .form({
-            on:blur,
+            on: blur,
             inline: 'true',
             fields: {
 
@@ -177,14 +156,12 @@
         })
 
 
-
-
 </script>
 
 <script>
     //This close does not work if the message contains an "ng-if="vm.message"" statement
     $('.message .close')
-        .on('click', function() {
+        .on('click', function () {
             $(this)
                 .closest('.message')
                 .transition('fade')

@@ -1,29 +1,27 @@
-
-<div class ="ui grid">
+<div class="ui grid">
     <div class="four wide column">
     </div>
     <div class="eight wide column">
 
 
+        <!-- ng-submit  here submits automatically when button is clicked, before validation is done ....
+        ...but have to have the 'vm.register()' here, or it won't call 'vm.register()' on successful form.... -->
+        <form class="ui form segment" name="register" novalidate
+              ng-submit="register.$valid && register.$dirty && vm.register()" id="register">
 
-<!-- ng-submit  here submits automatically when button is clicked, before validation is done ....
-...but have to have the 'vm.register()' here, or it won't call 'vm.register()' on successful form.... -->
- <form class="ui form segment" name="register" novalidate ng-submit="register.$valid && register.$dirty && vm.register()" id = "register" >
+            <h1>Register</h1>
 
-     <h1>Register</h1>
-
-     <div ng-show="vm.error" class="ui negative message" id="registerError">
-         <i class="close icon"></i>
-         <div class="header">
-              {{vm.error}}
-         </div>
-
-     </div>
-
-
-
-            <div ng-show="vm.message" class="ui success message">
+            <div ng-show="vm.error" class="ui negative message" id="registerError">
                 <i class="close icon"></i>
+                <div class="header">
+                    {{vm.error}}
+                </div>
+
+            </div>
+
+
+            <div ng-show="vm.message" class="ui success message" id="successMessage">
+
                 <div class="header">Your user registration was successful.</div>
                 <p>You may now log-in with the username you have chosen</p>
 
@@ -31,128 +29,121 @@
             </div>
 
 
-    <h4 class="ui dividing header">Please enter your details: </h4>
-    <div class="required field ">
-        <label>Email address</label>
+            <h4 class="ui dividing header">Please enter your details: </h4>
+            <div class="required field ">
+                <label>Email address</label>
 
-            <div class="field">
-                <input type="email" name="username" placeholder="Email address" ng-model="vm.username" required>
+                <div class="field">
+                    <input type="email" name="username" placeholder="Email address" ng-model="vm.username" required>
+                </div>
+
             </div>
 
-        </div>
+            <div class="required field">
+                <label>Password</label>
+                <div class="two fields">
+                    <div class="field">
+                        <input type="password" name="password" id="password" placeholder="Password"
+                               ng-model="vm.password" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" name="repeatPassword" placeholder="Repeat Password"
+                               ng-model="vm.passwordRepeat" required>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label>Full Name</label>
+                <div class="field">
+                    <div class="sixteen wide field">
+                        <input type="text" name="name" placeholder="Name" ng-model="vm.name" autocapitalize="none">
+                    </div>
 
-    <div class="required field">
-        <label>Password</label>
-        <div class="two fields">
-            <div class="field">
-                <input type="password" name="password" id="password" placeholder="Password" ng-model="vm.password"  required>
+                </div>
             </div>
-            <div class="field">
-                <input type="password" name="repeatPassword" placeholder="Repeat Password" ng-model="vm.passwordRepeat" required >
+
+            <div class="required four wide field">
+                <label>Company</label>
+                <select class="ui fluid dropdown" ng-model="vm.company" name="company" required>
+                    <option value="">Company</option>
+                    <option value="Belvedere">Belvedere</option>
+                    <option value="Dublin City Council">Dublin County Council</option>
+                    <option value="Future Analytics">Future Analytics</option>
+
+                </select>
             </div>
-        </div>
+
+
+            <button class="ui   button ">Register</button>
+
+
+        </form>
+
+
     </div>
-    <div class="field">
-        <label>Full Name</label>
-        <div class="field">
-            <div class="sixteen wide field">
-                <input type="text" name="name" placeholder="Name"ng-model="vm.name" autocapitalize="none">
-            </div>
-
-        </div>
-    </div>
-
-        <div class="required four wide field">
-            <label>Company</label>
-            <select class="ui fluid dropdown" ng-model="vm.company" name="company" required >
-                <option value="">Company</option>
-                <option value="Belvedere">Belvedere</option>
-                <option value="Dublin City">Dublin County Council</option>
-                <option value="Future Analytics">Future Analytics</option>
-
-            </select>
-        </div>
-
-
-
-
-     <button  class="ui   button "   >Register</button>
-
-
-</form>
-
-
 </div>
-</div>
-
-
-
-
-
-
 
 
 <script>
 
 
-        $('#register').form({
+    $('#register').form({
 
-            on: 'blur',
-            inline: 'true',
+        on: 'blur',
+        inline: 'true',
 
-            fields: {
+        fields: {
 
 
-                username: {
+            username: {
 
-                    rules: [{
-                        type: 'empty',
-                        prompt: 'Please enter your email'
-                    }, {
-                        type: 'email',
-                        prompt: 'Please enter a valid email'
-                    }]
-                },
-                password: {
+                rules: [{
+                    type: 'empty',
+                    prompt: 'Please enter your email'
+                }, {
+                    type: 'email',
+                    prompt: 'Please enter a valid email'
+                }]
+            },
+            password: {
 
-                    rules: [{
-                        type: 'empty',
-                        prompt: 'Please enter a password'
-                    }, {
-                        type: 'length[6]',
-                        prompt: 'Password needs to be atleast 6 characters long'
-                    }]
-                },
-                repeatPassword: {
+                rules: [{
+                    type: 'empty',
+                    prompt: 'Please enter a password'
+                }, {
+                    type: 'length[6]',
+                    prompt: 'Password needs to be atleast 6 characters long'
+                }]
+            },
+            repeatPassword: {
 
-                    rules: [{
+                rules: [{
 
-                        type: 'match[password]',
-                        prompt: 'Passwords don\'t match'
-                    }]
-                },
-                company: {
+                    type: 'match[password]',
+                    prompt: 'Passwords don\'t match'
+                }]
+            },
+            company: {
 
-                    rules: [{
-                        type: 'empty',
-                        prompt: 'Please select a company'
-                    }]
-                }
+                rules: [{
+                    type: 'empty',
+                    prompt: 'Please select a company'
+                }]
             }
-        })
- //   }
+        }
+    })
+    //   }
 
 </script>
-
 
 
 <script>
     //This close does not work if the message contains an "ng-if="vm.message"" statement
     $('.message .close')
-        .on('click', function() {
+        .on('click', function () {
             $(this)
                 .closest('.message')
-                .transition('fade')
+                .transition('toggle')
             ;
         })
     ;

@@ -38,8 +38,8 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
     vm.filledPercentage = 100;
 
 
-//get the survey 'section of the questions' that was displayed before now....this is to cope with
-    //choosing the 'information' icon during session entry and then returning to the screen to continue
+//get the survey 'section of the questions' that was displayed before now....this is to return to the same part
+    // of the assesement when leave the screen (useful for next/prev buttons later )
 
     vm.showFlag = $window.localStorage && $window.localStorage.getItem('my-storage');
 
@@ -79,7 +79,7 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
         //initialise the answer to blank as otherwise will get double blank answer first time through for dropdown
          for(i = 0; i < 76; i++)
          {
-             //vm.session.questions[i] = '';
+
              vm.session.questions[i] = {};
              vm.session.questions[i].answer = "";
          }
@@ -177,6 +177,8 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
 
             };
 
+                    // if id is present this is not a new assessement so use put to update
+                    // if no id, this is a new assessement, create using  post
 
             if (id) {
 
@@ -272,9 +274,7 @@ function SessionController($route,$routeParams,sessionDataFactory, AuthFactory,j
 
         $('#progressBar')
             .progress('set percent',filledPercentage);
-        // .progress('set progress',inputsWithValue);
-        console.log("In verify progress");
-        console.log("filled percent is : " + filledPercentage);
+
         vm.filledPercentage = filledPercentage;
         if (vm.filledPercentage == 100)
         {

@@ -1,6 +1,3 @@
-
-
-
 <div class="ui left  visible sidebar inverted vertical menu">
 
 
@@ -19,7 +16,6 @@
     <div class="item">
         <div class="ui black big left attached fixed button" ng-click="vm.measuresButton()">Measures</div>
     </div>
-
 
 
 </div>
@@ -43,14 +39,6 @@
             <button class="ui blue fluid session button" ng-click="vm.verifyProgress()">Show Results</button>
 
 
-            <!--<div class="ui negative message" ng-show="vm.filledPercentage < 100">-->
-
-                <!--<div class="header">-->
-                    <!--Please complete all the answers!-->
-                <!--</div>-->
-
-            <!--</div>-->
-
             <div class="ui negative message" ng-show="vm.filledPercentage < 100" id="progressMessage">
                 <i class="close icon"></i>
                 <div class="header">
@@ -60,15 +48,10 @@
             </div>
 
 
-
-
-
-
         </div>
 
 
     </div>
-
 
 
 </div>
@@ -101,7 +84,9 @@
                     <div class="field">
                         <!-- 'session' in the class for form fields is related to the colour of the label only - this is set in src/site/elements/label.overrides -->
                         <div class="ui  pointing below session label">A.
-                            <div class="detail">Name of the Assessement&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Name_of_the_scenario" target="_blank" > <i class="whiteback medium info circle icon">
+                            <div class="detail">Name of the Assessement&nbsp&nbsp <a
+                                    href="http://securipedia.eu/mediawiki/index.php/Name_of_the_scenario"
+                                    target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </div>
                         <div class="field">
@@ -117,7 +102,9 @@
                     <div class="field">
 
                         <div class="ui  pointing below session label">B.
-                                    <div class="detail">Description of objects under consideration:&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Objects_under_consideration" target="_blank" tabindex="-1"> <i class="whiteback medium info circle icon">
+                            <div class="detail">Description of objects under consideration:&nbsp&nbsp <a
+                                    href="http://securipedia.eu/mediawiki/index.php/Objects_under_consideration"
+                                    target="_blank" tabindex="-1"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </div>
                         <div class="field">
@@ -132,8 +119,11 @@
                     <div class="field">
 
                         <div class="ui  pointing below session label">C.
-                            <div class="detail">Description of the information and versions used for the assessement:&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Versions_of_the_documents_used" target="_blank" tabindex="-1"> <i class="whiteback medium info circle icon">
-                            </i></a>
+                            <div class="detail">Description of the information and versions used for the
+                                assessement:&nbsp&nbsp <a
+                                        href="http://securipedia.eu/mediawiki/index.php/Versions_of_the_documents_used"
+                                        target="_blank" tabindex="-1"> <i class="whiteback medium info circle icon">
+                                </i></a>
                             </div>
                         </div>
                         <div class="field">
@@ -167,7 +157,7 @@
                 <div class="ui section divider"></div>
 
 
-                    <div ng-show="vm.showFlag == '1'">
+                <div ng-show="vm.showFlag == '1'">
 
 
                     <h2 class="ui header"> Questions about assessed area:</h2>
@@ -177,17 +167,18 @@
                     <div class="field">
 
                         <label class="ui label session">1.
-                            <div class="detail" >
+                            <div class="detail">
 
                                 Are there residences?
-                               </div>
+                            </div>
 
                         </label>
                         <div class="two fields">
 
                             <div class="four wide field">
                                 <select name="objectQuestions.answer1" ng-model="vm.session.questions[0].answer"
-                                        ng-options="x for x in vm.choices" ng-change = "vm.updateSession()" onclick="checkProgress()" > </select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"> </select>
                             </div>
 
                             <div class="twelve wide field">
@@ -200,13 +191,14 @@
 
                     <div class="field" ng-if="vm.session.questions[0].answer=='Yes'">
                         <label class="ui   label session"> 2.
-                            <div class="detail"> Are more than 10% of the residences single family detached homes? </div>
+                            <div class="detail"> Are more than 10% of the residences single family detached homes?</div>
                         </label>
                         <div class="two fields">
 
                             <div class="four wide field">
                                 <select name="objectQuestions.answer2" ng-model="vm.session.questions[1].answer"
-                                        ng-options="x for x in vm.choices" ng-change = "vm.updateSession()" onclick="checkProgress()"> </select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"> </select>
                             </div>
 
                             <div class="twelve wide field">
@@ -217,14 +209,17 @@
                     </div>
                     <div class="field" ng-if="vm.session.questions[0].answer=='Yes'">
                         <label class="ui label session">3.
-                            <div class="detail">Is there a concentration of residential dwellings? &nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Residential_concentration" target="_blank"> <i class="whiteback medium info circle icon">
-                            </i></a> </div>
+                            <div class="detail">Is there a concentration of residential dwellings? &nbsp&nbsp <a
+                                    href="http://securipedia.eu/mediawiki/index.php/Residential_concentration"
+                                    target="_blank"> <i class="whiteback medium info circle icon">
+                            </i></a></div>
                         </label>
                         <div class="two fields">
 
                             <div class="four wide field">
                                 <select name="objectQuestions.answer3" ng-model="vm.session.questions[2].answer"
-                                        ng-options="x for x in vm.choices" ng-change = "vm.updateSession()" onclick="checkProgress()"> </select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"> </select>
                             </div>
 
                             <div class="twelve wide field">
@@ -243,7 +238,8 @@
 
                             <div class="four wide field">
                                 <select name="objectQuestions.answer4" ng-model="vm.session.questions[3].answer"
-                                        ng-options="x for x in vm.choices" ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -254,14 +250,17 @@
                     </div>
                     <div class="field">
                         <label class="ui label session">5.
-                            <div class="detail">Are there shops (retail and commercial services? &nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Retail_and_commercial_services" target="_blank"> <i class="whiteback medium info circle icon">
-                            </i></a> </div>
+                            <div class="detail">Are there shops (retail and commercial services? &nbsp&nbsp <a
+                                    href="http://securipedia.eu/mediawiki/index.php/Retail_and_commercial_services"
+                                    target="_blank"> <i class="whiteback medium info circle icon">
+                            </i></a></div>
                         </label>
                         <div class="two fields">
 
                             <div class="four wide field">
                                 <select name="objectQuestions.answer5" ng-model="vm.session.questions[4].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -279,7 +278,8 @@
 
                             <div class="four wide field">
                                 <select name="objectQuestions.answer6" ng-model="vm.session.questions[5].answer"
-                                        ng-options="x for x in vm.choices"   ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -303,7 +303,8 @@
 
                             <div class="four wide field">
                                 <select name="objectQuestions.answer7" ng-model="vm.session.questions[6].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -329,7 +330,8 @@
 
                             <div class="four wide field">
                                 <select name="objectQuestions.answer8" ng-model="vm.session.questions[7].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -347,7 +349,8 @@
 
                             <div class="four wide field">
                                 <select name="objectQuestions.answer9" ng-model="vm.session.questions[8].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -365,7 +368,8 @@
 
                             <div class="four wide field">
                                 <select name="objectQuestions.answer10" ng-model="vm.session.questions[9].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -376,15 +380,18 @@
                     </div>
                     <div class="field" ng-if="vm.session.questions[9].answer=='Yes'">
                         <label class="ui label session">11.
-                            <div class="detail">Are these ATMs accessible by car ? &nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Car_access_to_ATMs" target="_blank"> <i class="whiteback medium info circle icon">
-                            </i></a></div>
+                            <div class="detail">Are these ATMs accessible by car ? &nbsp&nbsp <a
+                                    href="http://securipedia.eu/mediawiki/index.php/Car_access_to_ATMs" target="_blank">
+                                <i class="whiteback medium info circle icon">
+                                </i></a></div>
                         </label>
 
                         <div class="two fields">
 
                             <div class="four wide field">
                                 <select name="objectQuestions.answer11" ng-model="vm.session.questions[10].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -405,7 +412,8 @@
 
                             <div class="four wide field">
                                 <select name="objectQuestions.answer12" ng-model="vm.session.questions[11].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -417,14 +425,18 @@
                     <div class="field">
 
                         <label class="ui label session">13.
-                            <div class="detail">Are there many dispensaries of alcohol and/or recreationsl drugs?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Dispensaries_of_alcohol_or_drugs" target="_blank"> <i class="whiteback medium info circle icon">
-                            </i></a> </div>
+                            <div class="detail">Are there many dispensaries of alcohol and/or recreationsl
+                                drugs?&nbsp&nbsp <a
+                                        href="http://securipedia.eu/mediawiki/index.php/Dispensaries_of_alcohol_or_drugs"
+                                        target="_blank"> <i class="whiteback medium info circle icon">
+                                </i></a></div>
                         </label>
                         <div class="two fields">
 
                             <div class="four wide field">
                                 <select name="objectQuestions.answer13" ng-model="vm.session.questions[12].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -436,8 +448,11 @@
                     <div class="field">
 
                         <label class="ui label session">14.
-                            <div class="detail">Is there a concentration of bars and alcohol serving establishments? &nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Concentration_of_bars_and_alcohol_serving_estabishments" target="_blank"> <i class="whiteback medium info circle icon">
-                            </i></a>
+                            <div class="detail">Is there a concentration of bars and alcohol serving establishments?
+                                &nbsp&nbsp <a
+                                        href="http://securipedia.eu/mediawiki/index.php/Concentration_of_bars_and_alcohol_serving_estabishments"
+                                        target="_blank"> <i class="whiteback medium info circle icon">
+                                </i></a>
                             </div>
                         </label>
 
@@ -445,7 +460,8 @@
 
                             <div class="four wide field">
                                 <select name="objectQuestions.answer14" ng-model="vm.session.questions[13].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -458,7 +474,8 @@
 
                         <label class="ui label session">15.
                             <div class="detail">Do you expect crowds? (waiting lines, crowds of spectators, gatherings,
-                                etc.)&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Crowd" target="_blank"> <i class="whiteback medium info circle icon">
+                                etc.)&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Crowd"
+                                                   target="_blank"> <i class="whiteback medium info circle icon">
                                 </i></a>
                             </div>
                         </label>
@@ -467,7 +484,8 @@
 
                             <div class="four wide field">
                                 <select name="objectQuestions.answer15" ng-model="vm.session.questions[14].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -480,7 +498,9 @@
 
                         <label class="ui label session ">16.
                             <div class="detail">Do you expect busy places? (markets, tourist attractions, station,
-                                shopping street)&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Busy_place" target="_blank"> <i class="whiteback medium info circle icon">
+                                shopping street)&nbsp&nbsp <a
+                                        href="http://securipedia.eu/mediawiki/index.php/Busy_place" target="_blank"> <i
+                                        class="whiteback medium info circle icon">
                                 </i></a>
                             </div>
                         </label>
@@ -489,7 +509,8 @@
 
                             <div class="four wide field">
                                 <select name="objectQuestions.answer16" ng-model="vm.session.questions[15].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -511,7 +532,8 @@
 
                             <div class="four wide field">
                                 <select name="objectQuestions.answer17" ng-model="vm.session.questions[16].answer"
-                                        ng-options="x for x in vm.sometimes"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.sometimes" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -532,7 +554,8 @@
 
                             <div class="four wide field">
                                 <select name="objectQuestions.answer18" ng-model="vm.session.questions[17].answer"
-                                        ng-options="x for x in vm.sometimes"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.sometimes" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -545,7 +568,9 @@
 
                         <label class="ui label session">19.
                             <div class="detail">Are there many targets for vandalism ? (such as easily accessible and
-                                easily damaged public street furniture)&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Targets_for_vandalism" target="_blank"> <i class="whiteback medium info circle icon">
+                                easily damaged public street furniture)&nbsp&nbsp <a
+                                        href="http://securipedia.eu/mediawiki/index.php/Targets_for_vandalism"
+                                        target="_blank"> <i class="whiteback medium info circle icon">
                                 </i></a>
                             </div>
                         </label>
@@ -554,7 +579,8 @@
 
                             <div class="four wide field">
                                 <select name="objectQuestions.answer19" ng-model="vm.session.questions[18].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -575,7 +601,8 @@
 
                             <div class="four wide field">
                                 <select name="objectQuestions.answer20" ng-model="vm.session.questions[19].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -600,7 +627,8 @@
 
                             <div class="four wide field">
                                 <select name="objectQuestions.answer21" ng-model="vm.session.questions[20].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -637,7 +665,8 @@
 
                             <div class="four wide field">
                                 <select name="objectQuestions.answer22" ng-model="vm.session.questions[21].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -666,7 +695,8 @@
 
                             <div class="four wide field">
                                 <select name="objectQuestions.answer23" ng-model="vm.session.questions[22].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -698,7 +728,8 @@
 
                             <div class="four wide field">
                                 <select name="objectQuestions.answer24" ng-model="vm.session.questions[23].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -710,7 +741,9 @@
                     <div class="field">
 
                         <label class="ui label session">25.
-                            <div class="detail"> Is there an object with symbolic value?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Object_with_symbolic_value" target="_blank"> <i class="whiteback medium info circle icon">
+                            <div class="detail"> Is there an object with symbolic value?&nbsp&nbsp <a
+                                    href="http://securipedia.eu/mediawiki/index.php/Object_with_symbolic_value"
+                                    target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
 
@@ -718,7 +751,8 @@
 
                             <div class="four wide field">
                                 <select name="objectQuestions.answer25" ng-model="vm.session.questions[24].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -731,7 +765,9 @@
 
                         <label class="ui label session">26.
                             <div class="detail"> Are there ideological / prominence values associated with the
-                                location?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Location_with_ideological_or_prominence_values" target="_blank"> <i class="whiteback medium info circle icon">
+                                location?&nbsp&nbsp <a
+                                        href="http://securipedia.eu/mediawiki/index.php/Location_with_ideological_or_prominence_values"
+                                        target="_blank"> <i class="whiteback medium info circle icon">
                                 </i></a>
                             </div>
                         </label>
@@ -740,7 +776,8 @@
 
                             <div class="four wide field">
                                 <select name="objectQuestions.answer26" ng-model="vm.session.questions[25].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -752,7 +789,7 @@
                 </div>
 
 
-                    <div ng-show="vm.showFlag == '2'">
+                <div ng-show="vm.showFlag == '2'">
 
 
                     <h3 class="ui header"> People:</h3>
@@ -766,7 +803,8 @@
 
                             <div class="four wide field">
                                 <select name="peopleQuestions.answer27" ng-model="vm.session.questions[26].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -785,7 +823,8 @@
 
                             <div class="four wide field">
                                 <select name="peopleQuestions.answer28" ng-model="vm.session.questions[27].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -797,7 +836,9 @@
                     <div class="field">
                         <label class="ui label session">29.
                             <div class="detail"> Is the expected ethnic heterogenity of the inhabitants higher than
-                                average?  &nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Ethnic_heterogenity" target="_blank"> <i class="whiteback medium info circle icon">
+                                average? &nbsp&nbsp <a
+                                        href="http://securipedia.eu/mediawiki/index.php/Ethnic_heterogenity"
+                                        target="_blank"> <i class="whiteback medium info circle icon">
                                 </i></a>
                             </div>
                         </label>
@@ -805,7 +846,8 @@
 
                             <div class="four wide field">
                                 <select name="peopleQuestions.answer29" ng-model="vm.session.questions[28].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -824,7 +866,8 @@
 
                             <div class="four wide field">
                                 <select name="peopleQuestions.answer30" ng-model="vm.session.questions[29].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -842,7 +885,8 @@
 
                             <div class="four wide field">
                                 <select name="peopleQuestions.answer31" ng-model="vm.session.questions[30].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
                             </div>
 
                             <div class="twelve wide field">
@@ -856,8 +900,7 @@
                 </div>
 
 
-
-                    <div ng-show="vm.showFlag == '3'">
+                <div ng-show="vm.showFlag == '3'">
 
 
                     <h3 class="ui header"> Location:</h3>
@@ -866,7 +909,9 @@
                     <div class="field" ng-if="vm.session.questions[9].answer=='Yes'">
                         <label class="ui label session">32.
                             <div class="detail">Is the area located in a suburban area or close to an access route to
-                                the city/town ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Suburban_lie_or_proximity_to_access_route" target="_blank"> <i class="whiteback medium info circle icon">
+                                the city/town ?&nbsp&nbsp <a
+                                        href="http://securipedia.eu/mediawiki/index.php/Suburban_lie_or_proximity_to_access_route"
+                                        target="_blank"> <i class="whiteback medium info circle icon">
                                 </i></a>
                             </div>
                         </label>
@@ -875,7 +920,8 @@
                             <div class="four wide field">
                                 <select name="locationQuestions.answer32"
                                         ng-model="vm.session.questions[31].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -896,7 +942,8 @@
                             <div class="four wide field">
                                 <select name="locationQuestions.answer33"
                                         ng-model="vm.session.questions[32].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -908,7 +955,9 @@
                     </div>
                     <div class="field">
                         <label class="ui label session">34.
-                            <div class="detail">Are there multiple possible exits from the area ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Multiple_exits_to_an_area" target="_blank"> <i class="whiteback medium info circle icon">
+                            <div class="detail">Are there multiple possible exits from the area ?&nbsp&nbsp <a
+                                    href="http://securipedia.eu/mediawiki/index.php/Multiple_exits_to_an_area"
+                                    target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -916,7 +965,8 @@
                             <div class="four wide field">
                                 <select name="locationQuestions.answer34"
                                         ng-model="vm.session.questions[33].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -935,7 +985,8 @@
                             <div class="four wide field">
                                 <select name="locationQuestions.answer35"
                                         ng-model="vm.session.questions[34].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -949,7 +1000,9 @@
                         <label class="ui label session">36.
                             <div class="detail">Are there locations that are particularly suited to commit robbery ?
                                 i.e. locations with the following
-                                characteristics:&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Locations_suited_to_commit_robbery" target="_blank"> <i class="whiteback medium info circle icon">
+                                characteristics:&nbsp&nbsp <a
+                                        href="http://securipedia.eu/mediawiki/index.php/Locations_suited_to_commit_robbery"
+                                        target="_blank"> <i class="whiteback medium info circle icon">
                                 </i></a>
                             </div>
                         </label>
@@ -964,7 +1017,8 @@
                             <div class="four wide field">
                                 <select name="locationQuestions.answer36"
                                         ng-model="vm.session.questions[35].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -983,7 +1037,8 @@
                             <div class="four wide field">
                                 <select name="locationQuestions.answer37"
                                         ng-model="vm.session.questions[36].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1002,7 +1057,8 @@
                             <div class="four wide field">
                                 <select name="locationQuestions.answer38"
                                         ng-model="vm.session.questions[37].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1017,17 +1073,19 @@
                 </div>
 
 
-                    <div ng-show="vm.showFlag == '4'">
+                <div ng-show="vm.showFlag == '4'">
 
 
                     <h2 class="ui header"> Questions about surroundings of assessed area:</h2>
 
-                        <div class="ui hidden divider"></div>
+                    <div class="ui hidden divider"></div>
 
                     <div class="field" ng-if="vm.session.questions[0].answer=='Yes'">
                         <label class="ui label session">39.
                             <div class="detail">Is there an increased level of burglary within 4 kilometres of the
-                                object ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Burglary" target="_blank"> <i class="whiteback medium info circle icon">
+                                object ?&nbsp&nbsp <a
+                                        href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Burglary"
+                                        target="_blank"> <i class="whiteback medium info circle icon">
                                 </i></a>
                             </div>
                         </label>
@@ -1036,7 +1094,8 @@
                             <div class="four wide field">
                                 <select name="surroundingsQuestions.answer39"
                                         ng-model="vm.session.questions[38].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1051,7 +1110,9 @@
                     <div class="field" ng-if="vm.session.questions[9].answer=='Yes'">
 
                         <label class="ui label session">40.
-                            <div class="detail">Is there an increased level of ram-raiding within 5km ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Ram_raid" target="_blank"> <i class="whiteback medium info circle icon">
+                            <div class="detail">Is there an increased level of ram-raiding within 5km ?&nbsp&nbsp <a
+                                    href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Ram_raid"
+                                    target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1059,7 +1120,8 @@
                             <div class="four wide field">
                                 <select name="surroundingsQuestions.answer40"
                                         ng-model="vm.session.questions[39].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1073,7 +1135,9 @@
                     <div class="field">
 
                         <label class="ui label session">41.
-                            <div class="detail">Is there an increased level of pickpocketing within 5km ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Pickpocketing" target="_blank"> <i class="whiteback medium info circle icon">
+                            <div class="detail">Is there an increased level of pickpocketing within 5km ?&nbsp&nbsp <a
+                                    href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Pickpocketing"
+                                    target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1081,7 +1145,8 @@
                             <div class="four wide field">
                                 <select name="surroundingsQuestions.answer41"
                                         ng-model="vm.session.questions[40].answer"
-                                        ng-options="x for x in vm.choices" ng-change = "vm.updateSession()"  onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1094,7 +1159,9 @@
                     <div class="field">
 
                         <label class="ui label session">42.
-                            <div class="detail">Is there an increased level of robbery within 4km ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Robbery" target="_blank"> <i class="whiteback medium info circle icon">
+                            <div class="detail">Is there an increased level of robbery within 4km ?&nbsp&nbsp <a
+                                    href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Robbery"
+                                    target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1102,7 +1169,8 @@
                             <div class="four wide field">
                                 <select name="surroundingsQuestions.answer42"
                                         ng-model="vm.session.questions[41].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1115,7 +1183,9 @@
                     <div class="field">
 
                         <label class="ui label session">43.
-                            <div class="detail">Is there an increased level of vehicle theft within 5km ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Vehicle_theft" target="_blank"> <i class="whiteback medium info circle icon">
+                            <div class="detail">Is there an increased level of vehicle theft within 5km ?&nbsp&nbsp <a
+                                    href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Vehicle_theft"
+                                    target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1123,7 +1193,8 @@
                             <div class="four wide field">
                                 <select name="surroundingsQuestions.answer43"
                                         ng-model="vm.session.questions[42].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1136,15 +1207,18 @@
                     <div class="field">
 
                         <label class="ui label session">44.
-                            <div class="detail">Is there an increased level of physical assault within 2km ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Assault" target="_blank"> <i class="whiteback medium info circle icon">
-                            </i></a></div>
+                            <div class="detail">Is there an increased level of physical assault within 2km ?&nbsp&nbsp
+                                <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Assault"
+                                   target="_blank"> <i class="whiteback medium info circle icon">
+                                </i></a></div>
                         </label>
                         <div class="two fields">
 
                             <div class="four wide field">
                                 <select name="surroundingsQuestions.answer44"
                                         ng-model="vm.session.questions[43].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1157,7 +1231,9 @@
                     <div class="field">
 
                         <label class="ui label session">45.
-                            <div class="detail">Is there an increased level of sexual assault within 2km ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Sexual_assault" target="_blank"> <i class="whiteback medium info circle icon">
+                            <div class="detail">Is there an increased level of sexual assault within 2km ?&nbsp&nbsp <a
+                                    href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Sexual_assault"
+                                    target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1165,7 +1241,8 @@
                             <div class="four wide field">
                                 <select name="surroundingsQuestions.answer45"
                                         ng-model="vm.session.questions[44].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1178,15 +1255,19 @@
                     <div class="field">
 
                         <label class="ui label session">46.
-                            <div class="detail">Is there an increased level of vandalism within 2km of the object?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Vandalism" target="_blank"> <i class="whiteback medium info circle icon">
-                            </i></a></div>
+                            <div class="detail">Is there an increased level of vandalism within 2km of the
+                                object?&nbsp&nbsp <a
+                                        href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Vandalism"
+                                        target="_blank"> <i class="whiteback medium info circle icon">
+                                </i></a></div>
                         </label>
                         <div class="two fields">
 
                             <div class="four wide field">
                                 <select name="surroundingsQuestions.answer46"
                                         ng-model="vm.session.questions[45].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1208,7 +1289,8 @@
                             <div class="four wide field">
                                 <select name="surroundingsQuestions.answer47"
                                         ng-model="vm.session.questions[46].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1222,7 +1304,9 @@
 
                         <label class="ui label session">48.
                             <div class="detail">Is there an increased level of graffiti offences within 2km of the
-                                object?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Graffiti" target="_blank"> <i class="whiteback medium info circle icon">
+                                object?&nbsp&nbsp <a
+                                        href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Graffiti"
+                                        target="_blank"> <i class="whiteback medium info circle icon">
                                 </i></a>
                             </div>
                         </label>
@@ -1231,7 +1315,8 @@
                             <div class="four wide field">
                                 <select name="surroundingsQuestions.answer48"
                                         ng-model="vm.session.questions[47].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1245,7 +1330,9 @@
 
                         <label class="ui label session">49.
                             <div class="detail">Is there an increased level of raiding (robbery of commercial venues)
-                                within 4km ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Raid" target="_blank"> <i class="whiteback medium info circle icon">
+                                within 4km ?&nbsp&nbsp <a
+                                        href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Raid"
+                                        target="_blank"> <i class="whiteback medium info circle icon">
                                 </i></a>
                             </div>
                         </label>
@@ -1254,7 +1341,8 @@
                             <div class="four wide field">
                                 <select name="surroundingsQuestions.answer49"
                                         ng-model="vm.session.questions[48].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1268,7 +1356,9 @@
 
                         <label class="ui label session">50.
                             <div class="detail">Are there safety threats to the objects that could be misused by
-                                fanatics? (natural or technical threats)&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Safety" target="_blank"> <i class="whiteback medium info circle icon">
+                                fanatics? (natural or technical threats)&nbsp&nbsp <a
+                                        href="http://securipedia.eu/mediawiki/index.php/Safety" target="_blank"> <i
+                                        class="whiteback medium info circle icon">
                                 </i></a>
                             </div>
                         </label>
@@ -1277,7 +1367,8 @@
                             <div class="four wide field">
                                 <select name="surroundingsQuestions.answer50"
                                         ng-model="vm.session.questions[49].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1292,8 +1383,6 @@
                 </div>
 
 
-
-
                 <div ng-show="vm.showFlag == '5'">
 
 
@@ -1303,7 +1392,9 @@
 
                     <div class=" ui raised segment">  <!-- group questions 51 to 56  -->
                         <h4>Is there an adequate level (regarding quality and time coverage) of surveillance (either
-                            natural or by dedicated observers)? &nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Measure:_Surveillance" target="_blank"> <i class="whiteback medium info circle icon">
+                            natural or by dedicated observers)? &nbsp&nbsp <a
+                                    href="http://securipedia.eu/mediawiki/index.php/Measure:_Surveillance"
+                                    target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></h4>
 
 
@@ -1316,7 +1407,8 @@
                                 <div class="four wide field">
                                     <select name="measuresQuestions.answer51"
                                             ng-model="vm.session.questions[50].answer"
-                                            ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                            ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                            onclick="checkProgress()"></select>
 
                                 </div>
 
@@ -1337,7 +1429,8 @@
                                 <div class="four wide field">
                                     <select name="measuresQuestions.answer52"
                                             ng-model="vm.session.questions[51].answer"
-                                            ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                            ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                            onclick="checkProgress()"></select>
 
                                 </div>
 
@@ -1357,7 +1450,8 @@
                                 <div class="four wide field">
                                     <select name="measuresQuestions.answer53"
                                             ng-model="vm.session.questions[52].answer"
-                                            ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                            ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                            onclick="checkProgress()"></select>
 
                                 </div>
 
@@ -1376,7 +1470,8 @@
                                 <div class="four wide field">
                                     <select name="measuresQuestions.answer54"
                                             ng-model="vm.session.questions[53].answer"
-                                            ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                            ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                            onclick="checkProgress()"></select>
 
                                 </div>
 
@@ -1395,7 +1490,8 @@
                                 <div class="four wide field">
                                     <select name="measuresQuestions.answer55"
                                             ng-model="vm.session.questions[54].answer"
-                                            ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                            ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                            onclick="checkProgress()"></select>
 
                                 </div>
 
@@ -1414,7 +1510,8 @@
                                 <div class="four wide field">
                                     <select name="measuresQuestions.answer56"
                                             ng-model="vm.session.questions[55].answer"
-                                            ng-options="x for x in vm.choices" ng-change = "vm.updateSession()"  onclick="checkProgress()"></select>
+                                            ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                            onclick="checkProgress()"></select>
 
                                 </div>
 
@@ -1437,7 +1534,8 @@
                                 <div class="four wide field">
                                     <select name="measuresQuestions.answer57"
                                             ng-model="vm.session.questions[56].answer"
-                                            ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                            ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                            onclick="checkProgress()"></select>
 
                                 </div>
 
@@ -1466,7 +1564,8 @@
                                 <div class="four wide field">
                                     <select name="measuresQuestions.answer58"
                                             ng-model="vm.session.questions[57].answer"
-                                            ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                            ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                            onclick="checkProgress()"></select>
 
                                 </div>
 
@@ -1485,7 +1584,8 @@
                                 <div class="four wide field">
                                     <select name="measuresQuestions.answer59"
                                             ng-model="vm.session.questions[58].answer"
-                                            ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                            ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                            onclick="checkProgress()"></select>
 
                                 </div>
 
@@ -1504,7 +1604,8 @@
                                 <div class="four wide field">
                                     <select name="measuresQuestions.answer60"
                                             ng-model="vm.session.questions[59].answer"
-                                            ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                            ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                            onclick="checkProgress()"></select>
 
                                 </div>
 
@@ -1523,7 +1624,8 @@
                                 <div class="four wide field">
                                     <select name="measuresQuestions.answer61"
                                             ng-model="vm.session.questions[60].answer"
-                                            ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                            ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                            onclick="checkProgress()"></select>
 
                                 </div>
 
@@ -1542,7 +1644,9 @@
                     <div class="field">
                         <label class="ui label session">62.
                             <div class="detail">Is there an adequate distinction between public, semi-private/communal
-                                and private space (also called 'ownership') ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Measure:_Ownership" target="_blank"> <i class="whiteback medium info circle icon">
+                                and private space (also called 'ownership') ?&nbsp&nbsp <a
+                                        href="http://securipedia.eu/mediawiki/index.php/Measure:_Ownership"
+                                        target="_blank"> <i class="whiteback medium info circle icon">
                                 </i></a>
                             </div>
                         </label>
@@ -1551,7 +1655,8 @@
                             <div class="four wide field">
                                 <select name="measuresQuestions.answer62"
                                         ng-model="vm.session.questions[61].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1563,7 +1668,9 @@
                     </div>
                     <div class="field">
                         <label class="ui label session">63.
-                            <div class="detail">Is the public space designed for easy maintenance ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Measure:_Maintenance" target="_blank"> <i class="whiteback medium info circle icon">
+                            <div class="detail">Is the public space designed for easy maintenance ?&nbsp&nbsp <a
+                                    href="http://securipedia.eu/mediawiki/index.php/Measure:_Maintenance"
+                                    target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1571,7 +1678,8 @@
                             <div class="four wide field">
                                 <select name="measuresQuestions.answer63"
                                         ng-model="vm.session.questions[62].answer"
-                                        ng-options="x for x in vm.choices"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choices" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1583,7 +1691,9 @@
                     </div>
                     <div class="field" ng-if="vm.session.questions[0].answer=='Yes'">
                         <label class="ui label session">64.
-                            <div class="detail">What is your protection level against Burglary ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_burglary" target="_blank"> <i class="whiteback medium info circle icon">
+                            <div class="detail">What is your protection level against Burglary ?&nbsp&nbsp <a
+                                    href="http://securipedia.eu/mediawiki/index.php/Protection_against_burglary"
+                                    target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1591,7 +1701,8 @@
                             <div class="four wide field">
                                 <select name="measuresQuestions.answer64"
                                         ng-model="vm.session.questions[63].answer"
-                                        ng-options="x for x in vm.choicesQ64"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choicesQ64" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1603,7 +1714,9 @@
                     </div>
                     <div class="field" ng-if="vm.session.questions[9].answer=='Yes'">
                         <label class="ui label session">65.
-                            <div class="detail">What is your protection level against Ram Raid ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_ram_raid" target="_blank"> <i class="whiteback medium info circle icon">
+                            <div class="detail">What is your protection level against Ram Raid ?&nbsp&nbsp <a
+                                    href="http://securipedia.eu/mediawiki/index.php/Protection_against_ram_raid"
+                                    target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1611,7 +1724,8 @@
                             <div class="four wide field">
                                 <select name="measuresQuestions.answer65"
                                         ng-model="vm.session.questions[64].answer"
-                                        ng-options="x for x in vm.choicesQ65"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choicesQ65" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1623,7 +1737,9 @@
                     </div>
                     <div class="field">
                         <label class="ui label session">66.
-                            <div class="detail">What is your protection level against Pickpocketing ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_pickpocketing" target="_blank"> <i class="whiteback medium info circle icon">
+                            <div class="detail">What is your protection level against Pickpocketing ?&nbsp&nbsp <a
+                                    href="http://securipedia.eu/mediawiki/index.php/Protection_against_pickpocketing"
+                                    target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1631,7 +1747,8 @@
                             <div class="four wide field">
                                 <select name="measuresQuestions.answer66"
                                         ng-model="vm.session.questions[65].answer"
-                                        ng-options="x for x in vm.choicesQ66"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choicesQ66" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1643,7 +1760,9 @@
                     </div>
                     <div class="field">
                         <label class="ui label session">67.
-                            <div class="detail">What is your protection level against Robbery ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_robbery" target="_blank"> <i class="whiteback medium info circle icon">
+                            <div class="detail">What is your protection level against Robbery ?&nbsp&nbsp <a
+                                    href="http://securipedia.eu/mediawiki/index.php/Protection_against_robbery"
+                                    target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1651,7 +1770,8 @@
                             <div class="four wide field">
                                 <select name="measuresQuestions.answer67"
                                         ng-model="vm.session.questions[66].answer"
-                                        ng-options="x for x in vm.choicesQ67" ng-change = "vm.updateSession()"  onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choicesQ67" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1663,7 +1783,9 @@
                     </div>
                     <div class="field">
                         <label class="ui label session">68.
-                            <div class="detail">What is your protection level against Vehicle Theft ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_vehicle_theft" target="_blank"> <i class="whiteback medium info circle icon">
+                            <div class="detail">What is your protection level against Vehicle Theft ?&nbsp&nbsp <a
+                                    href="http://securipedia.eu/mediawiki/index.php/Protection_against_vehicle_theft"
+                                    target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1671,7 +1793,8 @@
                             <div class="four wide field">
                                 <select name="measuresQuestions.answer68"
                                         ng-model="vm.session.questions[67].answer"
-                                        ng-options="x for x in vm.choicesQ68"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choicesQ68" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1685,7 +1808,9 @@
                     <div class="field">
 
                         <label class="ui label session">69.
-                            <div class="detail">What is your protection against Assault?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_assault" target="_blank"> <i class="whiteback medium info circle icon">
+                            <div class="detail">What is your protection against Assault?&nbsp&nbsp <a
+                                    href="http://securipedia.eu/mediawiki/index.php/Protection_against_assault"
+                                    target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1693,7 +1818,8 @@
                             <div class="four wide field">
                                 <select name="measuresQuestions.answer69"
                                         ng-model="vm.session.questions[68].answer"
-                                        ng-options="x for x in vm.choicesQ69"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choicesQ69" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1706,7 +1832,9 @@
                     <div class="field">
 
                         <label class="ui label session">70.
-                            <div class="detail">What is your protection against Sexual Assault?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_sexual_assault" target="_blank"> <i class="whiteback medium info circle icon">
+                            <div class="detail">What is your protection against Sexual Assault?&nbsp&nbsp <a
+                                    href="http://securipedia.eu/mediawiki/index.php/Protection_against_sexual_assault"
+                                    target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1714,7 +1842,8 @@
                             <div class="four wide field">
                                 <select name="measuresQuestions.answer70"
                                         ng-model="vm.session.questions[69].answer"
-                                        ng-options="x for x in vm.choicesQ70"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choicesQ70" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1729,7 +1858,9 @@
                     <div class="field">
 
                         <label class="ui label session">71.
-                            <div class="detail">What is your protection against Vandalism?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_vandalism" target="_blank"> <i class="whiteback medium info circle icon">
+                            <div class="detail">What is your protection against Vandalism?&nbsp&nbsp <a
+                                    href="http://securipedia.eu/mediawiki/index.php/Protection_against_vandalism"
+                                    target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1737,7 +1868,8 @@
                             <div class="four wide field">
                                 <select name="measuresQuestions.answer71"
                                         ng-model="vm.session.questions[70].answer"
-                                        ng-options="x for x in vm.choicesQ71"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choicesQ71" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1750,7 +1882,9 @@
                     <div class="field">
 
                         <label class="ui label session">72.
-                            <div class="detail">What is your protection against Destruction by Riot ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_destruction_by_riots" target="_blank"> <i class="whiteback medium info circle icon">
+                            <div class="detail">What is your protection against Destruction by Riot ?&nbsp&nbsp <a
+                                    href="http://securipedia.eu/mediawiki/index.php/Protection_against_destruction_by_riots"
+                                    target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1758,7 +1892,8 @@
                             <div class="four wide field">
                                 <select name="measuresQuestions.answer72"
                                         ng-model="vm.session.questions[71].answer"
-                                        ng-options="x for x in vm.choicesQ72"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choicesQ72" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1771,7 +1906,9 @@
                     <div class="field">
 
                         <label class="ui label session">73.
-                            <div class="detail">What is your protection against Destruction by Fanatics ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_destruction_by_fanatics" target="_blank"> <i class="whiteback medium info circle icon">
+                            <div class="detail">What is your protection against Destruction by Fanatics ?&nbsp&nbsp <a
+                                    href="http://securipedia.eu/mediawiki/index.php/Protection_against_destruction_by_fanatics"
+                                    target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1779,7 +1916,8 @@
                             <div class="four wide field">
                                 <select name="measuresQuestions.answer73"
                                         ng-model="vm.session.questions[72].answer"
-                                        ng-options="x for x in vm.choicesQ73"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choicesQ73" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1792,7 +1930,9 @@
                     <div class="field">
 
                         <label class="ui label session">74.
-                            <div class="detail">What is your protection against Graffiti ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_graffiti" target="_blank"> <i class="whiteback medium info circle icon">
+                            <div class="detail">What is your protection against Graffiti ?&nbsp&nbsp <a
+                                    href="http://securipedia.eu/mediawiki/index.php/Protection_against_graffiti"
+                                    target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1800,7 +1940,8 @@
                             <div class="four wide field">
                                 <select name="measuresQuestions.answer74"
                                         ng-model="vm.session.questions[73].answer"
-                                        ng-options="x for x in vm.choicesQ74"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choicesQ74" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1813,7 +1954,9 @@
                     <div class="field">
 
                         <label class="ui label session">75.
-                            <div class="detail">What is your protection against Mass Killing ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_mass_killing" target="_blank"> <i class="whiteback medium info circle icon">
+                            <div class="detail">What is your protection against Mass Killing ?&nbsp&nbsp <a
+                                    href="http://securipedia.eu/mediawiki/index.php/Protection_against_mass_killing"
+                                    target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1821,7 +1964,8 @@
                             <div class="four wide field">
                                 <select name="measuresQuestions.answer75"
                                         ng-model="vm.session.questions[74].answer"
-                                        ng-options="x for x in vm.choicesQ75"  ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choicesQ75" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1834,7 +1978,9 @@
                     <div class="field" ng-if="vm.session.questions[4].answer=='Yes'">
 
                         <label class="ui label session">76.
-                            <div class="detail">What is your protection against Raid ?&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Protection_against_raid" target="_blank"> <i class="whiteback medium info circle icon">
+                            <div class="detail">What is your protection against Raid ?&nbsp&nbsp <a
+                                    href="http://securipedia.eu/mediawiki/index.php/Protection_against_raid"
+                                    target="_blank"> <i class="whiteback medium info circle icon">
                             </i></a></div>
                         </label>
                         <div class="two fields">
@@ -1842,7 +1988,8 @@
                             <div class="four wide field">
                                 <select name="measuresQuestions.answer76"
                                         ng-model="vm.session.questions[75].answer"
-                                        ng-options="x for x in vm.choicesQ76" ng-change = "vm.updateSession()" onclick="checkProgress()"></select>
+                                        ng-options="x for x in vm.choicesQ76" ng-change="vm.updateSession()"
+                                        onclick="checkProgress()"></select>
 
                             </div>
 
@@ -1862,7 +2009,7 @@
                 <!--... This is an extra update button which is an alternative to updating on each input    -->
                 <!-- all set up to update from here , just uncomment the next line...  -->
 
-               <!--     <button type="submit" class="ui  blue  session   button">Update Assessement</button>  -->
+                <!--     <button type="submit" class="ui  blue  session   button">Update Assessement</button>  -->
 
 
             </form>
@@ -1871,16 +2018,15 @@
             <h3>Delete Assessement</h3>
 
 
-            <form class="ui form" name="vm.delForm" id="deleteForm"  >
+            <form class="ui form" name="vm.delForm" id="deleteForm">
 
 
-
-                <div  class="ui small modal" id="deleteOrNot"   >
+                <div class="ui small modal" id="deleteOrNot">
                     <i class="close icon"></i>
 
-                    <div class = "ui hidden divider"></div>
-                    <div class = "ui hidden divider"></div>
-                    <div class = "ui hidden divider"></div>
+                    <div class="ui hidden divider"></div>
+                    <div class="ui hidden divider"></div>
+                    <div class="ui hidden divider"></div>
 
                     <div class="ui header">Delete the Assessement?</div>
                     <ng-form class="ui form" name="vm.modalForm" ng-submit="vm.deleteSession()"
@@ -1911,7 +2057,6 @@
 
     </div>
 </div>
-
 
 
 <script>
@@ -2023,10 +2168,9 @@
 </script>
 
 
-
 <script>
     $('.message .close')
-        .on('click', function() {
+        .on('click', function () {
             $('#progressMessage')
 
                 .transition('fade')

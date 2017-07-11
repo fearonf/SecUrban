@@ -3,12 +3,10 @@
  */
 
 angular.module('secur')
-    .controller('SessionsController',SessionsController);
+    .controller('SessionsController', SessionsController);
 
-//function HotelsController(hotelDataFactory,$route) {
 
-// Ive added the $window and jwthelper just to decode the token and get the stuff from it
-function SessionsController(sessionDataFactory,$route,$window, jwtHelper,AuthFactory) {
+function SessionsController(sessionDataFactory, $route, $window, jwtHelper, AuthFactory) {
 
     var vm = this;
     vm.title = 'Secur App';
@@ -20,25 +18,25 @@ function SessionsController(sessionDataFactory,$route,$window, jwtHelper,AuthFac
     $window.localStorage && $window.localStorage.setItem('my-storage', vm.showFlag);
 
 
-    //***************just seeing that i can get the token stuff here: Yes
-    if($window.sessionStorage.token) {
-         var token = $window.sessionStorage.token;
-          var decodedToken = jwtHelper.decodeToken(token);
-          vm.loggedInUser = decodedToken.email;
-          userId = decodedToken.email;
-         console.log(vm.loggedInUser);
+    //*************** get the token stuff here
+    if ($window.sessionStorage.token) {
+        var token = $window.sessionStorage.token;
+        var decodedToken = jwtHelper.decodeToken(token);
+        vm.loggedInUser = decodedToken.email;
+        userId = decodedToken.email;
+        console.log(vm.loggedInUser);
     }
 
     ///**************************************************************
 
-    if (userId == futureAnalyticsUser)
-    { sessionDataFactory.sessionListAll().then(function (response) {
-        vm.sessions = response.data;
-        console.log(response);
+    if (userId == futureAnalyticsUser) {
+        sessionDataFactory.sessionListAll().then(function (response) {
+            vm.sessions = response.data;
+            console.log(response);
 
-    })
+        })
 
-    }else {
+    } else {
         sessionDataFactory.sessionList(userId).then(function (response) {
             vm.sessions = response.data;
             console.log(response);
@@ -47,8 +45,7 @@ function SessionsController(sessionDataFactory,$route,$window, jwtHelper,AuthFac
     }
 
 
-
-    vm.isLoggedIn = function() {
+    vm.isLoggedIn = function () {
 
         if (AuthFactory.isLoggedIn) {
             return true;
@@ -56,10 +53,6 @@ function SessionsController(sessionDataFactory,$route,$window, jwtHelper,AuthFac
             return false;
         }
     };
-
-
-
-
 
 
 }

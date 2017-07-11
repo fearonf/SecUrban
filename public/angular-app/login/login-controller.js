@@ -17,22 +17,6 @@ function LoginController($http,$location,$window, AuthFactory, jwtHelper,$route)
     };
 
 
-  /* vm.isLoggedIn = function() {
-       firebase.auth().onAuthStateChanged(function(user) {
-           if (user) {
-               // User is signed in
-            //   console.log("is logged in has returned a true");
-            //   console.log(user);
-
-              return true;
-           } else {
-               // No user is signed in.
-               return false;
-           }
-       })
-
-    };
-    */
 
     vm.login = function() {
         vm.error = '';
@@ -52,7 +36,7 @@ function LoginController($http,$location,$window, AuthFactory, jwtHelper,$route)
 
             var email = vm.username;
             var password = vm.password;
-          //  vm.authData = null;
+
 
             firebase.auth().signInWithEmailAndPassword(email, password).then (function(response) {
 
@@ -80,7 +64,7 @@ function LoginController($http,$location,$window, AuthFactory, jwtHelper,$route)
 
 
                 $location.path( '/home');
-             //   $location.path( '/home').replace();
+
                 $route.reload();
 
 
@@ -96,13 +80,15 @@ function LoginController($http,$location,$window, AuthFactory, jwtHelper,$route)
                 // ...
                 console.log(errorMessage);
                 vm.error = errorMessage;
-               // $location.path( "/" );
+
                $route.reload();
 
             })
 
 
+        /*******************************************************************************************************
 
+            This is the login code in place before Firebase was added and is left in here as an alternative to using Firebase
          /*   $http.post('/api/users/login', user).then(function(response){
                 //if login response received (ie not error) and = 'success', store the token in the session storage
                 //note: the 'success' tag was added in the json return response in users.controllers.js
@@ -142,8 +128,7 @@ function LoginController($http,$location,$window, AuthFactory, jwtHelper,$route)
         firebase.auth().signOut().then(function() {
             // Sign-out successful.
             console.log("sign out was successful");
-            //vm.message = null;
-           // vm.error = null;
+
         }).catch(function(error) {
             // An error happened.
             console.log(error);

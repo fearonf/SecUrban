@@ -3,21 +3,6 @@
  */
 var mongoose = require('mongoose');
 
-var questionSchema = new mongoose.Schema( {
-  /*  questionNumber: {
-  //  type: Number,
-  //      min : 0,
-  //      max : 100,
-  //      required: true
-  //  },
-  */
-    answer: String,
-    comments: String
-});
-
-
-
-
 
 var sessionSchema = new mongoose.Schema({
     userId: String,
@@ -29,24 +14,20 @@ var sessionSchema = new mongoose.Schema({
     objectDescription: String,
     informationDescription: String,
     timestamp: {
-        //type: String
+
         type: Date,
         "default": Date.now
     },
     questions: {}
 
 
-
-
 });
-
-
 
 
 //COMPILE the schema into a model for use by the application
 // arguments are: model name, schema name, db Collection name
 //Note: the db Collection name is not actually required, if not supplied,
-// compiler will use a lower case, pluralised version of the model name: 'Hotel' => 'hotels'
+// compiler will use a lower case, pluralised version of the model name: 'Session' => 'sessions'
 
-mongoose.model('Session',sessionSchema, 'sessions');
+mongoose.model('Session', sessionSchema, 'sessions');
 

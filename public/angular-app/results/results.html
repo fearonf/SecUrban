@@ -1,229 +1,247 @@
-<div class = "ui hidden divider"></div>
-    <h1 class="ui dividing header">Assessement Results: </h1>
+<div class="ui hidden divider"></div>
+<h1 class="ui dividing header">Assessement Results: </h1>
 
 
+<form class="ui form  segment  " name="vm.compareSessionForm"
+      ng-submit="vm.ChooseWhatToDo()"
+      id="compareSessionForm">
 
 
-    <form class="ui form  segment  " name="vm.compareSessionForm"
-          ng-submit="vm.ChooseWhatToDo()"
-          id="compareSessionForm">
+    <div class=" inline field">
+
+        <!-- 'session' in the class for form fields is related to the colour of the label only - this is set in src/site/elements/label.overrides -->
+        <div class="ui   horizontal  session label">
+            <div class="detail">Reference Assessement:</div>
+        </div>
+        <div class="eight wide field">
+
+            <select class="ui dropdown" ng-model="vm.compareSession" name="compareSession" required
+                    ng-options="session.name for session in vm.sessions">
 
 
-
-
-        <div class=" inline field">
-
-            <!-- 'session' in the class for form fields is related to the colour of the label only - this is set in src/site/elements/label.overrides -->
-            <div class="ui   horizontal  session label">
-                <div class="detail">Reference Assessement:</div>
-            </div>
-            <div class="eight wide field">
-
-                <select class="ui dropdown" ng-model="vm.compareSession" name="compareSession" required
-                        ng-options="session.name for session in vm.sessions">
-
-
-
-                </select>
-
-
-
-            </div>
-
+            </select>
 
 
         </div>
 
 
-
-        <button class="ui medium blue session   button"  type="submit">Graph Results</button>
-
+    </div>
 
 
-    </form>
-
-<div class = "ui hidden divider"></div>
-<div class = "ui hidden divider"></div>
-<div class = "ui hidden divider"></div>
-<div class = "ui hidden divider"></div>
-        <div>
-            <canvas id="Chart1"></canvas>
-        </div>
-
-<div class = "ui hidden divider"></div>
-<div class = "ui hidden divider"></div>
-<div class = "ui hidden divider"></div>
+    <button class="ui medium blue session   button" type="submit">Graph Results</button>
 
 
+</form>
 
-        <div>
-            <canvas id="Chart2"></canvas>
-        </div>
+<div class="ui hidden divider"></div>
+<div class="ui hidden divider"></div>
+<div class="ui hidden divider"></div>
+<div class="ui hidden divider"></div>
+<div>
+    <canvas id="Chart1"></canvas>
+</div>
 
-<div class = "ui hidden divider"></div>
-<div class = "ui hidden divider"></div>
-<div class = "ui hidden divider"></div>
+<div class="ui hidden divider"></div>
+<div class="ui hidden divider"></div>
+<div class="ui hidden divider"></div>
+
+
+<div>
+    <canvas id="Chart2"></canvas>
+</div>
+
+<div class="ui hidden divider"></div>
+<div class="ui hidden divider"></div>
+<div class="ui hidden divider"></div>
 
 
 <!-- only show the third chart if there is a comparison session chosen, otherwise it leaves a gap  -->
 
-        <div>
-            <canvas id="Chart3"></canvas>
-        </div>
+<div>
+    <canvas id="Chart3"></canvas>
+</div>
 
 
+<div ng-show=vm.showQuestionList>
 
-
-<div ng-show = vm.showQuestionList>
-   
-    <div class = "ui hidden divider"></div>
-
+    <div class="ui hidden divider"></div>
 
 
     <h2 class="ui header">
         Questions determining score
     </h2>
-    <div class="ui divider">  </div>
+    <div class="ui divider"></div>
 
 
-<div class="ui  grid">
+    <div class="ui  grid">
 
-    <div class="four wide column">
-        <h3 class="ui header">Category
-        </h3>
+        <div class="four wide column">
+            <h3 class="ui header">Category
+            </h3>
 
-    </div>
-    <div class="twelve wide column">
-        <h3 class="ui header">Questions
-    </h3> </div>
+        </div>
+        <div class="twelve wide column">
+            <h3 class="ui header">Questions
+            </h3></div>
 
 
-
-    <div class="four wide column">
-            <h4 class="ui header">{{vm.graphOutput[0].label}}&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Burglary" target="_blank"> <i class="whiteback medium info circle icon">
+        <div class="four wide column">
+            <h4 class="ui header">{{vm.graphOutput[0].label}}&nbsp&nbsp <a
+                    href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Burglary" target="_blank"> <i
+                    class="whiteback medium info circle icon">
             </i></a>
             </h4>
 
         </div>
-        <div class="twelve wide column"> <a class = "question" ng-repeat = " question in vm.burglaryRelevantQuestions">{{question}}&nbsp&nbsp&nbsp&nbsp </a></div>
+        <div class="twelve wide column"><a class="question" ng-repeat=" question in vm.burglaryRelevantQuestions">{{question}}&nbsp&nbsp&nbsp&nbsp </a>
+        </div>
 
 
+        <div class="four wide column">
+            <h4 class="ui header">{{vm.graphOutput[1].label}}&nbsp&nbsp <a
+                    href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Ram_raid" target="_blank"> <i
+                    class="whiteback medium info circle icon">
+            </i></a>
+            </h4>
+
+        </div>
+
+        <div class="twelve wide column"><a class="question" ng-repeat=" question in vm.ramRaidRelevantQuestions">{{question}}&nbsp&nbsp&nbsp&nbsp</a>
+        </div>
 
 
+        <div class="four wide column">
+            <h4 class="ui header">{{vm.graphOutput[2].label}}&nbsp&nbsp <a
+                    href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Pickpocketing" target="_blank"> <i
+                    class="whiteback medium info circle icon">
+            </i></a>
+            </h4>
 
-            <div class="four wide column">
-                <h4 class="ui header">{{vm.graphOutput[1].label}}&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Ram_raid" target="_blank"> <i class="whiteback medium info circle icon">
-                </i></a>
-                </h4>
+        </div>
 
-            </div>
+        <div class="twelve wide column"><a class="question" ng-repeat=" question in vm.pickPocketingRelevantQuestions">{{question}}&nbsp&nbsp&nbsp&nbsp</a>
+        </div>
 
-    <div class="twelve wide column"> <a class = "question" ng-repeat = " question in vm.ramRaidRelevantQuestions">{{question}}&nbsp&nbsp&nbsp&nbsp</a></div>
+        <div class="four wide column">
+            <h4 class="ui header">{{vm.graphOutput[3].label}}&nbsp&nbsp <a
+                    href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Robbery" target="_blank"> <i
+                    class="whiteback medium info circle icon">
+            </i></a>
+            </h4>
+
+        </div>
+
+        <div class="twelve wide column"><a ng-repeat=" question in vm.robberyRelevantQuestions">{{question}}&nbsp&nbsp&nbsp&nbsp</a>
+        </div>
+
+        <div class="four wide column">
+            <h4 class="ui header">{{vm.graphOutput[4].label}}&nbsp&nbsp <a
+                    href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Vehicle_theft" target="_blank"> <i
+                    class="whiteback medium info circle icon">
+            </i></a></h4>
+
+        </div>
+
+        <div class="twelve wide column"><a ng-repeat=" question in vm.vehicleTheftRelevantQuestions">{{question}}&nbsp&nbsp&nbsp&nbsp</a>
+        </div>
+
+        <div class="four wide column">
+            <h4 class="ui header">{{vm.graphOutput[5].label}}&nbsp&nbsp <a
+                    href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Assault" target="_blank"> <i
+                    class="whiteback medium info circle icon">
+            </i></a>
+            </h4>
+
+        </div>
+
+        <div class="twelve wide column"><a ng-repeat=" question in vm.assaultRelevantQuestions">{{question}}&nbsp&nbsp&nbsp&nbsp</a>
+        </div>
+
+        <div class="four wide column">
+            <h4 class="ui header">{{vm.graphOutput[6].label}}&nbsp&nbsp <a
+                    href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Sexual_assault" target="_blank"> <i
+                    class="whiteback medium info circle icon">
+            </i></a>
+            </h4>
+        </div>
 
 
+        <div class="twelve wide column"><a ng-repeat=" question in vm.sexualAssaultRelevantQuestions">{{question}}&nbsp&nbsp&nbsp&nbsp</a>
+        </div>
 
-            <div class="four wide column">
-                <h4 class="ui header">{{vm.graphOutput[2].label}}&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Pickpocketing" target="_blank"> <i class="whiteback medium info circle icon">
-                </i></a>
-                </h4>
+        <div class="four wide column">
+            <h4 class="ui header">{{vm.graphOutput[7].label}}&nbsp&nbsp <a
+                    href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Vandalism" target="_blank"> <i
+                    class="whiteback medium info circle icon">
+            </i></a></h4>
 
-            </div>
+        </div>
 
-    <div class="twelve wide column">  <a class = "question" ng-repeat = " question in vm.pickPocketingRelevantQuestions">{{question}}&nbsp&nbsp&nbsp&nbsp</a> </div>
+        <div class="twelve wide column"><a ng-repeat=" question in vm.vandalismRelevantQuestions">{{question}}&nbsp&nbsp&nbsp&nbsp</a>
+        </div>
 
-    <div class="four wide column">
-                <h4 class="ui header">{{vm.graphOutput[3].label}}&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Robbery" target="_blank"> <i class="whiteback medium info circle icon">
-                </i></a>
-                </h4>
+        <div class="four wide column">
+            <h4 class="ui header">{{vm.graphOutput[8].label}}&nbsp&nbsp <a
+                    href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Destruction_by_riots"
+                    target="_blank"> <i class="whiteback medium info circle icon">
+            </i></a></h4>
 
-            </div>
+        </div>
 
-    <div class="twelve wide column"> <a ng-repeat = " question in vm.robberyRelevantQuestions">{{question}}&nbsp&nbsp&nbsp&nbsp</a></div>
+        <div class="twelve wide column"><a ng-repeat=" question in vm.destructionByRiotRelevantQuestions">{{question}}&nbsp&nbsp&nbsp&nbsp</a>
+        </div>
 
-            <div class="four wide column">
-                <h4 class="ui header">{{vm.graphOutput[4].label}}&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Vehicle_theft" target="_blank"> <i class="whiteback medium info circle icon">
-                </i></a></h4>
+        <div class="four wide column">
+            <h4 class="ui header">{{vm.graphOutput[9].label}}&nbsp&nbsp <a
+                    href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Destruction_by_fanatics"
+                    target="_blank"> <i class="whiteback medium info circle icon">
+            </i></a></h4>
 
-            </div>
+        </div>
 
-    <div class="twelve wide column">   <a ng-repeat = " question in vm.vehicleTheftRelevantQuestions">{{question}}&nbsp&nbsp&nbsp&nbsp</a> </div>
+        <div class="twelve wide column"><a ng-repeat=" question in vm.destructionByFanaticRelevantQuestions">{{question}}&nbsp&nbsp&nbsp&nbsp</a>
+        </div>
 
-    <div class="four wide column">
-        <h4 class="ui header">{{vm.graphOutput[5].label}}&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Assault" target="_blank"> <i class="whiteback medium info circle icon">
-                </i></a>
-        </h4>
+        <div class="four wide column">
+            <h4 class="ui header">{{vm.graphOutput[10].label}}&nbsp&nbsp <a
+                    href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Graffiti" target="_blank"> <i
+                    class="whiteback medium info circle icon">
+            </i></a></h4>
 
-            </div>
+        </div>
 
-    <div class="twelve wide column">      <a ng-repeat = " question in vm.assaultRelevantQuestions">{{question}}&nbsp&nbsp&nbsp&nbsp</a> </div>
+        <div class="twelve wide column"><a ng-repeat=" question in vm.graffitiRelevantQuestions">{{question}}&nbsp&nbsp&nbsp&nbsp</a>
+        </div>
 
-    <div class="four wide column">
-                <h4 class="ui header">{{vm.graphOutput[6].label}}&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Sexual_assault" target="_blank"> <i class="whiteback medium info circle icon">
-                </i></a>
-                </h4>
+        <div class="four wide column">
+            <h4 class="ui header">{{vm.graphOutput[11].label}}&nbsp&nbsp <a
+                    href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Mass_killing" target="_blank"> <i
+                    class="whiteback medium info circle icon">
+            </i></a></h4>
+
+        </div>
+
+        <div class="twelve wide column"><a ng-repeat=" question in vm.massKillingRelevantQuestions">{{question}}&nbsp&nbsp&nbsp&nbsp</a>
+        </div>
+
+        <div class="four wide column">
+            <h4 class="ui header">{{vm.graphOutput[12].label}}&nbsp&nbsp <a
+                    href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Raid" target="_blank"> <i
+                    class="whiteback medium info circle icon">
+            </i></a></h4>
+
+        </div>
+
+        <div class="twelve wide column"><a ng-repeat=" question in vm.raidRelevantQuestions">{{question}}&nbsp&nbsp&nbsp&nbsp</a>
+        </div>
+
+
     </div>
-
-
-    <div class="twelve wide column">     <a ng-repeat = " question in vm.sexualAssaultRelevantQuestions">{{question}}&nbsp&nbsp&nbsp&nbsp</a> </div>
-
-            <div class="four wide column">
-                <h4 class="ui header">{{vm.graphOutput[7].label}}&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Vandalism" target="_blank"> <i class="whiteback medium info circle icon">
-                </i></a></h4>
-
-            </div>
-
-    <div class="twelve wide column">     <a ng-repeat = " question in vm.vandalismRelevantQuestions">{{question}}&nbsp&nbsp&nbsp&nbsp</a> </div>
-
-            <div class="four wide column">
-                <h4 class="ui header">{{vm.graphOutput[8].label}}&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Destruction_by_riots" target="_blank"> <i class="whiteback medium info circle icon">
-                </i></a></h4>
-
-            </div>
-
-    <div class="twelve wide column">      <a ng-repeat = " question in vm.destructionByRiotRelevantQuestions">{{question}}&nbsp&nbsp&nbsp&nbsp</a> </div>
-
-            <div class="four wide column">
-                <h4 class="ui header">{{vm.graphOutput[9].label}}&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Destruction_by_fanatics" target="_blank"> <i class="whiteback medium info circle icon">
-                </i></a></h4>
-
-            </div>
-
-    <div class="twelve wide column">    <a ng-repeat = " question in vm.destructionByFanaticRelevantQuestions">{{question}}&nbsp&nbsp&nbsp&nbsp</a> </div>
-
-            <div class="four wide column">
-                <h4 class="ui header">{{vm.graphOutput[10].label}}&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Graffiti" target="_blank"> <i class="whiteback medium info circle icon">
-                </i></a></h4>
-
-            </div>
-
-    <div class="twelve wide column">     <a ng-repeat = " question in vm.graffitiRelevantQuestions">{{question}}&nbsp&nbsp&nbsp&nbsp</a> </div>
-
-            <div class="four wide column">
-                <h4 class="ui header">{{vm.graphOutput[11].label}}&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Mass_killing" target="_blank"> <i class="whiteback medium info circle icon">
-                </i></a></h4>
-
-            </div>
-
-    <div class="twelve wide column">       <a ng-repeat = " question in vm.massKillingRelevantQuestions">{{question}}&nbsp&nbsp&nbsp&nbsp</a> </div>
-
-            <div class="four wide column">
-                <h4 class="ui header">{{vm.graphOutput[12].label}}&nbsp&nbsp <a href="http://securipedia.eu/mediawiki/index.php/Security_issue:_Raid" target="_blank"> <i class="whiteback medium info circle icon">
-                </i></a></h4>
-
-            </div>
-
-    <div class="twelve wide column">       <a ng-repeat = " question in vm.raidRelevantQuestions">{{question}}&nbsp&nbsp&nbsp&nbsp</a> </div>
-
-
-
-
-
+    <div class="ui divider"></div>
 </div>
-    <div class="ui divider">  </div>
-</div>
-<div class = "ui hidden divider"></div>
-<div class = "ui hidden divider"></div>
-<div class = "ui hidden divider"></div>
+<div class="ui hidden divider"></div>
+<div class="ui hidden divider"></div>
+<div class="ui hidden divider"></div>
 
 
 

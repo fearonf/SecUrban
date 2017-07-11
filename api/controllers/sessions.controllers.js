@@ -6,10 +6,6 @@ var mongoose = require('mongoose');
 var Session = mongoose.model('Session');
 
 
-
-
-
-
 module.exports.sessionsGetAll = function (req, res) {
 
     //req.user is put into the req by the .authenticate function called at time of login.
@@ -30,88 +26,6 @@ module.exports.sessionsGetAll = function (req, res) {
 
     //pass the new function the req and res objects
     // then call 'return' to stop code continuing after this function is called
-
-
-
-    // check if a query string is present...
-    // if so, check if offset and/or count are present, if so use them to limit results
-
-   /* if(req.query && req.query.offset) {
-        offset = parseInt(req.query.offset, 10); // 10 is just normal integer to be returned
-    }
-
-    if(req.query && req.query.count) {
-        count = parseInt(req.query.count, 10);
-    }
-    //check if offset and count are numbers...
-    //if not, return a status 400(bad request) and a message
-    //MUST include the 'return;' here to stop falling thru and trying
-    // to format and send ANOTHER response
-
-    if(isNaN(offset) || isNaN(count)) {
-        res
-            .status(400)
-            .json({
-                "message" : "If supplied in querystring, count and offset should be numbers"
-            });
-        return;
-    }
-
-    //don't allow unlimited count of records to return, can be abused
-
-    if (count > maxCount) {
-        res
-            .status(400)
-            .json( {
-                "message" : "Count limit of "+maxCount + " exceeded"
-            });
-        return;
-    }
-*/
-
-
-    //find is done using the MODEL itself...
-    //done as...find all..skip some, limit to some and then execute this query...
-//if any err returned from exec function, report error and status 500 (internal server err)
-
-
-    Session
-
-        .find()
-        .skip(offset)
-        .limit(count)
-        .exec(function(err,sessions) {
-            if (err) {
-                console.log("Error finding sessions");
-                res
-                    .status(500)
-                    .json(err);
-            } else {
-                console.log("Found Sessions", sessions.length); //array length
-                res
-                    .json(sessions);
-            }
-
-        })
-
-
-};
-module.exports.sessionsGetAllByUserId = function (req, res) {
-
-
-// userId is included as a parameter for this get request
-
-    var offset = 0;
-    var count = 100;
-   // var maxCount = 100;
-
-    // check if query string is present...***leaving this code in, in case we need to limit the number of returns
-    // in the future...
-
-
-    //pass the new function the req and res objects
-    // then call 'return' to stop code continuing after this function is called
-
 
 
     // check if a query string is present...
@@ -151,19 +65,98 @@ module.exports.sessionsGetAllByUserId = function (req, res) {
      */
 
 
+    //find is done using the MODEL itself...
+    //done as...find all..skip some, limit to some and then execute this query...
+//if any err returned from exec function, report error and status 500 (internal server err)
+
+
+    Session
+
+        .find()
+        .skip(offset)
+        .limit(count)
+        .exec(function (err, sessions) {
+            if (err) {
+                console.log("Error finding sessions");
+                res
+                    .status(500)
+                    .json(err);
+            } else {
+                console.log("Found Sessions", sessions.length); //array length
+                res
+                    .json(sessions);
+            }
+
+        })
+
+
+};
+module.exports.sessionsGetAllByUserId = function (req, res) {
+
+
+// userId is included as a parameter for this get request
+
+    var offset = 0;
+    var count = 100;
+    // var maxCount = 100;
+
+    // check if query string is present...***leaving this code in, in case we need to limit the number of returns
+    // in the future...
+
+
+    //pass the new function the req and res objects
+    // then call 'return' to stop code continuing after this function is called
+
+
+    // check if a query string is present...
+    // if so, check if offset and/or count are present, if so use them to limit results
+
+    /* if(req.query && req.query.offset) {
+     offset = parseInt(req.query.offset, 10); // 10 is just normal integer to be returned
+     }
+
+     if(req.query && req.query.count) {
+     count = parseInt(req.query.count, 10);
+     }
+     //check if offset and count are numbers...
+     //if not, return a status 400(bad request) and a message
+     //MUST include the 'return;' here to stop falling thru and trying
+     // to format and send ANOTHER response
+
+     if(isNaN(offset) || isNaN(count)) {
+     res
+     .status(400)
+     .json({
+     "message" : "If supplied in querystring, count and offset should be numbers"
+     });
+     return;
+     }
+
+     //don't allow unlimited count of records to return, can be abused
+
+     if (count > maxCount) {
+     res
+     .status(400)
+     .json( {
+     "message" : "Count limit of "+maxCount + " exceeded"
+     });
+     return;
+     }
+     */
+
 
     //done as...find all..skip some, limit to some and then execute this query...
 //if any err returned from exec function, report error and status 500 (internal server err)
     var userId = req.params.userId;
 
-    console.log("GET sessions for userId ",userId);
+    console.log("GET sessions for userId ", userId);
 
     Session
-        .find({"userId":  userId})   //find sessions only with the "userId" = userId as supplied in req
+        .find({"userId": userId})   //find sessions only with the "userId" = userId as supplied in req
 
         .skip(offset)
         .limit(count)
-        .exec(function(err,sessions) {
+        .exec(function (err, sessions) {
             if (err) {
                 console.log("Error finding sessions");
                 res
@@ -181,7 +174,6 @@ module.exports.sessionsGetAllByUserId = function (req, res) {
 };
 
 
-
 module.exports.sessionsGetOne = function (req, res) {
 
 
@@ -195,16 +187,16 @@ module.exports.sessionsGetOne = function (req, res) {
 
     var sessionId = req.params.sessionId;
 
-    console.log("GET sessionId ",sessionId);
+    console.log("GET sessionId ", sessionId);
 
     Session
         .findById(sessionId)
-        .exec(function(err,doc){
+        .exec(function (err, doc) {
             var response = {
                 status: 200,
-                message : doc
+                message: doc
             };
-            if(err) {
+            if (err) {
                 console.log("Error finding session");
 
                 response.status = 500;
@@ -227,49 +219,30 @@ module.exports.sessionsGetOne = function (req, res) {
 
 };
 
-// this is a helper function to split a string into an array
-// the string's elements are delimited by ';'    (eg "Wifi;Pool")
-// if you use the native 'split' function, and you pass in an empty string...
-// ...it will return an array with one empty OBJECT
-// instead, this will return just an empty array: "[]"
-// var _splitArray = function(input) {
-//     var output;
-//     if(input && input.length > 0) {
-//         output = input.split(";");
-//         // output = input.split(",");
-//
-//
-//     } else {
-//         output = [];
-//     }
-//     return output;
-// };
 
-
-
-module.exports.sessionsAddOne = function (req,res) {
+module.exports.sessionsAddOne = function (req, res) {
 
 
     Session
         .create({
             userId: req.body.userId,
             name: req.body.name,
-            objectDescription : req.body.objectDescription,
-            informationDescription : req.body.informationDescription,
+            objectDescription: req.body.objectDescription,
+            informationDescription: req.body.informationDescription,
             timestamp: req.body.timestamp,
 
 
-           questions: req.body.questions
+            questions: req.body.questions
 
 
-        }, function(err, session) {
+        }, function (err, session) {
             if (err) {
                 console.log("Error creating session");
                 res
                     .status(400)
                     .json(err);
             } else {
-                console.log("Session created",session);
+                console.log("Session created", session);
                 res
                     .status(201)
                     .json(session);
@@ -279,21 +252,21 @@ module.exports.sessionsAddOne = function (req,res) {
 
 };
 
-module.exports.sessionsUpdateOne = function(req,res) {
+module.exports.sessionsUpdateOne = function (req, res) {
 
     var sessionId = req.params.sessionId;
 
-    console.log("GET sessionId ",sessionId);
+    console.log("GET sessionId ", sessionId);
 
     Session
         .findById(sessionId)
-       // .select("-reviews -rooms")
-        .exec(function(err,doc){
+        // .select("-reviews -rooms")
+        .exec(function (err, doc) {
             var response = {
                 status: 200,
-                message : doc
+                message: doc
             };
-            if(err) {
+            if (err) {
                 console.log("Error finding session");
 
                 response.status = 500;
@@ -307,7 +280,7 @@ module.exports.sessionsUpdateOne = function(req,res) {
                     "message": "session Id not found"
                 };
             }
-            if(response.status !=200) {
+            if (response.status != 200) {
                 res
                     .status(response.status)
                     .json(response.message);
@@ -320,8 +293,7 @@ module.exports.sessionsUpdateOne = function(req,res) {
                 doc.questions = req.body.questions;
 
 
-
-                doc.save(function(err,sessionUpdated) {
+                doc.save(function (err, sessionUpdated) {
                     if (err) {
                         res
                             .status(500)
@@ -340,15 +312,14 @@ module.exports.sessionsUpdateOne = function(req,res) {
 };
 
 
-
-module.exports.sessionsDeleteOne = function(req,res) {
+module.exports.sessionsDeleteOne = function (req, res) {
 
     var sessionId = req.params.sessionId;
 
     Session
         .findByIdAndRemove(sessionId)
-        .exec(function(err,session) {
-            if(err) {
+        .exec(function (err, session) {
+            if (err) {
                 res
                     .status(404)
                     .json(err);

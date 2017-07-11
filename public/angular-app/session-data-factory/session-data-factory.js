@@ -19,7 +19,7 @@ function sessionDataFactory($http) {
     }
 
     function sessionList(userId) {
-      //  return $http.get('/api/sessions').then(complete).catch(failed);
+
 
         return $http.get('/api/sessions/'+ userId).then(complete).catch(failed);
     }

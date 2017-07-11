@@ -17,8 +17,10 @@ var ctrlSessions = require('../controllers/sessions.controllers.js');
 
 
 router
-    .route('/sessions')        //this is really 'router.route' and 'router.get'
+    .route('/sessions')
     .get(ctrlSessions.sessionsGetAll) //controller name + method name from controller file
+    // adding the step ctrlUsers.authenticate in front of the Get Step will check that the user is logged on
+    // before allowing the Get step to continue. (using Firebase) in case request didn't come from a client.
   //   .get(ctrlUsers.authenticate,ctrlSessions.sessionsGetAll)
     .post(ctrlSessions.sessionsAddOne);  // if method is post, use this
 
@@ -26,7 +28,11 @@ router
 router
     .route('/sessions/:userId')
     .get(ctrlSessions.sessionsGetAllByUserId) //controller name + method name from controller file
-    //   .get(ctrlUsers.authenticate,ctrlSessions.sessionsGetAllByUserId)
+
+    // adding the step ctrlUsers.authenticate in front of the Get Step will check that the user is logged on
+    // before allowing the Get step to continue. (using Firebase) in case request didn't come from a client.
+
+   //    .get(ctrlUsers.authenticate,ctrlSessions.sessionsGetAllByUserId)
 
 
 
@@ -44,7 +50,7 @@ router
 
 
 
-//Authentication routes
+//Authentication routes     Note: login route is only used as an alternative to using Firebase.
 
 router
    .route('/users/register')
